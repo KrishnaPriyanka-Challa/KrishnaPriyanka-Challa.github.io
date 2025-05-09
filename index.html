@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Priyanka Challa - Data Analyst Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            color: #374151; /* Tailwind gray-700 */
+            background-color: #fdfdff; /* Slightly off-white for a softer feel */
+            line-height: 1.7;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        .section-divider {
+            border-bottom: 1px solid #e5e7eb; /* Subtle gray line */
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+        .interactive-button {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            border-radius: 8px; /* Slightly more rounded */
+        }
+        .interactive-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .interactive-button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        nav a.active {
+            color: #4f46e5; /* Indigo-600 */
+            font-weight: 600; /* Lora semi-bold */
+            position: relative;
+        }
+        nav a.active::after { /* Underline effect for active link */
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 2px;
+            bottom: -2px;
+            left: 20%;
+            background-color: #4f46e5;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c0c7d6; /* Softer scrollbar */
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a3b0c7;
+        }
+        .profile-picture {
+            width: 180px; /* Adjusted size */
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white; /* Thicker border */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12); /* Softer, more spread shadow */
+        }
+        .project-card {
+            background-color: white;
+            border-radius: 12px; /* More rounded cards */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* To contain image */
+            cursor: pointer;
+        }
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.15); /* Indigo shadow on hover */
+        }
+        .project-card img {
+            width: 100%;
+            height: 200px; /* Fixed height for project images */
+            object-fit: cover;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6); /* Darker backdrop */
+            padding-top: 60px; /* Space for close button */
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 700px; /* Max width for modal */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            animation: fadeInModal 0.5s ease-out;
+        }
+        @keyframes fadeInModal {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 32px; /* Larger close button */
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #333; /* Darker on hover */
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* Welcome animation for hero */
+        #home h1, #home p, #home .interactive-button, #home .profile-picture {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        #home h1 { animation-delay: 0.2s; }
+        #home .profile-picture { animation-delay: 0.3s; }
+        #home p { animation-delay: 0.4s; }
+        #home .space-x-4 > a:first-child { animation-delay: 0.6s; }
+        #home .space-x-4 > a:last-child { animation-delay: 0.7s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-700 antialiased">
+
+    <nav class="bg-white/95 backdrop-blur-lg shadow-md fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20"> {/* Increased nav height */}
+                <div class="flex items-center">
+                    <a href="#home" class="text-3xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors">KPC</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6"> {/* Increased spacing */}
+                        <a href="#home" class="nav-link text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Home</a>
+                        <a href="#about" class="nav-link text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">About</a>
+                        <a href="#skills" class="nav-link text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                        <a href="#projects" class="nav-link text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                        <a href="#experience" class="nav-link text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                        <a href="#education" class="nav-link text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Education</a>
+                        <a href="#contact" class="nav-link text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-indigo-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200">
+                <a href="#home" class="nav-link text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#skills" class="nav-link text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="#projects" class="nav-link text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#experience" class="nav-link text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                <a href="#education" class="nav-link text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 block px-3 py-2 rounded-md text-base font-medium">Education</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 pt-24 pb-12 md:pt-20">
+        <div class="max-w-5xl mx-auto px-6 lg:px-8 grid md:grid-cols-5 gap-10 items-center">
+            <div class="md:col-span-2 flex justify-center md:justify-end">
+                <img src="https://placehold.co/200x200/E0E7FF/4F46E5?text=KPC&font=lora" alt="Krishna Priyanka Challa" class="profile-picture">
+                 </div>
+            <div class="md:col-span-3 text-center md:text-left hero-text-content">
+                <h1 class="text-5xl sm:text-6xl md:text-7xl text-slate-900 mb-5 leading-tight">Krishna Priyanka Challa</h1>
+                <p class="text-2xl md:text-3xl text-indigo-700 font-semibold mb-10">Data Analyst | Business Analysis</p>
+                <div class="space-x-0 md:space-x-4 space-y-4 md:space-y-0 flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start">
+                    <a href="#projects" class="interactive-button w-full md:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-10 text-lg">View My Projects</a>
+                    <a href="https://www.linkedin.com/in/priyankachalla5/" target="_blank" rel="noopener noreferrer" class="interactive-button w-full md:w-auto bg-white hover:bg-slate-100 text-indigo-600 font-semibold py-3 px-10 text-lg border-2 border-indigo-600">
+                        LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-5xl mx-auto p-6 md:p-12 space-y-20"> {/* Increased space between sections */}
+        <section id="about">
+            <h2 class="text-4xl md:text-5xl text-slate-800 mb-8 text-center">Welcome!</h2>
+            <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl"> {/* Enhanced shadow and rounding */}
+                <p class="text-xl text-slate-700 leading-relaxed mb-5">
+                    Hello! I'm Krishna Priyanka Challa, a dedicated and analytical professional passionate about transforming raw data into compelling stories and actionable insights. I'm currently advancing my expertise through a Master of Science in Business Analytics & AI at The University of Texas at Dallas (Expected May 2026, GPA: 3.77), where I am also a proud recipient of the Dean's Excellence Scholarship.
+                </p>
+                <p class="text-xl text-slate-700 leading-relaxed mb-5">
+                    My journey into the world of data was solidified during my Bachelor of Business Administration at VIT-AP University, India (Graduated May 2024, GPA: 3.69). There, I not only achieved the 2nd Rank in my program but was also honored with the Student Academic Merit Award, fueling my drive for excellence.
+                </p>
+                <p class="text-xl text-slate-700 leading-relaxed">
+                    I thrive on the challenge of dissecting complex datasets, uncovering hidden patterns, and developing data-driven strategies that address real-world business problems. My goal is to leverage my analytical acumen and technical skills to contribute meaningfully to innovative projects and help organizations make smarter decisions.
+                </p>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section id="skills">
+            <h2 class="text-4xl md:text-5xl text-slate-800 mb-12 text-center">My Toolkit</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-5 text-center">Technical Proficiencies</h3>
+                    <ul class="space-y-3 text-slate-700 text-lg">
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>Excel, XLOOKUP</li>
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>Tableau</li>
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>R (Predictive Modeling)</li>
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>Python</li>
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>SQL (PostgreSQL)</li>
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>Power BI</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-5 text-center">Analytical Expertise</h3>
+                    <ul class="space-y-3 text-slate-700 text-lg">
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>Data Analysis & Interpretation</li>
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>Data Visualization</li>
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>Predictive Modeling</li>
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>Dashboard Development</li>
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>Cohort Analysis</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-5 text-center">Professional Strengths</h3>
+                    <ul class="space-y-3 text-slate-700 text-lg">
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>Effective Communication</li>
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>Cross-functional Collaboration</li>
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>Leadership & Initiative</li>
+                        <li><span class="text-indigo-500 mr-2">&#10003;</span>Meticulous Attention to Detail</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section id="projects">
+            <h2 class="text-4xl md:text-5xl text-slate-800 mb-12 text-center">Featured Projects</h2>
+            <div id="project-grid" class="grid md:grid-cols-2 gap-10">
+                </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section id="experience">
+            <h2 class="text-4xl md:text-5xl text-slate-800 mb-12 text-center">Professional Path</h2>
+            <div class="space-y-12">
+                <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl">
+                    <h3 class="text-3xl text-indigo-700 mb-1">Business Development Intern</h3>
+                    <p class="text-xl text-slate-600 font-semibold mb-2">Sri Nicholas Fine Chem Labs, Hyderabad, India</p>
+                    <p class="text-md text-slate-500 mb-5">Jan 2024 - Apr 2024</p>
+                    <ul class="list-disc list-outside ml-5 text-slate-700 space-y-2 text-lg">
+                        <li>Developed and managed an Excel-based CRM system for over 100 client records, enhancing targeted outreach strategies and contributing to securing six new client orders.</li>
+                        <li>Collaborated with sales and marketing teams to streamline lead management processes, achieving a 20% reduction in average client response time.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-3xl text-slate-800 mt-12 mb-8 text-center">Virtual Experience & Leadership</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-white p-8 rounded-xl shadow-xl">
+                             <h4 class="text-2xl text-indigo-700 mb-2">Tata Group: Data Visualization</h4>
+                             <p class="text-lg text-slate-600 mb-1">Empowering Business with Effective Insights</p>
+                             <p class="text-md text-slate-500">Tata Group (via Forage)</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-xl shadow-xl">
+                            <h4 class="text-2xl text-indigo-700 mb-2">Accenture: Data Analytics & Visualization</h4>
+                             <p class="text-lg text-slate-600 mb-1">Virtual Experience Program</p>
+                            <p class="text-md text-slate-500">Accenture (via Forage)</p>
+                        </div>
+                    </div>
+                     <div class="bg-white p-8 rounded-xl shadow-xl mt-8">
+                        <h4 class="text-2xl text-indigo-700 mb-3 text-center md:text-left">Organizational Roles</h4>
+                        <ul class="list-disc list-outside ml-5 text-slate-700 space-y-2 text-lg">
+                            <li><strong>Code.exe, UTD:</strong> Design Lead (Jan 2025-Present), Design Officer (Sep 2024 - Jan 2025)</li>
+                            <li><strong>VIT-Zine Magazine:</strong> Lead Editor (Jul 2023-Dec 2023)</li>
+                            <li><strong>Rotaract Club:</strong> Director of Professional Services (Aug 2022 - May 2023)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section id="education">
+            <h2 class="text-4xl md:text-5xl text-slate-800 mb-12 text-center">Academic Achievements</h2>
+            <div class="space-y-8">
+                <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl">
+                    <h3 class="text-3xl text-indigo-700">The University of Texas at Dallas</h3>
+                    <p class="text-xl text-slate-700 font-semibold mb-1">Master of Science, Business Analytics & AI</p>
+                    <p class="text-md text-slate-500 mb-3">Expected Graduation: May 2026 | Current GPA: 3.77 / 4.00</p>
+                    <p class="text-lg text-slate-700">Key Highlight: Recipient of the Dean's Excellence Scholarship.</p>
+                </div>
+                <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl">
+                    <h3 class="text-3xl text-indigo-700">VIT-AP University, Amaravati, India</h3>
+                    <p class="text-xl text-slate-700 font-semibold mb-1">Bachelor of Business Administration</p>
+                    <p class="text-md text-slate-500 mb-3">Graduated: May 2024 | GPA: 3.69 / 4.00</p>
+                    <p class="text-lg text-slate-700">Key Highlights: Achieved 2nd Rank in Program & Recipient of Student Academic Merit Award.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section id="contact" class="text-center">
+            <h2 class="text-4xl md:text-5xl text-slate-800 mb-8">Let's Connect</h2>
+            <div class="bg-white p-8 md:p-12 rounded-xl shadow-2xl max-w-xl mx-auto"> {/* Enhanced shadow */}
+                <p class="text-xl text-slate-700 mb-8">
+                    I'm actively seeking opportunities in Data Analysis and Business Analysis where I can contribute my skills and continue to grow. If you have an exciting project or role, or just want to chat about data, I'd love to hear from you!
+                </p>
+                <p class="text-xl text-slate-700 mb-4">
+                    <strong class="text-indigo-700">Email:</strong> <a href="mailto:your.email@example.com" class="text-indigo-600 hover:underline hover:text-indigo-800">your.email@example.com</a>
+                    <br><span class="text-sm text-slate-500">(Please replace with your actual email)</span>
+                </p>
+                <p class="text-xl text-slate-700 mb-8">
+                    <strong class="text-indigo-700">LinkedIn:</strong> <a href="https://www.linkedin.com/in/priyankachalla5/" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline hover:text-indigo-800">linkedin.com/in/priyankachalla5</a>
+                </p>
+                 <p class="text-md text-slate-600 mt-6 mb-8">
+                    Eligible to work in the US for internships and full-time roles for up to 36 months without requiring sponsorship.
+                </p>
+                <a href="mailto:your.email@example.com" class="mt-6 interactive-button inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-4 px-12 text-xl"> {/* Larger button */}
+                    Send an Email
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-12 mt-20 border-t border-slate-200 bg-slate-100">
+        <p class="text-slate-600 text-lg">&copy; <span id="currentYear"></span> Krishna Priyanka Challa. All rights reserved.</p>
+        <p class="text-md text-slate-500 mt-2">Crafted with passion and precision.</p>
+    </footer>
+
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModalButton">&times;</span>
+            <img id="modalProjectImage" src="https://placehold.co/600x300/cccccc/333333?text=Project+Image" alt="Project Image" class="w-full h-64 object-cover rounded-lg mb-6">
+            <h2 id="modalProjectTitle" class="text-3xl md:text-4xl text-indigo-700 mb-4">Project Title</h2>
+            <div class="mb-6">
+                <p class="text-lg"><strong class="font-semibold text-slate-700">Tools Used:</strong> <span id="modalProjectTools" class="text-slate-600"></span></p>
+                <p class="text-lg"><strong class="font-semibold text-slate-700">Skills Displayed:</strong> <span id="modalProjectSkills" class="text-slate-600"></span></p>
+            </div>
+            <div id="modalProjectDescription" class="text-lg text-slate-700 leading-relaxed space-y-4">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden') && link.closest('#mobile-menu')) {
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.querySelector('svg:first-child').classList.remove('hidden');
+                    mobileMenuButton.querySelector('svg:last-child').classList.add('hidden');
+                }
+            });
+        });
+        
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Active navigation link highlighting
+        const sections = document.querySelectorAll('main section[id]');
+        const desktopNavLinks = document.querySelectorAll('nav .hidden.md\\:block .nav-link');
+        const mobileNavLinksList = document.querySelectorAll('#mobile-menu .nav-link');
+
+        const navHighlighter = () => {
+            let scrollY = window.pageYOffset;
+            const navHeight = document.querySelector('nav').offsetHeight;
+
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - navHeight - 20; // Adjusted offset
+                let sectionId = current.getAttribute('id');
+                
+                const updateLinkStyle = (linksNodeList) => {
+                    linksNodeList.forEach(link => {
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            if (scrollY >= sectionTop && scrollY <= sectionTop + sectionHeight) {
+                                link.classList.add('active');
+                            } else {
+                                link.classList.remove('active');
+                            }
+                        }
+                    });
+                };
+                
+                updateLinkStyle(desktopNavLinks);
+                updateLinkStyle(mobileNavLinksList);
+            });
+
+            // Special case for home section when at the very top
+            const homeDesktopLink = document.querySelector('nav .hidden.md\\:block a[href="#home"]');
+            const homeMobileLink = document.querySelector('#mobile-menu a[href="#home"]');
+            if (scrollY < sections[0].offsetTop - navHeight - 70) { 
+                if(homeDesktopLink) {
+                    desktopNavLinks.forEach(l => l.classList.remove('active'));
+                    homeDesktopLink.classList.add('active');
+                }
+                 if(homeMobileLink) {
+                    mobileNavLinksList.forEach(l => l.classList.remove('active'));
+                    homeMobileLink.classList.add('active');
+                }
+            } else if (scrollY === 0) { // Ensure home is active if scrolled to the absolute top
+                 if(homeDesktopLink) homeDesktopLink.classList.add('active');
+                 if(homeMobileLink) homeMobileLink.classList.add('active');
+            }
+        };
+
+        window.addEventListener('scroll', navHighlighter);
+        window.addEventListener('load', navHighlighter);
+
+        // Project Data (Editable)
+        // For project descriptions, you can use HTML for formatting if needed.
+        const projectsData = [
+            {
+                id: 'project1',
+                image: 'https://placehold.co/600x400/A9CCE3/1A5276?text=Superstore+Analysis&font=playfairdisplay',
+                title: 'Superstore Market Segmentation & Sales Analysis',
+                tools: 'Tableau, Excel',
+                skills: 'Cluster Analysis, Data Visualization, Dashboard Design, Revenue Analysis',
+                shortDescription: 'Identified key customer segments driving 65% of revenue through cluster analysis and built interactive sales dashboards.',
+                fullDescription: `
+                    <p>In this project, I dived deep into a large superstore dataset comprising over 9,000 sales records. My primary goal was to understand customer behavior and optimize sales strategies.</p>
+                    <p class="mt-2"><strong>Technical Approach:</strong> I employed k-means cluster analysis in Tableau to segment customers into distinct cohorts based on their purchasing patterns (Recency, Frequency, Monetary Value). This revealed three high-value groups that collectively contributed to 65% of the total revenue.</p>
+                    <p class="mt-2"><strong>Non-Technical Summary:</strong> Imagine a busy supermarket. Not all shoppers are the same. Some buy often, some spend a lot, and some are new. I used data techniques to group these shoppers. This helped the superstore understand who their best customers are and focus on keeping them happy, while also finding ways to encourage other shoppers. I also created easy-to-understand visual reports (dashboards) that showed which products were making the most money and which regions needed more attention.</p>
+                    <p class="mt-2"><strong>Outcome:</strong> The insights enabled targeted marketing campaigns and inventory management, with dashboards providing ongoing monitoring of sales performance, high-margin products, and underperforming regions.</p>
+                `
+            },
+            {
+                id: 'project2',
+                image: 'https://placehold.co/600x400/D5DBDB/17202A?text=Real+Estate+Dashboard&font=playfairdisplay',
+                title: 'Washington Real Estate Sales Dashboard',
+                tools: 'Tableau, SQL (for data prep)',
+                skills: 'Data Blending, Calculated Fields, Dynamic Filtering, Trend Analysis',
+                shortDescription: 'Designed a real-time Tableau dashboard visualizing sales trends and buyer preferences for strategic marketing.',
+                fullDescription: `
+                    <p>This project focused on the dynamic Washington real estate market. The objective was to create a tool for real estate professionals to quickly grasp market trends and make informed decisions.</p>
+                    <p class="mt-2"><strong>Technical Approach:</strong> Using Tableau, I integrated multiple data sources (sales records, property details, demographic data) through data blending. I extensively used calculated fields to derive new metrics (e.g., price per sq ft, days on market) and implemented dynamic filters to allow users to explore data by region, property type, and time period.</p>
+                    <p class="mt-2"><strong>Non-Technical Summary:</strong> Think of this as a smart map and report for people selling houses. It shows live information about house sales, like when prices are usually highest during the month or what types of houses different buyers prefer. This helps sellers and agents make better decisions on when to list a house or how to advertise it effectively.</p>
+                    <p class="mt-2"><strong>Outcome:</strong> The dashboard provided clear visualizations of trends such as mid-month price peaks and shifting buyer preferences, enabling more refined and effective real estate marketing strategies.</p>
+                `
+            },
+            {
+                id: 'project3',
+                image: 'https://placehold.co/600x400/F5CBA7/7E5109?text=Coffee+Sales&font=playfairdisplay',
+                title: 'Coffee Sales Performance Dashboard',
+                tools: 'Excel (Advanced), Data Visualization',
+                skills: 'XLOOKUP, PivotTables, Dashboard Creation, Sales Tracking',
+                shortDescription: 'Automated sales tracking and created a dynamic Excel dashboard for coffee sales performance analysis.',
+                fullDescription: `
+                    <p>The aim of this project was to provide a comprehensive overview of a coffee company's sales performance across various dimensions.</p>
+                    <p class="mt-2"><strong>Technical Approach:</strong> I consolidated multi-dimensional datasets from different sources using Excel's XLOOKUP function, significantly automating the real-time sales tracking process. From this consolidated data, I built a dynamic dashboard incorporating PivotTables, charts, and slicers to track key metrics like total sales, regional performance, product popularity, and customer demographics.</p>
+                    <p class="mt-2"><strong>Non-Technical Summary:</strong> For a coffee company, it's important to know how well their coffee is selling, where it's popular, and who is buying it. I created an interactive report in Excel that automatically updates with the latest sales numbers. This report helps the company quickly see how they're doing overall, which regions are their best markets, and what kind of customers love their coffee the most.</p>
+                    <p class="mt-2"><strong>Outcome:</strong> The Excel dashboard became a vital tool for the sales team, offering instant insights into performance and facilitating data-driven decision-making regarding promotions and inventory.</p>
+                `
+            },
+            {
+                id: 'project4',
+                image: 'https://placehold.co/600x400/BB8FCE/4A235A?text=Diabetes+Prediction&font=playfairdisplay',
+                title: 'Predictive Analytics for Diabetes Risk',
+                tools: 'R, RStudio',
+                skills: 'Predictive Modeling, Logistic Regression, Neural Networks, Data Preprocessing, Correlation Analysis',
+                shortDescription: 'Built models in R with 86.5% accuracy to identify diabetes risk factors from 253K+ records.',
+                fullDescription: `
+                    <p>This project focused on leveraging machine learning to identify individuals at high risk of developing diabetes, enabling early intervention.</p>
+                    <p class="mt-2"><strong>Technical Approach:</strong> Working with a large dataset of over 253,000 patient records, I performed extensive data preprocessing, including handling missing values and feature scaling. I then developed and compared several predictive models in R, primarily focusing on logistic regression and neural networks. The final model achieved an accuracy of 86.5% in identifying diabetes risk. Correlation analysis was also conducted to highlight key risk factors.</p>
+                    <p class="mt-2"><strong>Non-Technical Summary:</strong> Diabetes is a common health issue. This project used computer learning to predict if someone might be at risk of getting diabetes based on their health information. By analyzing lots of patient data, the system learned to spot patterns. We found that things like body mass index (BMI) and high blood pressure are important warning signs. This helps doctors identify at-risk patients earlier.</p>
+                    <p class="mt-2"><strong>Outcome:</strong> The predictive models and identified key risk factors (BMI, hypertension) provide valuable tools for healthcare providers for early detection and preventative care strategies.</p>
+                `
+            }
+            // Add more projects here following the same structure
+        ];
+
+        // Populate Project Grid and Modal Logic
+        const projectGrid = document.getElementById('project-grid');
+        const modal = document.getElementById('projectModal');
+        const closeModalButton = document.getElementById('closeModalButton');
+
+        const modalProjectImage = document.getElementById('modalProjectImage');
+        const modalProjectTitle = document.getElementById('modalProjectTitle');
+        const modalProjectTools = document.getElementById('modalProjectTools');
+        const modalProjectSkills = document.getElementById('modalProjectSkills');
+        const modalProjectDescription = document.getElementById('modalProjectDescription');
+
+        projectsData.forEach(project => {
+            const card = document.createElement('div');
+            card.className = 'project-card flex flex-col'; // Added flex for content alignment
+            card.innerHTML = `
+                <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover">
+                <div class="p-6 flex flex-col flex-grow"> {/* Flex grow for text content */}
+                    <h3 class="text-2xl text-indigo-700 mb-2">${project.title}</h3>
+                    <p class="text-sm text-slate-500 mb-1"><strong class="font-semibold">Tools:</strong> ${project.tools}</p>
+                    <p class="text-sm text-slate-500 mb-3"><strong class="font-semibold">Skills:</strong> ${project.skills}</p>
+                    <p class="text-slate-600 text-md leading-relaxed mb-4 flex-grow">${project.shortDescription}</p> {/* Flex grow for short desc */}
+                    <button class="mt-auto self-start text-indigo-600 hover:text-indigo-800 font-semibold transition-colors view-details-btn">View Details &rarr;</button>
+                </div>
+            `;
+            card.addEventListener('click', () => {
+                modalProjectImage.src = project.image;
+                modalProjectTitle.textContent = project.title;
+                modalProjectTools.textContent = project.tools;
+                modalProjectSkills.textContent = project.skills;
+                modalProjectDescription.innerHTML = project.fullDescription; // Use innerHTML for formatted descriptions
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent background scroll
+            });
+            projectGrid.appendChild(card);
+        });
+
+        closeModalButton.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore background scroll
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore background scroll
+            }
+        }
+    </script>
+</body>
+</html>
