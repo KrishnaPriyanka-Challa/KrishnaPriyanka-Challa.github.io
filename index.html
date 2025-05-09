@@ -40,15 +40,6 @@
         html {
             scroll-behavior: smooth;
         }
-        /* Sea Blue Theme Variables (Conceptual) */
-        /* --sea-blue-primary: #4682B4; (SteelBlue) */
-        /* --sea-blue-primary-hover: #3670A0; (Darker SteelBlue) */
-        /* --sea-blue-accent: #20B2AA; (LightSeaGreen) */
-        /* --sea-blue-light: #B0E0E6; (PowderBlue) */
-        /* --gradient-start: #E0F2F7; (Light Sky Blue) */
-        /* --gradient-via: #B2EBF2; (Light Cyan) */
-        /* --gradient-end: #A0D2DB; (Medium Aquamarine like) */
-
         nav a.active {
             color: #4682B4; /* SteelBlue */
             font-weight: 600; 
@@ -76,13 +67,13 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #a3b0c7;
         }
-        .profile-picture {
-            width: 180px; 
-            height: 180px;
+        .profile-picture { /* Used in About Me section now */
+            width: 200px; 
+            height: 200px;
             border-radius: 50%;
             object-fit: cover; 
             border: 5px solid white; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.12); 
+            box-shadow: 0 8px 20px rgba(70, 130, 180, 0.25); /* Enhanced shadow */
         }
         .project-card {
             background-color: white;
@@ -91,17 +82,41 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden; 
             cursor: pointer;
+            display: flex; 
+            flex-direction: column; 
         }
         .project-card:hover {
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 8px 20px rgba(70, 130, 180, 0.2); /* SteelBlue shadow on hover */
         }
-        .project-card img {
+        .project-card-image { 
             width: 100%;
             height: 200px; 
             object-fit: cover;
         }
-        /* Modal Styles */
+        .project-card-content { 
+            padding: 1.5rem; /* p-6 */
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; 
+        }
+        .project-tag { 
+            display: inline-block;
+            background-color: #E0F2F7; 
+            color: #0369A1; 
+            font-size: 0.75rem; 
+            font-weight: 500; 
+            padding: 0.25rem 0.75rem; 
+            border-radius: 0.375rem; 
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+        }
+        .project-skill-tag { 
+            background-color: #CCFBF1; 
+            color: #0F766E; 
+        }
+
         .modal {
             display: none; 
             position: fixed;
@@ -144,13 +159,12 @@
             text-decoration: none;
             cursor: pointer;
         }
-        /* Welcome animation for hero */
-        #home h1, #home p, #home .interactive-button, #home .profile-picture {
+        /* Welcome animation for hero text */
+        #home h1, #home p, #home .interactive-button {
             animation: fadeInUp 0.8s ease-out forwards;
             opacity: 0;
         }
         #home h1 { animation-delay: 0.2s; }
-        #home .profile-picture { animation-delay: 0.3s; }
         #home p { animation-delay: 0.4s; }
         #home div > a.interactive-button:nth-child(1) { animation-delay: 0.6s; }
         #home div > a.interactive-button:nth-child(2) { animation-delay: 0.7s; }
@@ -213,17 +227,14 @@
         </div>
     </nav>
 
-    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-100 via-cyan-50 to-blue-100 pt-24 pb-12 md:pt-20"> {/* Updated Gradient */}
-        <div class="max-w-5xl mx-auto px-6 lg:px-8 grid md:grid-cols-5 gap-10 items-center">
-            <div class="md:col-span-2 flex justify-center md:justify-end">
-                 <img src="images/lkdn_pic.jpg" alt="Krishna Priyanka Challa" class="profile-picture">
-            </div>
-            <div class="md:col-span-3 text-center md:text-left hero-text-content">
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-100 via-cyan-50 to-blue-100 pt-24 pb-12 md:pt-20 text-center">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8">
+            <div class="hero-text-content">
                 <h1 class="text-5xl sm:text-6xl md:text-7xl text-slate-900 mb-5 leading-tight">Krishna Priyanka Challa</h1>
                 <p class="text-2xl md:text-3xl text-[#4682B4] font-semibold mb-10">Data Analyst | Business Analysis</p>
-                <div class="space-x-0 md:space-x-4 space-y-4 md:space-y-0 flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start">
-                    <a href="#projects" class="interactive-button w-full md:w-auto bg-[#4682B4] hover:bg-[#3670A0] text-white font-semibold py-3 px-10 text-lg">View My Projects</a>
-                    <a href="https://www.linkedin.com/in/priyankachalla5/" target="_blank" rel="noopener noreferrer" class="interactive-button w-full md:w-auto bg-white hover:bg-slate-100 text-[#4682B4] font-semibold py-3 px-10 text-lg border-2 border-[#4682B4]">
+                <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+                    <a href="#projects" class="interactive-button block sm:inline-block w-full sm:w-auto bg-[#4682B4] hover:bg-[#3670A0] text-white font-semibold py-3 px-10 text-lg">View My Projects</a>
+                    <a href="https://www.linkedin.com/in/priyankachalla5/" target="_blank" rel="noopener noreferrer" class="interactive-button block sm:inline-block w-full sm:w-auto bg-white hover:bg-slate-100 text-[#4682B4] font-semibold py-3 px-10 text-lg border-2 border-[#4682B4]">
                         LinkedIn Profile
                     </a>
                 </div>
@@ -233,17 +244,22 @@
 
     <main class="max-w-5xl mx-auto p-6 md:p-12 space-y-20"> 
         <section id="about">
-            <h2 class="text-4xl md:text-5xl text-slate-800 mb-8 text-center">Welcome!</h2>
-            <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl"> 
-                <p class="text-xl text-slate-700 leading-relaxed mb-5">
-                    Hello! I'm Krishna Priyanka Challa, a dedicated and analytical professional passionate about transforming raw data into compelling stories and actionable insights. I'm currently advancing my expertise through a Master of Science in Business Analytics & AI at The University of Texas at Dallas (Expected May 2026, GPA: 3.77), where I am also a proud recipient of the Dean's Excellence Scholarship.
-                </p>
-                <p class="text-xl text-slate-700 leading-relaxed mb-5">
-                    My journey into the world of data was solidified during my Bachelor of Business Administration at VIT-AP University, India (Graduated May 2024, GPA: 3.69). There, I not only achieved the 2nd Rank in my program but was also honored with the Student Academic Merit Award, fueling my drive for excellence.
-                </p>
-                <p class="text-xl text-slate-700 leading-relaxed">
-                    I thrive on the challenge of dissecting complex datasets, uncovering hidden patterns, and developing data-driven strategies that address real-world business problems. My goal is to leverage my analytical acumen and technical skills to contribute meaningfully to innovative projects and help organizations make smarter decisions.
-                </p>
+            <h2 class="text-4xl md:text-5xl text-slate-800 mb-10 text-center">About Me</h2>
+            <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl grid md:grid-cols-3 gap-8 md:gap-12 items-center">
+                <div class="md:col-span-1 flex justify-center items-start md:items-center">
+                     <img src="images/lkdn_pic.jpg" alt="Krishna Priyanka Challa" class="profile-picture">
+                </div>
+                <div class="md:col-span-2">
+                    <p class="text-xl text-slate-700 leading-relaxed mb-5">
+                        Hello! I'm Krishna Priyanka Challa, a dedicated and analytical professional passionate about transforming raw data into compelling stories and actionable insights. I'm currently advancing my expertise through a Master of Science in Business Analytics & AI at The University of Texas at Dallas (Expected May 2026, GPA: 3.77), where I am also a proud recipient of the Dean's Excellence Scholarship.
+                    </p>
+                    <p class="text-xl text-slate-700 leading-relaxed mb-5">
+                        My journey into the world of data was solidified during my Bachelor of Business Administration at VIT-AP University, India (Graduated May 2024, GPA: 3.69). There, I not only achieved the 2nd Rank in my program but was also honored with the Student Academic Merit Award, fueling my drive for excellence.
+                    </p>
+                    <p class="text-xl text-slate-700 leading-relaxed">
+                        I thrive on the challenge of dissecting complex datasets, uncovering hidden patterns, and developing data-driven strategies that address real-world business problems. My goal is to leverage my analytical acumen and technical skills to contribute meaningfully to innovative projects and help organizations make smarter decisions.
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -253,7 +269,7 @@
             <h2 class="text-4xl md:text-5xl text-slate-800 mb-12 text-center">My Toolkit</h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold text-[#20B2AA] mb-5 text-center">Technical Proficiencies</h3> {/* LightSeaGreen */}
+                    <h3 class="text-2xl font-semibold text-[#20B2AA] mb-5 text-center">Technical Proficiencies</h3>
                     <ul class="space-y-3 text-slate-700 text-lg">
                         <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Excel, XLOOKUP</li>
                         <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Tableau</li>
@@ -343,13 +359,18 @@
                     <h3 class="text-3xl text-[#4682B4]">The University of Texas at Dallas</h3>
                     <p class="text-xl text-slate-700 font-semibold mb-1">Master of Science, Business Analytics & AI</p>
                     <p class="text-md text-slate-500 mb-3">Expected Graduation: May 2026 | Current GPA: 3.77 / 4.00</p>
-                    <p class="text-lg text-slate-700">Key Highlight: Recipient of the Dean's Excellence Scholarship.</p>
+                    <ul class="list-disc list-outside ml-5 text-slate-700 space-y-1 text-lg">
+                        <li>Recipient of the Dean's Excellence Scholarship.</li>
+                    </ul>
                 </div>
                 <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl">
                     <h3 class="text-3xl text-[#4682B4]">VIT-AP University, Amaravati, India</h3>
                     <p class="text-xl text-slate-700 font-semibold mb-1">Bachelor of Business Administration</p>
                     <p class="text-md text-slate-500 mb-3">Graduated: May 2024 | GPA: 3.69 / 4.00</p>
-                    <p class="text-lg text-slate-700">Key Highlights: Achieved 2nd Rank in Program & Recipient of Student Academic Merit Award.</p>
+                    <ul class="list-disc list-outside ml-5 text-slate-700 space-y-1 text-lg">
+                        <li>Achieved 2nd Rank in Program.</li>
+                        <li>Recipient of Student Academic Merit Award.</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -485,10 +506,10 @@
         const projectsData = [
             {
                 id: 'project1',
-                image: 'https://placehold.co/600x400/A9DFBF/196F3D?text=Superstore+Analysis&font=playfairdisplay', // Sea blue themed placeholder
+                image: 'https://placehold.co/600x400/A9DFBF/196F3D?text=Superstore+Analysis&font=playfairdisplay',
                 title: 'Superstore Market Segmentation & Sales Analysis',
-                tools: 'Tableau, Excel',
-                skills: 'Cluster Analysis, Data Visualization, Dashboard Design, Revenue Analysis',
+                toolsUsed: ['Tableau', 'Excel'], 
+                skillsDisplayed: ['Cluster Analysis', 'Data Visualization', 'Dashboard Design', 'Revenue Analysis'], 
                 shortDescription: 'Identified key customer segments driving 65% of revenue through cluster analysis and built interactive sales dashboards.',
                 fullDescription: `
                     <p>In this project, I dived deep into a large superstore dataset comprising over 9,000 sales records. My primary goal was to understand customer behavior and optimize sales strategies.</p>
@@ -499,10 +520,10 @@
             },
             {
                 id: 'project2',
-                image: 'https://placehold.co/600x400/A2D9CE/117A65?text=Real+Estate+Dashboard&font=playfairdisplay', // Sea blue themed placeholder
+                image: 'https://placehold.co/600x400/A2D9CE/117A65?text=Real+Estate+Dashboard&font=playfairdisplay',
                 title: 'Washington Real Estate Sales Dashboard',
-                tools: 'Tableau, SQL (for data prep)',
-                skills: 'Data Blending, Calculated Fields, Dynamic Filtering, Trend Analysis',
+                toolsUsed: ['Tableau', 'SQL'],
+                skillsDisplayed: ['Data Blending', 'Calculated Fields', 'Dynamic Filtering', 'Trend Analysis'],
                 shortDescription: 'Designed a real-time Tableau dashboard visualizing sales trends and buyer preferences for strategic marketing.',
                 fullDescription: `
                     <p>This project focused on the dynamic Washington real estate market. The objective was to create a tool for real estate professionals to quickly grasp market trends and make informed decisions.</p>
@@ -513,10 +534,10 @@
             },
             {
                 id: 'project3',
-                image: 'https://placehold.co/600x400/AED6F1/2E86C1?text=Coffee+Sales&font=playfairdisplay', // Sea blue themed placeholder
+                image: 'https://placehold.co/600x400/AED6F1/2E86C1?text=Coffee+Sales&font=playfairdisplay',
                 title: 'Coffee Sales Performance Dashboard',
-                tools: 'Excel (Advanced), Data Visualization',
-                skills: 'XLOOKUP, PivotTables, Dashboard Creation, Sales Tracking',
+                toolsUsed: ['Excel (Advanced)', 'Data Visualization'],
+                skillsDisplayed: ['XLOOKUP', 'PivotTables', 'Dashboard Creation', 'Sales Tracking'],
                 shortDescription: 'Automated sales tracking and created a dynamic Excel dashboard for coffee sales performance analysis.',
                 fullDescription: `
                     <p>The aim of this project was to provide a comprehensive overview of a coffee company's sales performance across various dimensions.</p>
@@ -527,10 +548,10 @@
             },
             {
                 id: 'project4',
-                image: 'https://placehold.co/600x400/A5BBF5/305EE3?text=Diabetes+Prediction&font=playfairdisplay', // Sea blue themed placeholder
+                image: 'https://placehold.co/600x400/A5BBF5/305EE3?text=Diabetes+Prediction&font=playfairdisplay',
                 title: 'Predictive Analytics for Diabetes Risk',
-                tools: 'R, RStudio',
-                skills: 'Predictive Modeling, Logistic Regression, Neural Networks, Data Preprocessing, Correlation Analysis',
+                toolsUsed: ['R', 'RStudio'],
+                skillsDisplayed: ['Predictive Modeling', 'Logistic Regression', 'Neural Networks', 'Data Preprocessing', 'Correlation Analysis'],
                 shortDescription: 'Built models in R with 86.5% accuracy to identify diabetes risk factors from 253K+ records.',
                 fullDescription: `
                     <p>This project focused on leveraging machine learning to identify individuals at high risk of developing diabetes, enabling early intervention.</p>
@@ -547,28 +568,46 @@
 
         const modalProjectImage = document.getElementById('modalProjectImage');
         const modalProjectTitle = document.getElementById('modalProjectTitle');
-        const modalProjectTools = document.getElementById('modalProjectTools');
-        const modalProjectSkills = document.getElementById('modalProjectSkills');
+        const modalProjectTools = document.getElementById('modalProjectTools'); 
+        const modalProjectSkills = document.getElementById('modalProjectSkills'); 
         const modalProjectDescription = document.getElementById('modalProjectDescription');
 
         projectsData.forEach(project => {
             const card = document.createElement('div');
-            card.className = 'project-card flex flex-col'; 
+            card.className = 'project-card'; 
+            
+            let toolsTagsHtml = '';
+            if (project.toolsUsed && project.toolsUsed.length > 0) {
+                toolsTagsHtml = project.toolsUsed.map(tool => `<span class="project-tag bg-sky-100 text-sky-800">${tool}</span>`).join('');
+            }
+
+            let skillsTagsHtml = '';
+            if (project.skillsDisplayed && project.skillsDisplayed.length > 0) {
+                skillsTagsHtml = project.skillsDisplayed.map(skill => `<span class="project-tag project-skill-tag bg-teal-100 text-teal-800">${skill}</span>`).join('');
+            }
+
             card.innerHTML = `
-                <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover">
-                <div class="p-6 flex flex-col flex-grow"> 
-                    <h3 class="text-2xl text-[#4682B4] mb-2">${project.title}</h3> {/* SteelBlue for project titles */}
-                    <p class="text-sm text-slate-500 mb-1"><strong class="font-semibold">Tools:</strong> ${project.tools}</p>
-                    <p class="text-sm text-slate-500 mb-3"><strong class="font-semibold">Skills:</strong> ${project.skills}</p>
-                    <p class="text-slate-600 text-md leading-relaxed mb-4 flex-grow">${project.shortDescription}</p> 
-                    <button class="mt-auto self-start text-[#20B2AA] hover:text-[#4682B4] font-semibold transition-colors view-details-btn">View Details &rarr;</button> {/* LightSeaGreen */}
-                </div>
+                <img src="${project.image}" alt="${project.title}" class="project-card-image">
+                <div class="project-card-content"> 
+                    <h3 class="text-2xl text-[#4682B4] mb-2">${project.title}</h3>
+                    <p class="text-slate-600 text-md leading-relaxed mb-4 flex-grow">${project.shortDescription}</p>
+                    
+                    ${toolsTagsHtml ? `<div class="mt-auto mb-3">
+                                           <p class="font-semibold text-xs text-slate-500 mb-1 uppercase tracking-wider">Tools Used:</p>
+                                           <div class="flex flex-wrap">${toolsTagsHtml}</div>
+                                       </div>` : ''}
+                    
+                    ${skillsTagsHtml ? `<div class="mb-1">
+                                           <p class="font-semibold text-xs text-slate-500 mb-1 uppercase tracking-wider">Skills Displayed:</p>
+                                           <div class="flex flex-wrap">${skillsTagsHtml}</div>
+                                       </div>` : ''}
+                    </div>
             `;
             card.addEventListener('click', () => {
                 modalProjectImage.src = project.image;
                 modalProjectTitle.textContent = project.title;
-                modalProjectTools.textContent = project.tools;
-                modalProjectSkills.textContent = project.skills;
+                modalProjectTools.innerHTML = project.toolsUsed ? project.toolsUsed.map(tool => `<span class="project-tag bg-sky-100 text-sky-800">${tool}</span>`).join('') : 'N/A';
+                modalProjectSkills.innerHTML = project.skillsDisplayed ? project.skillsDisplayed.map(skill => `<span class="project-tag project-skill-tag bg-teal-100 text-teal-800">${skill}</span>`).join('') : 'N/A';
                 modalProjectDescription.innerHTML = project.fullDescription; 
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden'; 
