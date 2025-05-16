@@ -12,7 +12,7 @@
         body {
             font-family: 'Lora', serif;
             color: #374151; /* Tailwind gray-700 */
-            background-color: #f8f9fa; /* Slightly off-white/light gray for a clean base */
+            background-color: #f9fafb; /* Tailwind gray-50, a very light gray for a clean base */
             line-height: 1.7;
         }
         h1, h2, h3, h4, h5, h6 {
@@ -20,7 +20,7 @@
             font-weight: 700;
         }
         .section-divider {
-            border-bottom: 1px solid #dee2e6; /* Subtle gray line */
+            border-bottom: 1px solid #e5e7eb; /* Tailwind gray-200 */
             margin-top: 3rem;
             margin-bottom: 3rem;
         }
@@ -41,7 +41,7 @@
             scroll-behavior: smooth;
         }
         nav a.active {
-            color: #4682B4; /* SteelBlue */
+            color: #2563EB; /* Blue-600 */
             font-weight: 600; 
             position: relative;
         }
@@ -52,7 +52,7 @@
             height: 2px;
             bottom: -2px;
             left: 20%;
-            background-color: #4682B4; /* SteelBlue */
+            background-color: #2563EB; /* Blue-600 */
         }
         ::-webkit-scrollbar {
             width: 10px;
@@ -61,19 +61,19 @@
             background: #f1f1f1;
         }
         ::-webkit-scrollbar-thumb {
-            background: #c0c7d6; 
+            background: #bfdbfe; /* Blue-200 */
             border-radius: 5px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #a3b0c7;
+            background: #93C5FD; /* Blue-300 */
         }
-        .profile-picture { /* Used in About Me section now */
-            width: 200px; 
-            height: 200px;
+        .profile-picture { 
+            width: 240px; 
+            height: 240px;
             border-radius: 50%;
             object-fit: cover; 
-            border: 5px solid white; 
-            box-shadow: 0 8px 20px rgba(70, 130, 180, 0.25); /* Enhanced shadow */
+            border: 6px solid white; 
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2); 
         }
         .project-card {
             background-color: white;
@@ -87,7 +87,7 @@
         }
         .project-card:hover {
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 8px 20px rgba(70, 130, 180, 0.2); /* SteelBlue shadow on hover */
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15); 
         }
         .project-card-image { 
             width: 100%;
@@ -95,15 +95,15 @@
             object-fit: cover;
         }
         .project-card-content { 
-            padding: 1.5rem; /* p-6 */
+            padding: 1.5rem; 
             display: flex;
             flex-direction: column;
             flex-grow: 1; 
         }
         .project-tag { 
             display: inline-block;
-            background-color: #E0F2F7; 
-            color: #0369A1; 
+            background-color: #EFF6FF; /* Blue-50 */
+            color: #3B82F6; /* Blue-500 */
             font-size: 0.75rem; 
             font-weight: 500; 
             padding: 0.25rem 0.75rem; 
@@ -113,8 +113,8 @@
             white-space: nowrap;
         }
         .project-skill-tag { 
-            background-color: #CCFBF1; 
-            color: #0F766E; 
+            background-color: #E0F2FE; /* Sky-100 */
+            color: #0284C7; /* Sky-600 */
         }
 
         .modal {
@@ -159,7 +159,6 @@
             text-decoration: none;
             cursor: pointer;
         }
-        /* Welcome animation for hero text */
         #home h1, #home p, #home .interactive-button {
             animation: fadeInUp 0.8s ease-out forwards;
             opacity: 0;
@@ -188,21 +187,21 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center">
-                    <a href="#home" class="text-3xl font-bold text-[#4682B4] hover:text-[#3670A0] transition-colors">KPC</a>
+                    <a href="#home" class="text-3xl font-bold text-[#2563EB] hover:text-[#1D4ED8] transition-colors">KPC</a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-6">
-                        <a href="#home" class="nav-link text-gray-600 hover:text-[#4682B4] px-3 py-2 rounded-md text-base font-medium">Home</a>
-                        <a href="#about" class="nav-link text-gray-600 hover:text-[#4682B4] px-3 py-2 rounded-md text-base font-medium">About</a>
-                        <a href="#skills" class="nav-link text-gray-600 hover:text-[#4682B4] px-3 py-2 rounded-md text-base font-medium">Skills</a>
-                        <a href="#projects" class="nav-link text-gray-600 hover:text-[#4682B4] px-3 py-2 rounded-md text-base font-medium">Projects</a>
-                        <a href="#experience" class="nav-link text-gray-600 hover:text-[#4682B4] px-3 py-2 rounded-md text-base font-medium">Experience</a>
-                        <a href="#education" class="nav-link text-gray-600 hover:text-[#4682B4] px-3 py-2 rounded-md text-base font-medium">Education</a>
-                        <a href="#contact" class="nav-link text-gray-600 hover:text-[#4682B4] px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                        <a href="#home" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Home</a>
+                        <a href="#about" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">About</a>
+                        <a href="#skills" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                        <a href="#projects" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                        <a href="#experience" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                        <a href="#education" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Education</a>
+                        <a href="#contact" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Contact</a>
                     </div>
                 </div>
                 <div class="-mr-2 flex md:hidden">
-                    <button type="button" id="mobile-menu-button" class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-[#4682B4] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#4682B4]" aria-controls="mobile-menu" aria-expanded="false">
+                    <button type="button" id="mobile-menu-button" class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-[#2563EB] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#2563EB]" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <svg class="block h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -216,25 +215,25 @@
         </div>
         <div class="md:hidden hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200">
-                <a href="#home" class="nav-link text-gray-700 hover:text-[#4682B4] hover:bg-sky-50 block px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="#about" class="nav-link text-gray-700 hover:text-[#4682B4] hover:bg-sky-50 block px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="#skills" class="nav-link text-gray-700 hover:text-[#4682B4] hover:bg-sky-50 block px-3 py-2 rounded-md text-base font-medium">Skills</a>
-                <a href="#projects" class="nav-link text-gray-700 hover:text-[#4682B4] hover:bg-sky-50 block px-3 py-2 rounded-md text-base font-medium">Projects</a>
-                <a href="#experience" class="nav-link text-gray-700 hover:text-[#4682B4] hover:bg-sky-50 block px-3 py-2 rounded-md text-base font-medium">Experience</a>
-                <a href="#education" class="nav-link text-gray-700 hover:text-[#4682B4] hover:bg-sky-50 block px-3 py-2 rounded-md text-base font-medium">Education</a>
-                <a href="#contact" class="nav-link text-gray-700 hover:text-[#4682B4] hover:bg-sky-50 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                <a href="#home" class="nav-link text-gray-700 hover:text-[#2563EB] hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-[#2563EB] hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#skills" class="nav-link text-gray-700 hover:text-[#2563EB] hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="#projects" class="nav-link text-gray-700 hover:text-[#2563EB] hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#experience" class="nav-link text-gray-700 hover:text-[#2563EB] hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                <a href="#education" class="nav-link text-gray-700 hover:text-[#2563EB] hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">Education</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-[#2563EB] hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-100 via-cyan-50 to-blue-100 pt-24 pb-12 md:pt-20 text-center">
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-sky-50 to-indigo-100 pt-24 pb-12 md:pt-20 text-center">
         <div class="max-w-3xl mx-auto px-6 lg:px-8">
             <div class="hero-text-content">
                 <h1 class="text-5xl sm:text-6xl md:text-7xl text-slate-900 mb-5 leading-tight">Krishna Priyanka Challa</h1>
-                <p class="text-2xl md:text-3xl text-[#4682B4] font-semibold mb-10">Data Analyst | Business Analysis</p>
+                <p class="text-2xl md:text-3xl text-[#2563EB] font-semibold mb-10">Data Analyst | Business Analysis</p>
                 <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
-                    <a href="#projects" class="interactive-button block sm:inline-block w-full sm:w-auto bg-[#4682B4] hover:bg-[#3670A0] text-white font-semibold py-3 px-10 text-lg">View My Projects</a>
-                    <a href="https://www.linkedin.com/in/priyankachalla5/" target="_blank" rel="noopener noreferrer" class="interactive-button block sm:inline-block w-full sm:w-auto bg-white hover:bg-slate-100 text-[#4682B4] font-semibold py-3 px-10 text-lg border-2 border-[#4682B4]">
+                    <a href="#projects" class="interactive-button block sm:inline-block w-full sm:w-auto bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold py-3 px-10 text-lg">View My Projects</a>
+                    <a href="https://www.linkedin.com/in/priyankachalla5/" target="_blank" rel="noopener noreferrer" class="interactive-button block sm:inline-block w-full sm:w-auto bg-white hover:bg-slate-100 text-[#2563EB] font-semibold py-3 px-10 text-lg border-2 border-[#2563EB]">
                         LinkedIn Profile
                     </a>
                 </div>
@@ -245,19 +244,28 @@
     <main class="max-w-5xl mx-auto p-6 md:p-12 space-y-20"> 
         <section id="about">
             <h2 class="text-4xl md:text-5xl text-slate-800 mb-10 text-center">About Me</h2>
-            <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl grid md:grid-cols-3 gap-8 md:gap-12 items-center">
-                <div class="md:col-span-1 flex justify-center items-start md:items-center">
+            <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+                <div class="md:col-span-4 flex justify-center md:justify-start">
                      <img src="images/lkdn_pic.jpg" alt="Krishna Priyanka Challa" class="profile-picture">
                 </div>
-                <div class="md:col-span-2">
-                    <p class="text-xl text-slate-700 leading-relaxed mb-5">
-                        Hello! I'm Krishna Priyanka Challa, a dedicated and analytical professional passionate about transforming raw data into compelling stories and actionable insights. I'm currently advancing my expertise through a Master of Science in Business Analytics & AI at The University of Texas at Dallas (Expected May 2026, GPA: 3.77), where I am also a proud recipient of the Dean's Excellence Scholarship.
+                <div class="md:col-span-8">
+                    <p class="text-xl text-slate-700 leading-relaxed mb-4">
+                        Hello! I'm Krishna Priyanka, I’m a Master’s student in Business Analytics & AI at UT Dallas, building on a foundation I discovered during my undergrad in Business Administration.
                     </p>
-                    <p class="text-xl text-slate-700 leading-relaxed mb-5">
-                        My journey into the world of data was solidified during my Bachelor of Business Administration at VIT-AP University, India (Graduated May 2024, GPA: 3.69). There, I not only achieved the 2nd Rank in my program but was also honored with the Student Academic Merit Award, fueling my drive for excellence.
+                    <p class="text-xl text-slate-700 leading-relaxed mb-4">
+                        That’s where I first got interested in how data helps businesses run smarter. I specialized in Business Analytics and started learning how to work with data—clean it, analyze it, and turn it into something useful.
+                    </p>
+                    <p class="text-xl text-slate-700 leading-relaxed mb-4">
+                        Since then, I’ve been growing my skills across tools like Python, SQL, and Tableau, and diving deeper into topics like predictive modeling and business intelligence.
+                    </p>
+                    <p class="text-xl text-slate-700 leading-relaxed mb-4">
+                        What drives me now is simple: applying what I’ve learned to real-world problems.
+                    </p>
+                    <p class="text-xl text-slate-700 leading-relaxed mb-4">
+                        I’m especially interested in roles where I can help turn data into insights that support better decisions and improve how things work—whether that’s through internships, projects, or collaborations.
                     </p>
                     <p class="text-xl text-slate-700 leading-relaxed">
-                        I thrive on the challenge of dissecting complex datasets, uncovering hidden patterns, and developing data-driven strategies that address real-world business problems. My goal is to leverage my analytical acumen and technical skills to contribute meaningfully to innovative projects and help organizations make smarter decisions.
+                        If you’re working in this space—or know someone who is—I’d love to connect.
                     </p>
                 </div>
             </div>
@@ -269,33 +277,33 @@
             <h2 class="text-4xl md:text-5xl text-slate-800 mb-12 text-center">My Toolkit</h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold text-[#20B2AA] mb-5 text-center">Technical Proficiencies</h3>
+                    <h3 class="text-2xl font-semibold text-[#60A5FA] mb-5 text-center">Technical Proficiencies</h3>
                     <ul class="space-y-3 text-slate-700 text-lg">
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Excel, XLOOKUP</li>
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Tableau</li>
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>R (Predictive Modeling)</li>
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Python</li>
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>SQL (PostgreSQL)</li>
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Power BI</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Excel, XLOOKUP</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Tableau</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>R (Predictive Modeling)</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Python</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>SQL (PostgreSQL)</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Power BI</li>
                     </ul>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold text-[#20B2AA] mb-5 text-center">Analytical Expertise</h3>
+                    <h3 class="text-2xl font-semibold text-[#60A5FA] mb-5 text-center">Analytical Expertise</h3>
                     <ul class="space-y-3 text-slate-700 text-lg">
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Data Analysis & Interpretation</li>
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Data Visualization</li>
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Predictive Modeling</li>
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Dashboard Development</li>
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Cohort Analysis</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Data Analysis & Interpretation</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Data Visualization</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Predictive Modeling</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Dashboard Development</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Cohort Analysis</li>
                     </ul>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold text-[#20B2AA] mb-5 text-center">Professional Strengths</h3>
+                    <h3 class="text-2xl font-semibold text-[#60A5FA] mb-5 text-center">Professional Strengths</h3>
                     <ul class="space-y-3 text-slate-700 text-lg">
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Effective Communication</li>
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Cross-functional Collaboration</li>
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Leadership & Initiative</li>
-                        <li><span class="text-[#20B2AA] mr-2">&#10003;</span>Meticulous Attention to Detail</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Effective Communication</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Cross-functional Collaboration</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Leadership & Initiative</li>
+                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Problem-Solving Acumen</li>
                     </ul>
                 </div>
             </div>
@@ -305,8 +313,8 @@
 
         <section id="projects">
             <h2 class="text-4xl md:text-5xl text-slate-800 mb-12 text-center">Featured Projects</h2>
-            <div id="project-grid" class="grid md:grid-cols-2 gap-10">
-                </div>
+            <div id="project-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
         </section>
 
         <div class="section-divider"></div>
@@ -315,7 +323,7 @@
             <h2 class="text-4xl md:text-5xl text-slate-800 mb-12 text-center">Professional Path</h2>
             <div class="space-y-12">
                 <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl">
-                    <h3 class="text-3xl text-[#4682B4] mb-1">Business Development Intern</h3>
+                    <h3 class="text-3xl text-[#2563EB] mb-1">Business Development Intern</h3>
                     <p class="text-xl text-slate-600 font-semibold mb-2">Sri Nicholas Fine Chem Labs, Hyderabad, India</p>
                     <p class="text-md text-slate-500 mb-5">Jan 2024 - Apr 2024</p>
                     <ul class="list-disc list-outside ml-5 text-slate-700 space-y-2 text-lg">
@@ -328,18 +336,18 @@
                     <h3 class="text-3xl text-slate-800 mt-12 mb-8 text-center">Virtual Experience & Leadership</h3>
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class="bg-white p-8 rounded-xl shadow-xl">
-                             <h4 class="text-2xl text-[#4682B4] mb-2">Tata Group: Data Visualization</h4>
+                             <h4 class="text-2xl text-[#2563EB] mb-2">Tata Group: Data Visualization</h4>
                              <p class="text-lg text-slate-600 mb-1">Empowering Business with Effective Insights</p>
                              <p class="text-md text-slate-500">Tata Group (via Forage)</p>
                         </div>
                         <div class="bg-white p-8 rounded-xl shadow-xl">
-                            <h4 class="text-2xl text-[#4682B4] mb-2">Accenture: Data Analytics & Visualization</h4>
+                            <h4 class="text-2xl text-[#2563EB] mb-2">Accenture: Data Analytics & Visualization</h4>
                              <p class="text-lg text-slate-600 mb-1">Virtual Experience Program</p>
                             <p class="text-md text-slate-500">Accenture (via Forage)</p>
                         </div>
                     </div>
                      <div class="bg-white p-8 rounded-xl shadow-xl mt-8">
-                        <h4 class="text-2xl text-[#4682B4] mb-3 text-center md:text-left">Organizational Roles</h4>
+                        <h4 class="text-2xl text-[#2563EB] mb-3 text-center md:text-left">Organizational Roles</h4>
                         <ul class="list-disc list-outside ml-5 text-slate-700 space-y-2 text-lg">
                             <li><strong>Code.exe, UTD:</strong> Design Lead (Jan 2025-Present), Design Officer (Sep 2024 - Jan 2025)</li>
                             <li><strong>VIT-Zine Magazine:</strong> Lead Editor (Jul 2023-Dec 2023)</li>
@@ -356,7 +364,7 @@
             <h2 class="text-4xl md:text-5xl text-slate-800 mb-12 text-center">Academic Achievements</h2>
             <div class="space-y-8">
                 <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl">
-                    <h3 class="text-3xl text-[#4682B4]">The University of Texas at Dallas</h3>
+                    <h3 class="text-3xl text-[#2563EB]">The University of Texas at Dallas</h3>
                     <p class="text-xl text-slate-700 font-semibold mb-1">Master of Science, Business Analytics & AI</p>
                     <p class="text-md text-slate-500 mb-3">Expected Graduation: May 2026 | Current GPA: 3.77 / 4.00</p>
                     <ul class="list-disc list-outside ml-5 text-slate-700 space-y-1 text-lg">
@@ -364,7 +372,7 @@
                     </ul>
                 </div>
                 <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl">
-                    <h3 class="text-3xl text-[#4682B4]">VIT-AP University, Amaravati, India</h3>
+                    <h3 class="text-3xl text-[#2563EB]">VIT-AP University, Amaravati, India</h3>
                     <p class="text-xl text-slate-700 font-semibold mb-1">Bachelor of Business Administration</p>
                     <p class="text-md text-slate-500 mb-3">Graduated: May 2024 | GPA: 3.69 / 4.00</p>
                     <ul class="list-disc list-outside ml-5 text-slate-700 space-y-1 text-lg">
@@ -384,16 +392,15 @@
                     I'm actively seeking opportunities in Data Analysis and Business Analysis where I can contribute my skills and continue to grow. If you have an exciting project or role, or just want to chat about data, I'd love to hear from you!
                 </p>
                 <p class="text-xl text-slate-700 mb-4">
-                    <strong class="text-[#4682B4]">Email:</strong> <a href="mailto:your.email@example.com" class="text-[#20B2AA] hover:underline hover:text-[#4682B4]">your.email@example.com</a>
-                    <br><span class="text-sm text-slate-500">(Please replace with your actual email)</span>
+                    <strong class="text-[#2563EB]">Email:</strong> <a href="mailto:challakrishnapriyanka@gmail.com" class="text-[#60A5FA] hover:underline hover:text-[#2563EB]">challakrishnapriyanka@gmail.com</a>
                 </p>
                 <p class="text-xl text-slate-700 mb-8">
-                    <strong class="text-[#4682B4]">LinkedIn:</strong> <a href="https://www.linkedin.com/in/priyankachalla5/" target="_blank" rel="noopener noreferrer" class="text-[#20B2AA] hover:underline hover:text-[#4682B4]">linkedin.com/in/priyankachalla5</a>
+                    <strong class="text-[#2563EB]">LinkedIn:</strong> <a href="https://www.linkedin.com/in/priyankachalla5/" target="_blank" rel="noopener noreferrer" class="text-[#60A5FA] hover:underline hover:text-[#2563EB]">linkedin.com/in/priyankachalla5</a>
                 </p>
                  <p class="text-md text-slate-600 mt-6 mb-8">
                     Eligible to work in the US for internships and full-time roles for up to 36 months without requiring sponsorship.
                 </p>
-                <a href="mailto:your.email@example.com" class="mt-6 interactive-button inline-block bg-[#4682B4] hover:bg-[#3670A0] text-white font-semibold py-4 px-12 text-xl">
+                <a href="mailto:challakrishnapriyanka@gmail.com" class="mt-6 interactive-button inline-block bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold py-4 px-12 text-xl">
                     Send an Email
                 </a>
             </div>
@@ -409,7 +416,7 @@
         <div class="modal-content">
             <span class="close-button" id="closeModalButton">&times;</span>
             <img id="modalProjectImage" src="https://placehold.co/600x300/cccccc/333333?text=Project+Image" alt="Project Image" class="w-full h-64 object-cover rounded-lg mb-6">
-            <h2 id="modalProjectTitle" class="text-3xl md:text-4xl text-[#4682B4] mb-4">Project Title</h2>
+            <h2 id="modalProjectTitle" class="text-3xl md:text-4xl text-[#2563EB] mb-4">Project Title</h2>
             <div class="mb-6">
                 <p class="text-lg"><strong class="font-semibold text-slate-700">Tools Used:</strong> <span id="modalProjectTools" class="text-slate-600"></span></p>
                 <p class="text-lg"><strong class="font-semibold text-slate-700">Skills Displayed:</strong> <span id="modalProjectSkills" class="text-slate-600"></span></p>
@@ -506,7 +513,7 @@
         const projectsData = [
             {
                 id: 'project1',
-                image: 'https://placehold.co/600x400/A9DFBF/196F3D?text=Superstore+Analysis&font=playfairdisplay',
+                image: 'https://placehold.co/600x400/93C5FD/1E40AF?text=Superstore+Analysis&font=playfairdisplay', 
                 title: 'Superstore Market Segmentation & Sales Analysis',
                 toolsUsed: ['Tableau', 'Excel'], 
                 skillsDisplayed: ['Cluster Analysis', 'Data Visualization', 'Dashboard Design', 'Revenue Analysis'], 
@@ -520,7 +527,7 @@
             },
             {
                 id: 'project2',
-                image: 'https://placehold.co/600x400/A2D9CE/117A65?text=Real+Estate+Dashboard&font=playfairdisplay',
+                image: 'https://placehold.co/600x400/A5B4FC/312E81?text=Real+Estate+Dashboard&font=playfairdisplay', 
                 title: 'Washington Real Estate Sales Dashboard',
                 toolsUsed: ['Tableau', 'SQL'],
                 skillsDisplayed: ['Data Blending', 'Calculated Fields', 'Dynamic Filtering', 'Trend Analysis'],
@@ -534,7 +541,7 @@
             },
             {
                 id: 'project3',
-                image: 'https://placehold.co/600x400/AED6F1/2E86C1?text=Coffee+Sales&font=playfairdisplay',
+                image: 'https://placehold.co/600x400/BFDBFE/1E3A8A?text=Coffee+Sales&font=playfairdisplay', 
                 title: 'Coffee Sales Performance Dashboard',
                 toolsUsed: ['Excel (Advanced)', 'Data Visualization'],
                 skillsDisplayed: ['XLOOKUP', 'PivotTables', 'Dashboard Creation', 'Sales Tracking'],
@@ -548,7 +555,7 @@
             },
             {
                 id: 'project4',
-                image: 'https://placehold.co/600x400/A5BBF5/305EE3?text=Diabetes+Prediction&font=playfairdisplay',
+                image: 'https://placehold.co/600x400/C7D2FE/3730A3?text=Diabetes+Prediction&font=playfairdisplay', 
                 title: 'Predictive Analytics for Diabetes Risk',
                 toolsUsed: ['R', 'RStudio'],
                 skillsDisplayed: ['Predictive Modeling', 'Logistic Regression', 'Neural Networks', 'Data Preprocessing', 'Correlation Analysis'],
@@ -558,6 +565,34 @@
                     <p class="mt-2"><strong>Technical Approach:</strong> Working with a large dataset of over 253,000 patient records, I performed extensive data preprocessing, including handling missing values and feature scaling. I then developed and compared several predictive models in R, primarily focusing on logistic regression and neural networks. The final model achieved an accuracy of 86.5% in identifying diabetes risk. Correlation analysis was also conducted to highlight key risk factors.</p>
                     <p class="mt-2"><strong>Non-Technical Summary:</strong> Diabetes is a common health issue. This project used computer learning to predict if someone might be at risk of getting diabetes based on their health information. By analyzing lots of patient data, the system learned to spot patterns. We found that things like body mass index (BMI) and high blood pressure are important warning signs. This helps doctors identify at-risk patients earlier.</p>
                     <p class="mt-2"><strong>Outcome:</strong> The predictive models and identified key risk factors (BMI, hypertension) provide valuable tools for healthcare providers for early detection and preventative care strategies.</p>
+                `
+            },
+            { 
+                id: 'project5',
+                image: 'https://placehold.co/600x400/DDD6FE/4338CA?text=Project+Five&font=playfairdisplay', 
+                title: 'Placeholder Project Title 5',
+                toolsUsed: ['Python', 'Pandas', 'Scikit-learn'],
+                skillsDisplayed: ['Machine Learning', 'Data Cleaning', 'Feature Engineering'],
+                shortDescription: 'This is a brief description for the fifth project, showcasing different tools and skills.',
+                fullDescription: `
+                    <p>Detailed description for Project Five. This project involved using Python and its powerful libraries like Pandas for data manipulation and Scikit-learn for building machine learning models.</p>
+                    <p class="mt-2"><strong>Technical Approach:</strong> Describe the methodology, algorithms used, and any specific challenges overcome.</p>
+                    <p class="mt-2"><strong>Non-Technical Summary:</strong> Explain the project's purpose and impact in simple terms that anyone can understand.</p>
+                    <p class="mt-2"><strong>Outcome:</strong> Summarize the results and benefits of the project.</p>
+                `
+            },
+            { 
+                id: 'project6',
+                image: 'https://placehold.co/600x400/E0E7FF/3730A3?text=Project+Six&font=playfairdisplay', 
+                title: 'Placeholder Project Title 6',
+                toolsUsed: ['SQL', 'Power BI', 'Azure Data Factory'],
+                skillsDisplayed: ['ETL Processes', 'Data Warehousing', 'Report Generation'],
+                shortDescription: 'A placeholder for a sixth project, perhaps focusing on data engineering or BI reporting.',
+                fullDescription: `
+                    <p>Full description for Project Six. This could detail an end-to-end data pipeline project, from data extraction to creating insightful reports in Power BI.</p>
+                    <p class="mt-2"><strong>Technical Approach:</strong> Explain the architecture, data sources, transformation steps, and reporting tools used.</p>
+                    <p class="mt-2"><strong>Non-Technical Summary:</strong> Describe what the project achieves for a business or user in an accessible way.</p>
+                    <p class="mt-2"><strong>Outcome:</strong> Highlight the efficiencies gained, insights provided, or problems solved by this project.</p>
                 `
             }
         ];
@@ -578,18 +613,18 @@
             
             let toolsTagsHtml = '';
             if (project.toolsUsed && project.toolsUsed.length > 0) {
-                toolsTagsHtml = project.toolsUsed.map(tool => `<span class="project-tag bg-sky-100 text-sky-800">${tool}</span>`).join('');
+                toolsTagsHtml = project.toolsUsed.map(tool => `<span class="project-tag bg-blue-100 text-blue-700">${tool}</span>`).join('');
             }
 
             let skillsTagsHtml = '';
             if (project.skillsDisplayed && project.skillsDisplayed.length > 0) {
-                skillsTagsHtml = project.skillsDisplayed.map(skill => `<span class="project-tag project-skill-tag bg-teal-100 text-teal-800">${skill}</span>`).join('');
+                skillsTagsHtml = project.skillsDisplayed.map(skill => `<span class="project-tag project-skill-tag bg-sky-100 text-sky-700">${skill}</span>`).join('');
             }
 
             card.innerHTML = `
                 <img src="${project.image}" alt="${project.title}" class="project-card-image">
                 <div class="project-card-content"> 
-                    <h3 class="text-2xl text-[#4682B4] mb-2">${project.title}</h3>
+                    <h3 class="text-2xl text-[#2563EB] mb-2">${project.title}</h3>
                     <p class="text-slate-600 text-md leading-relaxed mb-4 flex-grow">${project.shortDescription}</p>
                     
                     ${toolsTagsHtml ? `<div class="mt-auto mb-3">
@@ -606,8 +641,8 @@
             card.addEventListener('click', () => {
                 modalProjectImage.src = project.image;
                 modalProjectTitle.textContent = project.title;
-                modalProjectTools.innerHTML = project.toolsUsed ? project.toolsUsed.map(tool => `<span class="project-tag bg-sky-100 text-sky-800">${tool}</span>`).join('') : 'N/A';
-                modalProjectSkills.innerHTML = project.skillsDisplayed ? project.skillsDisplayed.map(skill => `<span class="project-tag project-skill-tag bg-teal-100 text-teal-800">${skill}</span>`).join('') : 'N/A';
+                modalProjectTools.innerHTML = project.toolsUsed ? project.toolsUsed.map(tool => `<span class="project-tag bg-blue-100 text-blue-700">${tool}</span>`).join('') : 'N/A';
+                modalProjectSkills.innerHTML = project.skillsDisplayed ? project.skillsDisplayed.map(skill => `<span class="project-tag project-skill-tag bg-sky-100 text-sky-700">${skill}</span>`).join('') : 'N/A';
                 modalProjectDescription.innerHTML = project.fullDescription; 
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden'; 
