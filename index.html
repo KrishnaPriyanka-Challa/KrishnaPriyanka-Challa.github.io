@@ -67,13 +67,13 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #93C5FD; /* Blue-300 */
         }
-        .profile-picture { 
-            width: 240px; 
-            height: 240px;
+        .profile-picture-about { /* Specific class for About Me section picture */
+            width: 280px; /* Increased size for About section */
+            height: 280px;
             border-radius: 50%;
             object-fit: cover; 
-            border: 6px solid white; 
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2); 
+            border: 7px solid white; 
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25); /* Enhanced blue shadow */
         }
         .project-card {
             background-color: white;
@@ -159,14 +159,25 @@
             text-decoration: none;
             cursor: pointer;
         }
-        #home h1, #home p, #home .interactive-button {
+        /* Animation for the new combined About/Hero section */
+        #about .intro-text h1, #about .intro-text p, #about .intro-text .interactive-button, #about .profile-picture-about {
             animation: fadeInUp 0.8s ease-out forwards;
             opacity: 0;
         }
-        #home h1 { animation-delay: 0.2s; }
-        #home p { animation-delay: 0.4s; }
-        #home div > a.interactive-button:nth-child(1) { animation-delay: 0.6s; }
-        #home div > a.interactive-button:nth-child(2) { animation-delay: 0.7s; }
+        #about .intro-text h1 { animation-delay: 0.2s; }
+        #about .profile-picture-about { animation-delay: 0.3s; }
+        #about .intro-text p { animation-delay: 0.4s; }
+        #about .intro-text div > a.interactive-button:nth-child(1) { animation-delay: 0.6s; }
+        #about .intro-text div > a.interactive-button:nth-child(2) { animation-delay: 0.7s; }
+        #about .about-content-below { /* Animation for the text below the intro */
+            animation: fadeInDelay 1s ease-out forwards;
+            animation-delay: 0.8s; /* Start after intro elements */
+            opacity: 0;
+        }
+        @keyframes fadeInDelay {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
 
         @keyframes fadeInUp {
@@ -187,13 +198,10 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center">
-                    <a href="#home" class="text-3xl font-bold text-[#2563EB] hover:text-[#1D4ED8] transition-colors">KPC</a>
-                </div>
+                    <a href="#about" class="text-3xl font-bold text-[#2563EB] hover:text-[#1D4ED8] transition-colors">KPC</a> </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-6">
-                        <a href="#home" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Home</a>
-                        <a href="#about" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">About</a>
-                        <a href="#skills" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                        <a href="#about" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Home</a> <a href="#skills" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Skills</a>
                         <a href="#projects" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Projects</a>
                         <a href="#experience" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Experience</a>
                         <a href="#education" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Education</a>
@@ -215,8 +223,7 @@
         </div>
         <div class="md:hidden hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200">
-                <a href="#home" class="nav-link text-gray-700 hover:text-[#2563EB] hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="#about" class="nav-link text-gray-700 hover:text-[#2563EB] hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-[#2563EB] hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">Home</a>
                 <a href="#skills" class="nav-link text-gray-700 hover:text-[#2563EB] hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">Skills</a>
                 <a href="#projects" class="nav-link text-gray-700 hover:text-[#2563EB] hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">Projects</a>
                 <a href="#experience" class="nav-link text-gray-700 hover:text-[#2563EB] hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">Experience</a>
@@ -226,51 +233,49 @@
         </div>
     </nav>
 
-    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-sky-50 to-indigo-100 pt-24 pb-12 md:pt-20 text-center">
-        <div class="max-w-3xl mx-auto px-6 lg:px-8">
-            <div class="hero-text-content">
-                <h1 class="text-5xl sm:text-6xl md:text-7xl text-slate-900 mb-5 leading-tight">Krishna Priyanka Challa</h1>
-                <p class="text-2xl md:text-3xl text-[#2563EB] font-semibold mb-10">Data Analyst | Business Analysis</p>
-                <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
-                    <a href="#projects" class="interactive-button block sm:inline-block w-full sm:w-auto bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold py-3 px-10 text-lg">View My Projects</a>
-                    <a href="https://www.linkedin.com/in/priyankachalla5/" target="_blank" rel="noopener noreferrer" class="interactive-button block sm:inline-block w-full sm:w-auto bg-white hover:bg-slate-100 text-[#2563EB] font-semibold py-3 px-10 text-lg border-2 border-[#2563EB]">
-                        LinkedIn Profile
-                    </a>
+    <section id="about" class="min-h-screen flex flex-col justify-center bg-gradient-to-br from-blue-100 via-sky-50 to-indigo-100 pt-28 pb-16 md:pt-24">
+        <div class="max-w-5xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-center mb-12">
+                <div class="md:col-span-7 intro-text text-center md:text-left">
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl text-slate-900 mb-5 leading-tight">Krishna Priyanka Challa</h1>
+                    <p class="text-2xl md:text-3xl text-[#2563EB] font-semibold mb-10">Data Analyst | Business Analysis</p>
+                    <div class="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row items-center justify-center md:justify-start">
+                        <a href="#projects" class="interactive-button w-full sm:w-auto bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold py-3 px-10 text-lg">View My Projects</a>
+                        <a href="https://www.linkedin.com/in/priyankachalla5/" target="_blank" rel="noopener noreferrer" class="interactive-button w-full sm:w-auto bg-white hover:bg-slate-100 text-[#2563EB] font-semibold py-3 px-10 text-lg border-2 border-[#2563EB]">
+                            LinkedIn Profile
+                        </a>
+                    </div>
                 </div>
+                <div class="md:col-span-5 flex justify-center md:justify-end items-center">
+                     <img src="images/lkdn_pic.jpg" alt="Krishna Priyanka Challa" class="profile-picture-about">
+                </div>
+            </div>
+
+            <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl about-content-below">
+                <h2 class="text-4xl md:text-5xl text-slate-800 mb-8 text-center">About Me</h2>
+                <p class="text-xl text-slate-700 leading-relaxed mb-4">
+                    Hello! I'm Krishna Priyanka, I’m a Master’s student in Business Analytics & AI at UT Dallas, building on a foundation I discovered during my undergrad in Business Administration.
+                </p>
+                <p class="text-xl text-slate-700 leading-relaxed mb-4">
+                    That’s where I first got interested in how data helps businesses run smarter. I specialized in Business Analytics and started learning how to work with data—clean it, analyze it, and turn it into something useful.
+                </p>
+                <p class="text-xl text-slate-700 leading-relaxed mb-4">
+                    Since then, I’ve been growing my skills across tools like Python, SQL, and Tableau, and diving deeper into topics like predictive modeling and business intelligence.
+                </p>
+                <p class="text-xl text-slate-700 leading-relaxed mb-4">
+                    What drives me now is simple: applying what I’ve learned to real-world problems.
+                </p>
+                <p class="text-xl text-slate-700 leading-relaxed mb-4">
+                    I’m especially interested in roles where I can help turn data into insights that support better decisions and improve how things work—whether that’s through internships, projects, or collaborations.
+                </p>
+                <p class="text-xl text-slate-700 leading-relaxed">
+                    If you’re working in this space—or know someone who is—I’d love to connect.
+                </p>
             </div>
         </div>
     </section>
 
     <main class="max-w-5xl mx-auto p-6 md:p-12 space-y-20"> 
-        <section id="about">
-            <h2 class="text-4xl md:text-5xl text-slate-800 mb-10 text-center">About Me</h2>
-            <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl grid md:grid-cols-12 gap-8 md:gap-12 items-center">
-                <div class="md:col-span-4 flex justify-center md:justify-start">
-                     <img src="images/lkdn_pic.jpg" alt="Krishna Priyanka Challa" class="profile-picture">
-                </div>
-                <div class="md:col-span-8">
-                    <p class="text-xl text-slate-700 leading-relaxed mb-4">
-                        Hello! I'm Krishna Priyanka, I’m a Master’s student in Business Analytics & AI at UT Dallas, building on a foundation I discovered during my undergrad in Business Administration.
-                    </p>
-                    <p class="text-xl text-slate-700 leading-relaxed mb-4">
-                        That’s where I first got interested in how data helps businesses run smarter. I specialized in Business Analytics and started learning how to work with data—clean it, analyze it, and turn it into something useful.
-                    </p>
-                    <p class="text-xl text-slate-700 leading-relaxed mb-4">
-                        Since then, I’ve been growing my skills across tools like Python, SQL, and Tableau, and diving deeper into topics like predictive modeling and business intelligence.
-                    </p>
-                    <p class="text-xl text-slate-700 leading-relaxed mb-4">
-                        What drives me now is simple: applying what I’ve learned to real-world problems.
-                    </p>
-                    <p class="text-xl text-slate-700 leading-relaxed mb-4">
-                        I’m especially interested in roles where I can help turn data into insights that support better decisions and improve how things work—whether that’s through internships, projects, or collaborations.
-                    </p>
-                    <p class="text-xl text-slate-700 leading-relaxed">
-                        If you’re working in this space—or know someone who is—I’d love to connect.
-                    </p>
-                </div>
-            </div>
-        </section>
-
         <div class="section-divider"></div>
 
         <section id="skills">
@@ -453,7 +458,7 @@
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
         // Active navigation link highlighting
-        const sections = document.querySelectorAll('main section[id]');
+        const sections = document.querySelectorAll('main section[id], section#about'); // Include #about for nav highlighting
         const desktopNavLinks = document.querySelectorAll('nav .hidden.md\\:block .nav-link');
         const mobileNavLinksList = document.querySelectorAll('#mobile-menu .nav-link');
 
@@ -466,13 +471,30 @@
                 const sectionTop = current.offsetTop - navHeight - 20; 
                 let sectionId = current.getAttribute('id');
                 
+                // Adjust for the "Home" link which now points to the "About" section
+                let targetNavId = sectionId;
+                if (sectionId === 'about') {
+                    // Highlight both "Home" and "About" if the "About" section is active
+                    // Or, if you prefer only one, decide which one. For now, let's target "Home" link for #about section.
+                    // To make "Home" link active when "About" section is visible:
+                    // targetNavId = 'home'; // This logic is handled below by checking the href directly.
+                }
+
+
                 const updateLinkStyle = (linksNodeList) => {
                     linksNodeList.forEach(link => {
-                        if (link.getAttribute('href') === `#${sectionId}`) {
+                        const linkHref = link.getAttribute('href');
+                        // Special handling for "Home" link pointing to #about
+                        if ((linkHref === `#${sectionId}`) || (linkHref === '#about' && sectionId === 'about') || (linkHref === '#home' && sectionId === 'about')) {
                             if (scrollY >= sectionTop && scrollY <= sectionTop + sectionHeight) {
                                 link.classList.add('active');
                             } else {
                                 link.classList.remove('active');
+                            }
+                        } else {
+                             // Ensure other links are not active if their section is not visible
+                            if (link.getAttribute('href') !== `#${sectionId}`) {
+                                // link.classList.remove('active'); // This might be too aggressive, let's refine
                             }
                         }
                     });
@@ -481,30 +503,19 @@
                 updateLinkStyle(desktopNavLinks);
                 updateLinkStyle(mobileNavLinksList);
             });
-
-            const homeLinkHref = "#home";
-            const homeDesktopLink = document.querySelector(`nav .hidden.md\\:block a[href="${homeLinkHref}"]`);
-            const homeMobileLink = document.querySelector(`#mobile-menu a[href="${homeLinkHref}"]`);
-
-            if (scrollY < sections[0].offsetTop - navHeight - 70) { 
-                if(homeDesktopLink) {
-                    desktopNavLinks.forEach(l => l.classList.remove('active'));
-                    homeDesktopLink.classList.add('active');
-                }
-                 if(homeMobileLink) {
-                    mobileNavLinksList.forEach(l => l.classList.remove('active'));
-                    homeMobileLink.classList.add('active');
-                }
-            } else if (scrollY === 0) { 
-                 if(homeDesktopLink) {
-                    desktopNavLinks.forEach(l => l.classList.remove('active')); 
-                    homeDesktopLink.classList.add('active');
-                 }
-                 if(homeMobileLink) {
-                    mobileNavLinksList.forEach(l => l.classList.remove('active')); 
-                    homeMobileLink.classList.add('active');
-                 }
+            
+            // Ensure only one link is active, prioritizing the current section.
+            // If scrolled to the very top, make "Home" (which links to #about) active.
+            let anyLinkActive = false;
+            desktopNavLinks.forEach(l => { if(l.classList.contains('active')) anyLinkActive = true; });
+            if (!anyLinkActive && scrollY < sections[0].offsetTop - navHeight - 70) {
+                 const homeDesktopLink = document.querySelector(`nav .hidden.md\\:block a[href="#about"]`); // Home links to #about
+                 const homeMobileLink = document.querySelector(`#mobile-menu a[href="#about"]`);
+                 if(homeDesktopLink) homeDesktopLink.classList.add('active');
+                 if(homeMobileLink) homeMobileLink.classList.add('active');
             }
+
+
         };
 
         window.addEventListener('scroll', navHighlighter);
@@ -541,7 +552,7 @@
             },
             {
                 id: 'project3',
-                image: 'https://placehold.co/600x400/BFDBFE/1E3A8A?text=Coffee+Sales&font=playfairdisplay', 
+                image: 'images/coffee_project.jpg', // Updated image path
                 title: 'Coffee Sales Performance Dashboard',
                 toolsUsed: ['Excel (Advanced)', 'Data Visualization'],
                 skillsDisplayed: ['XLOOKUP', 'PivotTables', 'Dashboard Creation', 'Sales Tracking'],
