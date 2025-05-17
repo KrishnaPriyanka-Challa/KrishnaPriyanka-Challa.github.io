@@ -198,10 +198,12 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center">
-                    <a href="#about" class="text-3xl font-bold text-[#2563EB] hover:text-[#1D4ED8] transition-colors">KPC</a> </div>
+                    <a href="#about" class="text-3xl font-bold text-[#2563EB] hover:text-[#1D4ED8] transition-colors">KPC</a>
+                </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-6">
-                        <a href="#about" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Home</a> <a href="#skills" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                        <a href="#about" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Home</a>
+                        <a href="#skills" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Skills</a>
                         <a href="#projects" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Projects</a>
                         <a href="#experience" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Experience</a>
                         <a href="#education" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Education</a>
@@ -471,16 +473,6 @@
                 const sectionTop = current.offsetTop - navHeight - 20; 
                 let sectionId = current.getAttribute('id');
                 
-                // Adjust for the "Home" link which now points to the "About" section
-                let targetNavId = sectionId;
-                if (sectionId === 'about') {
-                    // Highlight both "Home" and "About" if the "About" section is active
-                    // Or, if you prefer only one, decide which one. For now, let's target "Home" link for #about section.
-                    // To make "Home" link active when "About" section is visible:
-                    // targetNavId = 'home'; // This logic is handled below by checking the href directly.
-                }
-
-
                 const updateLinkStyle = (linksNodeList) => {
                     linksNodeList.forEach(link => {
                         const linkHref = link.getAttribute('href');
@@ -494,7 +486,7 @@
                         } else {
                              // Ensure other links are not active if their section is not visible
                             if (link.getAttribute('href') !== `#${sectionId}`) {
-                                // link.classList.remove('active'); // This might be too aggressive, let's refine
+                                // link.classList.remove('active'); 
                             }
                         }
                     });
@@ -504,12 +496,10 @@
                 updateLinkStyle(mobileNavLinksList);
             });
             
-            // Ensure only one link is active, prioritizing the current section.
-            // If scrolled to the very top, make "Home" (which links to #about) active.
             let anyLinkActive = false;
             desktopNavLinks.forEach(l => { if(l.classList.contains('active')) anyLinkActive = true; });
             if (!anyLinkActive && scrollY < sections[0].offsetTop - navHeight - 70) {
-                 const homeDesktopLink = document.querySelector(`nav .hidden.md\\:block a[href="#about"]`); // Home links to #about
+                 const homeDesktopLink = document.querySelector(`nav .hidden.md\\:block a[href="#about"]`); 
                  const homeMobileLink = document.querySelector(`#mobile-menu a[href="#about"]`);
                  if(homeDesktopLink) homeDesktopLink.classList.add('active');
                  if(homeMobileLink) homeMobileLink.classList.add('active');
@@ -552,7 +542,7 @@
             },
             {
                 id: 'project3',
-                image: 'images/coffee_project.jpg', // Updated image path
+                image: 'images/coffee_project.jpg', 
                 title: 'Coffee Sales Performance Dashboard',
                 toolsUsed: ['Excel (Advanced)', 'Data Visualization'],
                 skillsDisplayed: ['XLOOKUP', 'PivotTables', 'Dashboard Creation', 'Sales Tracking'],
