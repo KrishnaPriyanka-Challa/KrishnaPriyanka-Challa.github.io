@@ -67,13 +67,13 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #93C5FD; /* Blue-300 */
         }
-        .profile-picture-about { /* Specific class for About Me section picture */
-            width: 280px; /* Increased size for About section */
+        .profile-picture-about { 
+            width: 280px; 
             height: 280px;
             border-radius: 50%;
             object-fit: cover; 
             border: 7px solid white; 
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25); /* Enhanced blue shadow */
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25); 
         }
         .project-card {
             background-color: white;
@@ -159,7 +159,6 @@
             text-decoration: none;
             cursor: pointer;
         }
-        /* Animation for the new combined About/Hero section */
         #about .intro-text h1, #about .intro-text p, #about .intro-text .interactive-button, #about .profile-picture-about {
             animation: fadeInUp 0.8s ease-out forwards;
             opacity: 0;
@@ -169,9 +168,9 @@
         #about .intro-text p { animation-delay: 0.4s; }
         #about .intro-text div > a.interactive-button:nth-child(1) { animation-delay: 0.6s; }
         #about .intro-text div > a.interactive-button:nth-child(2) { animation-delay: 0.7s; }
-        #about .about-content-below { /* Animation for the text below the intro */
+        #about .about-content-below { 
             animation: fadeInDelay 1s ease-out forwards;
-            animation-delay: 0.8s; /* Start after intro elements */
+            animation-delay: 0.8s; 
             opacity: 0;
         }
         @keyframes fadeInDelay {
@@ -460,7 +459,7 @@
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
         // Active navigation link highlighting
-        const sections = document.querySelectorAll('main section[id], section#about'); // Include #about for nav highlighting
+        const sections = document.querySelectorAll('main section[id], section#about'); 
         const desktopNavLinks = document.querySelectorAll('nav .hidden.md\\:block .nav-link');
         const mobileNavLinksList = document.querySelectorAll('#mobile-menu .nav-link');
 
@@ -476,7 +475,6 @@
                 const updateLinkStyle = (linksNodeList) => {
                     linksNodeList.forEach(link => {
                         const linkHref = link.getAttribute('href');
-                        // Special handling for "Home" link pointing to #about
                         if ((linkHref === `#${sectionId}`) || (linkHref === '#about' && sectionId === 'about') || (linkHref === '#home' && sectionId === 'about')) {
                             if (scrollY >= sectionTop && scrollY <= sectionTop + sectionHeight) {
                                 link.classList.add('active');
@@ -484,10 +482,8 @@
                                 link.classList.remove('active');
                             }
                         } else {
-                             // Ensure other links are not active if their section is not visible
-                            if (link.getAttribute('href') !== `#${sectionId}`) {
-                                // link.classList.remove('active'); 
-                            }
+                             if (link.getAttribute('href') !== `#${sectionId}`) {
+                             }
                         }
                     });
                 };
@@ -514,7 +510,7 @@
         const projectsData = [
             {
                 id: 'project1',
-                image: 'https://placehold.co/600x400/93C5FD/1E40AF?text=Superstore+Analysis&font=playfairdisplay', 
+                image: 'images/superstore.jpg', 
                 title: 'Superstore Market Segmentation & Sales Analysis',
                 toolsUsed: ['Tableau', 'Excel'], 
                 skillsDisplayed: ['Cluster Analysis', 'Data Visualization', 'Dashboard Design', 'Revenue Analysis'], 
@@ -528,7 +524,7 @@
             },
             {
                 id: 'project2',
-                image: 'https://placehold.co/600x400/A5B4FC/312E81?text=Real+Estate+Dashboard&font=playfairdisplay', 
+                image: 'images/real_estate.jpg', 
                 title: 'Washington Real Estate Sales Dashboard',
                 toolsUsed: ['Tableau', 'SQL'],
                 skillsDisplayed: ['Data Blending', 'Calculated Fields', 'Dynamic Filtering', 'Trend Analysis'],
@@ -556,7 +552,7 @@
             },
             {
                 id: 'project4',
-                image: 'https://placehold.co/600x400/C7D2FE/3730A3?text=Diabetes+Prediction&font=playfairdisplay', 
+                image: 'images/diabetics.jpg', 
                 title: 'Predictive Analytics for Diabetes Risk',
                 toolsUsed: ['R', 'RStudio'],
                 skillsDisplayed: ['Predictive Modeling', 'Logistic Regression', 'Neural Networks', 'Data Preprocessing', 'Correlation Analysis'],
@@ -570,7 +566,7 @@
             },
             { 
                 id: 'project5',
-                image: 'https://placehold.co/600x400/DDD6FE/4338CA?text=Project+Five&font=playfairdisplay', 
+                image: 'images/truck.jpg', 
                 title: 'Placeholder Project Title 5',
                 toolsUsed: ['Python', 'Pandas', 'Scikit-learn'],
                 skillsDisplayed: ['Machine Learning', 'Data Cleaning', 'Feature Engineering'],
@@ -584,7 +580,7 @@
             },
             { 
                 id: 'project6',
-                image: 'https://placehold.co/600x400/E0E7FF/3730A3?text=Project+Six&font=playfairdisplay', 
+                image: 'images/airbnb.jpg', 
                 title: 'Placeholder Project Title 6',
                 toolsUsed: ['SQL', 'Power BI', 'Azure Data Factory'],
                 skillsDisplayed: ['ETL Processes', 'Data Warehousing', 'Report Generation'],
