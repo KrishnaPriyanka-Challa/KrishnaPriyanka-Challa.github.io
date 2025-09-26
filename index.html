@@ -84,6 +84,7 @@
             cursor: pointer;
             display: flex; 
             flex-direction: column; 
+            align-items: center;
         }
         .project-card:hover {
             transform: translateY(-5px) scale(1.02);
@@ -95,7 +96,7 @@
             object-fit: cover;
         }
         .project-card-content { 
-            padding: 1.5rem; 
+            padding: 1rem; 
             display: flex;
             flex-direction: column;
             flex-grow: 1; 
@@ -116,78 +117,18 @@
             background-color: #E0F2FE; /* Sky-100 */
             color: #0284C7; /* Sky-600 */
         }
-
-        .modal {
-            display: none; 
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.6); 
-            padding-top: 60px; 
+        .list-style-none {
+            list-style: none;
         }
-        .modal-content {
-            background-color: #fff;
-            margin: 5% auto;
-            padding: 30px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 700px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            position: relative;
-            animation: fadeInModal 0.5s ease-out;
+        .list-style-none li:before {
+            content: "";
         }
-        @keyframes fadeInModal {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .close-button {
-            color: #aaa;
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            font-size: 32px; 
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        .close-button:hover,
-        .close-button:focus {
-            color: #333; 
-            text-decoration: none;
-            cursor: pointer;
-        }
-        #about .intro-text h1, #about .intro-text p, #about .intro-text .interactive-button, #about .profile-picture-about {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-        }
-        #about .intro-text h1 { animation-delay: 0.2s; }
-        #about .profile-picture-about { animation-delay: 0.3s; }
-        #about .intro-text p { animation-delay: 0.4s; }
-        #about .intro-text div > a.interactive-button:nth-child(1) { animation-delay: 0.6s; }
-        #about .intro-text div > a.interactive-button:nth-child(2) { animation-delay: 0.7s; }
-        #about .about-content-below { 
-            animation: fadeInDelay 1s ease-out forwards;
-            animation-delay: 0.8s; 
-            opacity: 0;
-        }
-        @keyframes fadeInDelay {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .leadership-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
         }
     </style>
 </head>
@@ -195,10 +136,7 @@
 
     <nav class="bg-white/95 backdrop-blur-lg shadow-md fixed top-0 left-0 right-0 z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center">
-                    <a href="#about" class="text-3xl font-bold text-[#2563EB] hover:text-[#1D4ED8] transition-colors">KPC</a>
-                </div>
+            <div class="flex items-center justify-end h-20">
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-6">
                         <a href="#about" class="nav-link text-gray-600 hover:text-[#2563EB] px-3 py-2 rounded-md text-base font-medium">Home</a>
@@ -238,8 +176,7 @@
         <div class="max-w-5xl mx-auto px-6 lg:px-8">
             <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-center mb-12">
                 <div class="md:col-span-7 intro-text text-center md:text-left">
-                    <h1 class="text-5xl sm:text-6xl md:text-7xl text-slate-900 mb-5 leading-tight">Krishna Priyanka Challa</h1>
-                    <p class="text-2xl md:text-3xl text-[#2563EB] font-semibold mb-10">Data Analyst | Data Visualization Enthusiast</p>
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl text-slate-900 mb-10 leading-tight">Krishna Priyanka Challa</h1>
                     <div class="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row items-center justify-center md:justify-start">
                         <a href="#projects" class="interactive-button w-full sm:w-auto bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold py-3 px-10 text-lg">View My Projects</a>
                         <a href="https://www.linkedin.com/in/priyankachalla5/" target="_blank" rel="noopener noreferrer" class="interactive-button w-full sm:w-auto bg-white hover:bg-slate-100 text-[#2563EB] font-semibold py-3 px-10 text-lg border-2 border-[#2563EB]">
@@ -255,13 +192,13 @@
             <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl about-content-below">
                 <h2 class="text-4xl md:text-5xl text-slate-800 mb-8 text-center">About Me</h2>
                 <p class="text-lg text-slate-700 leading-relaxed mb-4">
-                    Hello, I’m Krishna Priyanka Challa—a graduate student specializing in Business Analytics & AI at the University of Texas at Dallas. My academic journey began with a Bachelor’s degree in Business Administration, where I first developed a keen interest in how data can drive smarter, more strategic business decisions.
+                    I believe that the most impactful data work happens at the intersection of analytics, storytelling, and business strategy.
                 </p>
                 <p class="text-lg text-slate-700 leading-relaxed mb-4">
-                    During my undergraduate studies, I concentrated in Business Analytics and acquired foundational skills in data cleaning, analysis, and interpretation. Since then, I have continued to deepen my expertise through tools such as Python, SQL, and Tableau, with focused learning in areas like predictive modeling and business intelligence.
+                    Currently pursuing my Master’s in Business Analytics & AI at the University of Texas at Dallas, I have developed expertise in SQL, Python, R, Tableau, Power BI, and Big Data technologies through both coursework and real-world projects. 
                 </p>
                 <p class="text-lg text-slate-700 leading-relaxed mb-4">
-                    I aim to translate these technical and analytical skills into meaningful contributions that solve real-world problems and drive organizational success. I am particularly interested in roles where I can help transform data into insights that support better decisions—whether through internships, research, or collaborative projects.
+                    Looking ahead, I aim to apply this blend of technical depth and business acumen to design data-driven solutions, build scalable analytics capabilities, and help organizations turn information into impact.
                 </p>
             </div>
         </div>
@@ -271,37 +208,40 @@
         <div class="section-divider"></div>
 
         <section id="skills">
-            <h2 class="text-4xl md:text-5xl text-slate-800 mb-12 text-center">My Toolkit</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold text-[#60A5FA] mb-5 text-center">Technical Proficiencies</h3>
-                    <ul class="space-y-3 text-slate-700 text-lg">
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Excel, XLOOKUP</li>
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Tableau</li>
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>R (Predictive Modeling)</li>
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Python</li>
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>SQL (PostgreSQL)</li>
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Power BI</li>
-                    </ul>
+            <h2 class="text-4xl md:text-5xl text-slate-800 mb-12 text-center">Key Skills & Proficiencies</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-[#60A5FA] mb-4 text-center">Technical Skills</h3>
+                        <ul class="space-y-2 text-slate-700 text-base list-disc list-outside ml-5">
+                            <li>SQL, Python, R, Excel (Advanced)</li>
+                            <li>Tableau, Power BI, Data Visualization</li>
+                            <li>Hadoop, Spark, Big Data Analytics</li>
+                            <li>ETL & Data Pipeline Development</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold text-[#60A5FA] mb-5 text-center">Analytical Expertise</h3>
-                    <ul class="space-y-3 text-slate-700 text-lg">
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Data Analysis & Interpretation</li>
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Data Visualization</li>
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Predictive Modeling</li>
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Dashboard Development</li>
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Cohort Analysis</li>
-                    </ul>
+                <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-[#60A5FA] mb-4 text-center">Analytical Skills</h3>
+                        <ul class="space-y-2 text-slate-700 text-base list-disc list-outside ml-5">
+                            <li>Predictive Modeling & Machine Learning</li>
+                            <li>Statistical & Correlation Analysis</li>
+                            <li>Cohort & Retention Analysis</li>
+                            <li>Business Intelligence & Reporting</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold text-[#60A5FA] mb-5 text-center">Professional Strengths</h3>
-                    <ul class="space-y-3 text-slate-700 text-lg">
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Effective Communication</li>
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Cross-functional Collaboration</li>
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Leadership & Initiative</li>
-                        <li><span class="text-[#60A5FA] mr-2">&#10003;</span>Problem-Solving Acumen</li>
-                    </ul>
+                <div class="col-span-full bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-between mx-auto w-full max-w-xl">
+                    <div>
+                        <h3 class="text-xl font-semibold text-[#60A5FA] mb-4 text-center">Soft Skills</h3>
+                        <ul class="space-y-2 text-slate-700 text-base list-disc list-outside ml-5">
+                            <li>Data Storytelling & Insight Communication</li>
+                            <li>Project & Stakeholder Management</li>
+                            <li>Cross-functional Collaboration</li>
+                            <li>Leadership, Critical Thinking, and Problem-Solving</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -310,8 +250,8 @@
 
         <section id="projects">
             <h2 class="text-4xl md:text-5xl text-slate-800 mb-12 text-center">Featured Projects</h2>
-            <div id="project-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-            </div>
+            <div id="project-list" class="grid md:grid-cols-2 gap-8">
+                </div>
         </section>
 
         <div class="section-divider"></div>
@@ -321,35 +261,62 @@
             <div class="space-y-12">
                 <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl">
                     <h3 class="text-3xl text-[#2563EB] mb-1">Business Development Intern</h3>
-                    <p class="text-xl text-slate-600 font-semibold mb-2">Sri Nicholas Fine Chem Labs, Hyderabad, India</p>
+                    <p class="text-xl text-slate-600 font-semibold mb-2">Nicholas Fine Chem Labs, Hyderabad, Telangana, India</p>
                     <p class="text-md text-slate-500 mb-5">Jan 2024 - Apr 2024</p>
                     <ul class="list-disc list-outside ml-5 text-slate-700 space-y-2 text-lg">
-                        <li>Developed and managed an Excel-based CRM system for over 100 client records, enhancing targeted outreach strategies and contributing to securing six new client orders.</li>
-                        <li>Collaborated with sales and marketing teams to streamline lead management processes, achieving a 20% reduction in average client response time.</li>
+                        <li style="text-align: justify;">Increased sales team efficiency by 20% by designing and deploying an Excel-based CRM system which centralized 100+ client records, tracked order and payment lifecycles, and improved visibility into the sales pipeline.</li>
+                        <li style="text-align: justify;">Boosted lead conversion rate by 15% by leveraging client data to identify outreach opportunities, directly supporting 6 new orders within 3 months.</li>
+                        <li style="text-align: justify;">Improved cross-team reporting accuracy by 30% by building automated Excel dashboards that monitor orders, deliveries, and payments, enabling management to make timely business decisions.</li>
                     </ul>
                 </div>
 
                 <div>
-                    <h3 class="text-3xl text-slate-800 mt-12 mb-8 text-center">Virtual Experience & Leadership</h3>
+                    <h3 class="text-3xl text-slate-800 mt-12 mb-8 text-center">Leadership and Involvement</h3>
                     <div class="grid md:grid-cols-2 gap-8">
-                        <div class="bg-white p-8 rounded-xl shadow-xl">
-                             <h4 class="text-2xl text-[#2563EB] mb-2">Tata Group: Data Visualization</h4>
-                             <p class="text-lg text-slate-600 mb-1">Empowering Business with Effective Insights</p>
-                             <p class="text-md text-slate-500">Tata Group (via Forage)</p>
+                         <div class="bg-white p-8 rounded-xl shadow-xl flex items-center">
+                             <img src="images/pbc.jpg" alt="Product Base Club Logo" class="leadership-logo">
+                             <div>
+                                <h4 class="text-2xl text-[#2563EB] mb-1">Social Media Officer</h4>
+                                <p class="text-lg text-slate-600 mb-1">The Product Base Club, UTD</p>
+                                <p class="text-md text-slate-500 mb-3">Sep 2025 - Present</p>
+                                <ul class="list-disc list-outside ml-5 text-slate-700 space-y-2 text-lg">
+                                   <li style="text-align: justify;">Driving social media strategy to engage over 550 members, boosting event participation and visibility.</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="bg-white p-8 rounded-xl shadow-xl">
-                            <h4 class="text-2xl text-[#2563EB] mb-2">Accenture: Data Analytics & Visualization</h4>
-                             <p class="text-lg text-slate-600 mb-1">Virtual Experience Program</p>
-                            <p class="text-md text-slate-500">Accenture (via Forage)</p>
+                        <div class="bg-white p-8 rounded-xl shadow-xl flex items-center">
+                            <img src="images/code.jpg" alt="Code.exe Logo" class="leadership-logo">
+                            <div>
+                                <h4 class="text-2xl text-[#2563EB] mb-1">Design Lead</h4>
+                                 <p class="text-lg text-slate-600 mb-1">Code.exe, UTD</p>
+                                 <p class="text-md text-slate-500 mb-3">Sep 2024 - May 2025</p>
+                                 <ul class="list-disc list-outside ml-5 text-slate-700 space-y-2 text-lg">
+                                    <li style="text-align: justify;">Directed a team of 5 designers to create branding and digital assets, increasing the club's visibility by 50%.</li>
+                                 </ul>
+                            </div>
                         </div>
-                    </div>
-                     <div class="bg-white p-8 rounded-xl shadow-xl mt-8">
-                        <h4 class="text-2xl text-[#2563EB] mb-3 text-center md:text-left">Organizational Roles</h4>
-                        <ul class="list-disc list-outside ml-5 text-slate-700 space-y-2 text-lg">
-                            <li><strong>Code.exe, UTD:</strong> Design Lead (Jan 2025-Present), Design Officer (Sep 2024 - Jan 2025)</li>
-                            <li><strong>VIT-Zine Magazine:</strong> Lead Editor (Jul 2023-Dec 2023)</li>
-                            <li><strong>Rotaract Club:</strong> Director of Professional Services (Aug 2022 - May 2023)</li>
-                        </ul>
+                         <div class="bg-white p-8 rounded-xl shadow-xl flex items-center">
+                            <img src="images/VIT.jpg" alt="VIT-Zine Magazine Logo" class="leadership-logo">
+                            <div>
+                                <h4 class="text-2xl text-[#2563EB] mb-1">Lead Editor</h4>
+                                 <p class="text-lg text-slate-600 mb-1">VIT-Zine Magazine</p>
+                                 <p class="text-md text-slate-500 mb-3">Jul 2023 - Dec 2023</p>
+                                 <ul class="list-disc list-outside ml-5 text-slate-700 space-y-2 text-lg">
+                                    <li style="text-align: justify;">Spearheaded a team of 7 designers to publish the 1st edition, with a readership of 1,500+ students.</li>
+                                 </ul>
+                            </div>
+                        </div>
+                        <div class="bg-white p-8 rounded-xl shadow-xl flex items-center">
+                            <img src="images/Rotaract.jpg" alt="Rotaract Club Logo" class="leadership-logo">
+                            <div>
+                                <h4 class="text-2xl text-[#2563EB] mb-1">Director of Professional Services</h4>
+                                 <p class="text-lg text-slate-600 mb-1">Rotaract Club, VIT-AP</p>
+                                 <p class="text-md text-slate-500 mb-3">Aug 2022 - May 2023</p>
+                                 <ul class="list-disc list-outside ml-5 text-slate-700 space-y-2 text-lg">
+                                    <li style="text-align: justify;">Coordinated 5+ professional development initiatives and service projects strengthening skills of 100+ members.</li>
+                                 </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -357,24 +324,23 @@
 
         <div class="section-divider"></div>
 
-        <section id="education">
-            <h2 class="text-4xl md:text-5xl text-slate-800 mb-12 text-center">Academic Achievements</h2>
+        <section id="education" class="text-center">
+            <h2 class="text-4xl md:text-5xl text-slate-800 mb-12">Academic Achievements</h2>
             <div class="space-y-8">
                 <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl">
                     <h3 class="text-3xl text-[#2563EB]">The University of Texas at Dallas</h3>
                     <p class="text-xl text-slate-700 font-semibold mb-1">Master of Science, Business Analytics & AI</p>
-                    <p class="text-md text-slate-500 mb-3">Expected Graduation: May 2026 | Current GPA: 3.77 / 4.00</p>
+                    <p class="text-md text-slate-500 mb-3">Expected Graduation: May 2026 | Current GPA: 3.9/4.0</p>
                     <ul class="list-disc list-outside ml-5 text-slate-700 space-y-1 text-lg">
-                        <li>Recipient of the Dean's Excellence Scholarship.</li>
+                        <li style="text-align: justify;">Awards: Dean's Excellence Scholarship, Kamal & Krishan Aggarwal Fellowship for the Jindal School</li>
                     </ul>
                 </div>
                 <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl">
                     <h3 class="text-3xl text-[#2563EB]">VIT-AP University, Amaravati, India</h3>
                     <p class="text-xl text-slate-700 font-semibold mb-1">Bachelor of Business Administration</p>
-                    <p class="text-md text-slate-500 mb-3">Graduated: May 2024 | GPA: 3.69 / 4.00</p>
+                    <p class="text-md text-slate-500 mb-3">Graduated: May 2024 | GPA: 3.85/4.0</p>
                     <ul class="list-disc list-outside ml-5 text-slate-700 space-y-1 text-lg">
-                        <li>Achieved 2nd Rank in Program.</li>
-                        <li>Recipient of Student Academic Merit Award.</li>
+                        <li style="text-align: justify;">Awards: 2nd Rank in the Program, Student Academic Merit Award</li>
                     </ul>
                 </div>
             </div>
@@ -385,16 +351,16 @@
         <section id="contact" class="text-center">
             <h2 class="text-4xl md:text-5xl text-slate-800 mb-8">Let's Connect</h2>
             <div class="bg-white p-8 md:p-12 rounded-xl shadow-2xl max-w-xl mx-auto">
-                <p class="text-xl text-slate-700 mb-8">
+                <p class="text-xl text-slate-700 mb-8" style="text-align: justify;">
                     I'm actively seeking opportunities in Data Analysis and Business Analysis where I can contribute my skills and continue to grow. If you have an exciting project or role, or just want to chat about data, I'd love to hear from you!
                 </p>
-                <p class="text-xl text-slate-700 mb-4">
+                <p class="text-xl text-slate-700 mb-4" style="text-align: justify;">
                     <strong class="text-[#2563EB]">Email:</strong> <a href="mailto:challakrishnapriyanka@gmail.com" class="text-[#60A5FA] hover:underline hover:text-[#2563EB]">challakrishnapriyanka@gmail.com</a>
                 </p>
-                <p class="text-xl text-slate-700 mb-8">
+                <p class="text-xl text-slate-700 mb-8" style="text-align: justify;">
                     <strong class="text-[#2563EB]">LinkedIn:</strong> <a href="https://www.linkedin.com/in/priyankachalla5/" target="_blank" rel="noopener noreferrer" class="text-[#60A5FA] hover:underline hover:text-[#2563EB]">linkedin.com/in/priyankachalla5</a>
                 </p>
-                 <p class="text-md text-slate-600 mt-6 mb-8">
+                 <p class="text-md text-slate-600 mt-6 mb-8" style="text-align: justify;">
                     Eligible to work in the US for internships and full-time roles for up to 36 months without requiring sponsorship.
                 </p>
                 <a href="mailto:challakrishnapriyanka@gmail.com" class="mt-6 interactive-button inline-block bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold py-4 px-12 text-xl">
@@ -408,20 +374,6 @@
         <p class="text-slate-600 text-lg">&copy; <span id="currentYear"></span> Krishna Priyanka Challa. All rights reserved.</p>
         <p class="text-md text-slate-500 mt-2">Crafted with passion and precision.</p>
     </footer>
-
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" id="closeModalButton">&times;</span>
-            <img id="modalProjectImage" src="https://placehold.co/600x300/cccccc/333333?text=Project+Image" alt="Project Image" class="w-full h-64 object-cover rounded-lg mb-6">
-            <h2 id="modalProjectTitle" class="text-3xl md:text-4xl text-[#2563EB] mb-4">Project Title</h2>
-            <div class="mb-6">
-                <p class="text-lg"><strong class="font-semibold text-slate-700">Tools Used:</strong> <span id="modalProjectTools" class="text-slate-600"></span></p>
-                <p class="text-lg"><strong class="font-semibold text-slate-700">Skills Displayed:</strong> <span id="modalProjectSkills" class="text-slate-600"></span></p>
-            </div>
-            <div id="modalProjectDescription" class="text-lg text-slate-700 leading-relaxed space-y-4">
-                </div>
-        </div>
-    </div>
 
     <script>
         // Mobile menu toggle
@@ -472,9 +424,6 @@
                             } else {
                                 link.classList.remove('active');
                             }
-                        } else {
-                             if (link.getAttribute('href') !== `#${sectionId}`) {
-                             }
                         }
                     });
                 };
@@ -491,8 +440,6 @@
                  if(homeDesktopLink) homeDesktopLink.classList.add('active');
                  if(homeMobileLink) homeMobileLink.classList.add('active');
             }
-
-
         };
 
         window.addEventListener('scroll', navHighlighter);
@@ -500,158 +447,81 @@
 
         const projectsData = [
             {
-                id: 'project1',
-                image: 'images/superstore.jpg', 
-                title: 'Superstore Market Segmentation & Sales Analysis',
-                toolsUsed: ['Tableau', 'Excel'], 
-                skillsDisplayed: ['Cluster Analysis', 'Data Visualization', 'Dashboard Design'], 
-                shortDescription: 'Identified key customer segments driving 65% of revenue and built interactive sales dashboards.',
-                fullDescription: `
-                    <p>In this project, I dived deep into a large superstore dataset comprising over 9,000 sales records. My primary goal was to understand customer behavior and optimize sales strategies.</p>
-                    <p class="mt-2"><strong>Technical Approach:</strong> I employed k-means cluster analysis in Tableau to segment customers into distinct cohorts based on their purchasing patterns (Recency, Frequency, Monetary Value). This revealed three high-value groups that collectively contributed to 65% of the total revenue.</p>
-                    <p class="mt-2"><strong>Non-Technical Summary:</strong> Imagine a busy supermarket. Not all shoppers are the same. Some buy often, some spend a lot, and some are new. I used data techniques to group these shoppers. This helped the superstore understand who their best customers are and focus on keeping them happy, while also finding ways to encourage other shoppers. I also created easy-to-understand visual reports (dashboards) that showed which products were making the most money and which regions needed more attention.</p>
-                    <p class="mt-2"><strong>Outcome:</strong> The insights enabled targeted marketing campaigns and inventory management, with dashboards providing ongoing monitoring of sales performance, high-margin products, and underperforming regions.</p>
-                `
+                id: 'fleet-safety',
+                image: 'images/truck.jpg',
+                title: 'Fleet Safety & Efficiency Analysis',
+                description: 'Engineered a big data pipeline using Hadoop, Hive, and Impala to process and analyze driver behavior data across 14 states. Developed Power BI dashboards that identified high-risk geographies and revealed safer, more fuel-efficient vehicle models, driving a 30% reduction in insurance and safety risk exposure.',
+                toolsUsed: ['Hadoop', 'Hive', 'Impala', 'Power BI', 'SQL'],
+                projectType: ['Big Data Pipeline', 'Data Engineering', 'Data Transformation', 'Data Visualization', 'Business Intelligence', 'Risk Analytics']
             },
             {
-                id: 'project2',
-                image: 'images/real_estate.jpg', 
-                title: 'Washington Real Estate Sales Dashboard',
-                toolsUsed: ['Tableau', 'SQL'],
-                skillsDisplayed: ['Data Blending', 'Calculated Fields', 'Dynamic Filtering'],
-                shortDescription: 'Designed a real-time Tableau dashboard visualizing sales trends and buyer preferences for strategic marketing.',
-                fullDescription: `
-                    <p>This project focused on the dynamic Washington real estate market. The objective was to create a tool for real estate professionals to quickly grasp market trends and make informed decisions.</p>
-                    <p class="mt-2"><strong>Technical Approach:</strong> Using Tableau, I integrated multiple data sources (sales records, property details, demographic data) through data blending. I extensively used calculated fields to derive new metrics (e.g., price per sq ft, days on market) and implemented dynamic filters to allow users to explore data by region, property type, and time period.</p>
-                    <p class="mt-2"><strong>Non-Technical Summary:</strong> Think of this as a smart map and report for people selling houses. It shows live information about house sales, like when prices are usually highest during the month or what types of houses different buyers prefer. This helps sellers and agents make better decisions on when to list a house or how to advertise it effectively.</p>
-                    <p class="mt-2"><strong>Outcome:</strong> The dashboard provided clear visualizations of trends such as mid-month price peaks and shifting buyer preferences, enabling more refined and effective real estate marketing strategies.</p>
-                `
+                id: 'customer-segmentation',
+                image: 'images/superstore.jpg',
+                title: 'Customer Segmentation & Sales Attribution Analysis',
+                description: 'Leveraged BigQuery SQL to implement multi-touch attribution models and optimize marketing spend, uncovering Direct (37%) and YouTube (36%) as dominant revenue channels. Built Tableau dashboards with RFM-based segmentation, identifying high-value customer cohorts and guiding targeted promotions to improve retention.',
+                toolsUsed: ['BigQuery', 'SQL', 'Tableau'],
+                projectType: ['Data Modeling', 'Customer Segmentation', 'Attribution Analysis', 'Data Visualization', 'Business Intelligence', 'Marketing Analytics']
             },
             {
-                id: 'project3',
-                image: 'images/coffee_project.jpg', 
-                title: 'Coffee Sales Performance Dashboard',
-                toolsUsed: ['Excel (Advanced)', 'Data Visualization'],
-                skillsDisplayed: ['XLOOKUP', 'PivotTables', 'Dashboard Creation'],
-                shortDescription: 'Automated sales tracking and created a dynamic Excel dashboard for coffee sales performance analysis.',
-                fullDescription: `
-                    <p>The aim of this project was to provide a comprehensive overview of a coffee company's sales performance across various dimensions.</p>
-                    <p class="mt-2"><strong>Technical Approach:</strong> I consolidated multi-dimensional datasets from different sources using Excel's XLOOKUP function, significantly automating the real-time sales tracking process. From this consolidated data, I built a dynamic dashboard incorporating PivotTables, charts, and slicers to track key metrics like total sales, regional performance, product popularity, and customer demographics.</p>
-                    <p class="mt-2"><strong>Non-Technical Summary:</strong> For a coffee company, it's important to know how well their coffee is selling, where it's popular, and who is buying it. I created an interactive report in Excel that automatically updates with the latest sales numbers. This report helps the company quickly see how they're doing overall, which regions are their best markets, and what kind of customers love their coffee the most.</p>
-                    <p class="mt-2"><strong>Outcome:</strong> The Excel dashboard became a vital tool for the sales team, offering instant insights into performance and facilitating data-driven decision-making regarding promotions and inventory.</p>
-                `
+                id: 'marketing-retention',
+                image: 'images/marketing.jpg',
+                title: 'Marketing & Retention Analytics for Shopify Store',
+                description: 'Performed cohort-based lifetime value analysis to evaluate repeat purchase behavior, revealing <6% retention across 30/60/90-day windows. Integrated Shopify sales data via Power Query into interactive Tableau dashboards, surfacing campaign-driven revenue spikes and device usage patterns (82% desktop dominance) to refine ad targeting.',
+                toolsUsed: ['Tableau', 'Power Query', 'SQL', 'Shopify API'],
+                projectType: ['Data Cleaning', 'Cohort Analysis', 'Customer Retention', 'LTV Analysis', 'Business Intelligence', 'Marketing Analytics']
             },
             {
-                id: 'project4',
-                image: 'images/diabetics.jpg', 
-                title: 'Predictive Analytics for Diabetes Risk',
-                toolsUsed: ['R', 'RStudio'],
-                skillsDisplayed: ['Predictive Modeling', 'Logistic Regression', 'Neural Networks'],
-                shortDescription: 'Built models in R with 86.5% accuracy to identify diabetes risk factors from 253K+ records.',
-                fullDescription: `
-                    <p>This project focused on leveraging machine learning to identify individuals at high risk of developing diabetes, enabling early intervention.</p>
-                    <p class="mt-2"><strong>Technical Approach:</strong> Working with a large dataset of over 253,000 patient records, I performed extensive data preprocessing, including handling missing values and feature scaling. I then developed and compared several predictive models in R, primarily focusing on logistic regression and neural networks. The final model achieved an accuracy of 86.5% in identifying diabetes risk. Correlation analysis was also conducted to highlight key risk factors.</p>
-                    <p class="mt-2"><strong>Non-Technical Summary:</strong> Diabetes is a common health issue. This project used computer learning to predict if someone might be at risk of getting diabetes based on their health information. By analyzing lots of patient data, the system learned to spot patterns. We found that things like body mass index (BMI) and high blood pressure are important warning signs. This helps doctors identify at-risk patients earlier.</p>
-                    <p class="mt-2"><strong>Outcome:</strong> The predictive models and identified key risk factors (BMI, hypertension) provide valuable tools for healthcare providers for early detection and preventative care strategies.</p>
-                `
+                id: 'diabetes-prediction',
+                image: 'images/diabetics.jpg',
+                title: 'Predictive Analytics for Diabetes Risk Identification',
+                description: 'Applied logistic regression and neural networks in R to a dataset of 253K+ health records, achieving 86.5% classification accuracy in diabetes risk prediction. Performed data preprocessing, correlation analysis, and feature selection, identifying BMI and hypertension as key predictors to support proactive healthcare interventions.',
+                toolsUsed: ['R', 'Logistic Regression', 'Neural Networks'],
+                projectType: ['Predictive Modeling', 'Data Cleaning', 'Data Transformation', 'Feature Selection', 'Healthcare Analytics', 'Machine Learning']
             },
-            { 
-                id: 'project5',
-                image: 'images/truck.jpg', 
-                title: 'Fleet Risk Analysis & Telematics Dashboard',
-                toolsUsed: ['Hadoop', 'Hive', 'Impala', 'Power BI'],
-                skillsDisplayed: ['Big Data Pipeline', 'Dashboard Development', 'Risk Analysis'],
-                shortDescription: 'Big data pipeline and dashboard for identifying high-risk drivers and efficient truck models.',
-                fullDescription: `
-                    <p>This project involved engineering a big data pipeline using Hadoop, Hive, and Impala to process extensive trucking operational data. The goal was to extract actionable insights for fleet management.</p>
-                    <p class="mt-2"><strong>Technical Approach:</strong> Data from various telematics sources and operational logs were ingested into the Hadoop ecosystem. Hive was used for structuring and querying the data, while Impala provided faster interactive querying capabilities. The processed data was then used to build a comprehensive dashboard in Power BI.</p>
-                    <p class="mt-2"><strong>Non-Technical Summary:</strong> For a trucking company, keeping drivers safe and trucks running efficiently is crucial. This project involved collecting and analyzing large amounts of data from trucks (like speed, braking, fuel usage). We then built a visual report (dashboard) that helps the company easily see which drivers might be at higher risk of accidents and which truck models are the most fuel-efficient. This allows the company to make better decisions about driver training and which trucks to buy or maintain.</p>
-                    <p class="mt-2"><strong>Outcome:</strong> The dashboard successfully identified high-risk drivers for targeted training and highlighted the most efficient truck models, enabling data-driven decisions to improve safety and reduce operational costs for the fleet.</p>
-                `
-            },
-            { 
-                id: 'project6',
-                image: 'images/airbnb.jpg', 
+            {
+                id: 'airbnb-pricing',
+                image: 'images/airbnb.jpg',
                 title: 'Airbnb Pricing Prediction',
-                toolsUsed: ['R', 'Machine Learning'],
-                skillsDisplayed: ['Predictive Modeling', 'Random Forest', 'XGBoost'],
-                shortDescription: 'ML models to predict Airbnb pricing and a system for hosts to optimize revenue.',
-                fullDescription: `
-                    <p>The objective of this project was to develop machine learning models capable of predicting Airbnb listing prices based on various features, and to propose a system to help hosts optimize their pricing strategies.</p>
-                    <p class="mt-2"><strong>Technical Approach:</strong> Using R, I explored a dataset of Airbnb listings, performing feature engineering and selection. Several machine learning models were trained and evaluated, including Linear Regression, Random Forest, and XGBoost, to predict listing prices. The XGBoost model demonstrated the best performance.</p>
-                    <p class="mt-2"><strong>Non-Technical Summary:</strong> When people list their homes on Airbnb, it can be tricky to know the best price to ask. This project used computer learning to predict what a good price might be, based on things like location, size, and amenities. We also thought about how to create a notification system that could give hosts tips on how to adjust their prices to earn more money, especially during busy times or special events.</p>
-                    <p class="mt-2"><strong>Outcome:</strong> The predictive models offered a reliable way to estimate Airbnb pricing. Furthermore, a data-driven notification system was proposed to empower hosts with dynamic pricing recommendations, aiming to increase their revenue and occupancy rates.</p>
-                `
+                description: 'Developed machine learning models in R (Linear Regression, Random Forest, XGBoost) to predict Airbnb listing prices. Conducted feature engineering and model evaluation to improve predictive accuracy, and proposed a data-driven notification system that empowers hosts to optimize pricing and increase revenue.',
+                toolsUsed: ['R', 'XGBoost', 'Random Forest', 'Linear Regression'],
+                projectType: ['Predictive Modeling', 'Machine Learning', 'Data Preprocessing', 'Feature Engineering', 'Pricing Analytics']
             }
         ];
 
-        const projectGrid = document.getElementById('project-grid');
-        const modal = document.getElementById('projectModal');
-        const closeModalButton = document.getElementById('closeModalButton');
-
-        const modalProjectImage = document.getElementById('modalProjectImage');
-        const modalProjectTitle = document.getElementById('modalProjectTitle');
-        const modalProjectTools = document.getElementById('modalProjectTools'); 
-        const modalProjectSkills = document.getElementById('modalProjectSkills'); 
-        const modalProjectDescription = document.getElementById('modalProjectDescription');
+        const projectListContainer = document.getElementById('project-list');
 
         projectsData.forEach(project => {
-            const card = document.createElement('div');
-            card.className = 'project-card'; 
+            const projectItem = document.createElement('a');
+            projectItem.href = `project-details.html?id=${project.id}`;
+            projectItem.className = 'project-card flex flex-col p-4 md:p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1';
             
             let toolsTagsHtml = '';
             if (project.toolsUsed && project.toolsUsed.length > 0) {
                 toolsTagsHtml = project.toolsUsed.map(tool => `<span class="project-tag bg-blue-100 text-blue-700">${tool}</span>`).join('');
             }
 
-            let skillsTagsHtml = '';
-            if (project.skillsDisplayed && project.skillsDisplayed.length > 0) {
-                // Limit skills to 3
-                const limitedSkills = project.skillsDisplayed.slice(0, 3);
-                skillsTagsHtml = limitedSkills.map(skill => `<span class="project-tag project-skill-tag bg-sky-100 text-sky-700">${skill}</span>`).join('');
+            let projectTypeTagsHtml = '';
+            if (project.projectType && project.projectType.length > 0) {
+                projectTypeTagsHtml = project.projectType.map(type => `<span class="project-tag bg-sky-100 text-sky-700">${type}</span>`).join('');
             }
 
-            card.innerHTML = `
-                <img src="${project.image}" alt="${project.title}" class="project-card-image">
-                <div class="project-card-content"> 
+            projectItem.innerHTML = `
+                <img src="${project.image}" alt="${project.title}" class="w-full h-40 object-cover rounded-xl mb-4">
+                <div class="project-card-content flex flex-col text-center flex-grow">
                     <h3 class="text-2xl text-[#2563EB] mb-2">${project.title}</h3>
-                    <p class="text-slate-600 text-md leading-relaxed mb-4 flex-grow">${project.shortDescription}</p>
-                    
-                    ${toolsTagsHtml ? `<div class="mt-auto mb-3">
-                                           <p class="font-semibold text-xs text-slate-500 mb-1 uppercase tracking-wider">Tools Used:</p>
-                                           <div class="flex flex-wrap">${toolsTagsHtml}</div>
+                    <p class="text-base text-slate-700 leading-relaxed mb-4" style="text-align: justify;">${project.description}</p>
+                    ${toolsTagsHtml ? `<div class="mt-auto">
+                                           <p class="font-semibold text-xs text-slate-500 mb-2 uppercase tracking-wider" style="text-align: left;">Tools Used:</p>
+                                           <div class="flex flex-wrap justify-center md:justify-start">${toolsTagsHtml}</div>
                                        </div>` : ''}
-                    
-                    ${skillsTagsHtml ? `<div class="mb-1">
-                                           <p class="font-semibold text-xs text-slate-500 mb-1 uppercase tracking-wider">Skills Displayed:</p>
-                                           <div class="flex flex-wrap">${skillsTagsHtml}</div>
+                    ${projectTypeTagsHtml ? `<div class="mt-4">
+                                           <p class="font-semibold text-xs text-slate-500 mb-2 uppercase tracking-wider" style="text-align: left;">Project Type:</p>
+                                           <div class="flex flex-wrap justify-center md:justify-start">${projectTypeTagsHtml}</div>
                                        </div>` : ''}
-                    </div>
+                </div>
             `;
-            card.addEventListener('click', () => {
-                modalProjectImage.src = project.image;
-                modalProjectTitle.textContent = project.title;
-                modalProjectTools.innerHTML = project.toolsUsed ? project.toolsUsed.map(tool => `<span class="project-tag bg-blue-100 text-blue-700">${tool}</span>`).join('') : 'N/A';
-                // Display all skills in modal, or limit here too if desired. For now, showing all.
-                modalProjectSkills.innerHTML = project.skillsDisplayed ? project.skillsDisplayed.map(skill => `<span class="project-tag project-skill-tag bg-sky-100 text-sky-700">${skill}</span>`).join('') : 'N/A';
-                modalProjectDescription.innerHTML = project.fullDescription; 
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden'; 
-            });
-            projectGrid.appendChild(card);
+            projectListContainer.appendChild(projectItem);
         });
-
-        closeModalButton.onclick = function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; 
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto'; 
-            }
-        }
     </script>
 </body>
 </html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            color: #374151;
+            background-color: #f9fafb;
+            line-height: 1.7;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        .section-divider {
+            border-bottom: 1px solid #e5e7eb;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+        .project-tag { 
+            display: inline-block;
+            background-color: #EFF6FF;
+            color: #3B82F6;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .grid-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+        nav a {
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            color: #2563EB;
+        }
+        .list-style-disc {
+            list-style: disc;
+        }
+        .list-style-disc li:before {
+            content: "";
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <nav class="bg-white/95 backdrop-blur-lg shadow-md fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="text-3xl font-bold text-[#2563EB] hover:text-[#1D4ED8] transition-colors">KPC</a>
+                <a href="index.html#projects" class="text-lg text-gray-600 hover:text-[#2563EB] transition-colors">← Back to Projects</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 py-28 md:py-32">
+        <div id="project-container" class="space-y-12">
+            <div class="text-center text-xl text-gray-500" id="loading-message">Loading project details...</div>
+        </div>
+    </main>
+    
+    <footer class="text-center py-12 mt-20 border-t border-slate-200 bg-slate-100">
+        <p class="text-slate-600 text-lg">&copy; <span id="currentYear"></span> Krishna Priyanka Challa. All rights reserved.</p>
+        <p class="text-md text-slate-500 mt-2">Crafted with passion and precision.</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const projectsData = {
+            'fleet-safety': {
+                image: 'images/truck.jpg',
+                title: 'Fleet Safety & Efficiency Analysis',
+                toolsUsed: ['Hadoop', 'Hive', 'Impala', 'Power BI'],
+                summary: {
+                    goal: 'To enhance fleet safety and efficiency by identifying high-risk driver behaviors and the most fuel-efficient vehicle models through big data analytics.',
+                    process: 'Engineered a Big Data pipeline (Hadoop, Hive, Impala) to process telematics and operational data. Developed Power BI dashboards to visualize and analyze driver behavior and vehicle performance.',
+                    highlights: 'Reduced risk exposure by 30%. Identified specific vehicle models that were 15% safer and more fuel-efficient.',
+                },
+                keyFindings: [
+                    'Identified high-risk driving behaviors (e.g., harsh braking, excessive speeding) enabling proactive interventions.',
+                    'Pinpointed geographic risk hotspots, allowing for route optimization and focused safety campaigns.',
+                    'Revealed that Ford and Caterpillar truck models were 15% more efficient, guiding future fleet purchasing decisions.',
+                ],
+                dataStructure: 'The data came from various telematics sources and operational logs, including driver IDs, vehicle models, trip data, fuel consumption, and incident reports. Initial checks involved ensuring data consistency and handling missing values.',
+                recommendations: [
+                    'Implement targeted driver training programs for individuals exhibiting high-risk behaviors.',
+                    'Adjust fleet allocation to prioritize the use of more efficient vehicle models for long-haul routes.',
+                    'Continue to monitor real-time data to track the impact of new safety protocols and vehicle updates.'
+                ]
+            },
+            'customer-segmentation': {
+                image: 'images/superstore.jpg',
+                title: 'Customer Segmentation & Sales Attribution Analysis',
+                toolsUsed: ['SQL', 'Tableau', 'BigQuery'],
+                summary: {
+                    goal: 'To optimize marketing budget allocation and guide retention strategies by understanding customer behavior and identifying key revenue drivers.',
+                    process: 'Analyzed over 380 customer records in SQL (BigQuery) using RFM (Recency, Frequency, Monetary) analysis. Applied first-, last-, and multi-touch attribution models to sales data. Visualized findings with Tableau dashboards.',
+                    highlights: 'Found that Direct and YouTube were the dominant revenue drivers (37% and 36% respectively). Only ~8% of customers were in the high-value cohort (R4F4M4).',
+                },
+                keyFindings: [
+                    'Direct and YouTube marketing channels were the most effective, accounting for a combined 73% of revenue, suggesting a reallocation of budget away from less effective channels.',
+                    'A small fraction of customers (~8%) contributed significantly to the revenue, highlighting the importance of a targeted retention strategy for this group.',
+                    'RFM analysis uncovered product affinities within high-value cohorts, providing a roadmap for cross-selling and promotion strategies.',
+                ],
+                dataStructure: 'The dataset consisted of transaction and customer data, including purchase dates, total spend, and marketing touchpoints. Initial checks involved cleansing data for duplicate records and ensuring the integrity of transaction history.',
+                recommendations: [
+                    'Increase investment in Direct and YouTube marketing campaigns to capitalize on their high ROI.',
+                    'Develop a loyalty program or exclusive promotions specifically for the high-value customer cohort to boost retention.',
+                    'Leverage product affinity insights to create personalized product recommendations and email marketing campaigns for each customer segment.'
+                ]
+            },
+            'marketing-retention': {
+                image: 'images/coffee_project.jpg',
+                title: 'Marketing & Retention Analytics for Shopify Store',
+                toolsUsed: ['Power Query', 'Tableau', 'Excel'],
+                summary: {
+                    goal: 'To improve customer retention and optimize ad targeting by analyzing Shopify sales data.',
+                    process: 'Integrated Shopify sales data using Power Query to create a consolidated and clean dataset. Performed cohort LTV (Customer Lifetime Value) analysis. Built interactive dashboards in Tableau to visualize retention rates and campaign performance.',
+                    highlights: 'Identified a repeat-purchase rate of less than 6%. Revealed that 82% of revenue came from desktop users, a key insight for ad targeting.',
+                },
+                keyFindings: [
+                    'The low repeat-purchase rate (<6%) indicated a significant opportunity for improvement in customer retention strategies.',
+                    'Cohort LTV analysis revealed major drop-offs in customer retention after the 30/60/90-day marks, providing specific timeframes for targeted lifecycle marketing.',
+                    'Data showed a clear dominance of desktop sales (82%), which informed a shift in ad targeting strategy to prioritize desktop platforms.',
+                ],
+                dataStructure: 'The dataset was sourced from a Shopify store and included sales records, customer information, and campaign data. Initial checks focused on ensuring accurate joins between different data tables and cleaning timestamp data.',
+                recommendations: [
+                    'Design and implement targeted lifecycle marketing programs (e.g., email campaigns) at the 30, 60, and 90-day marks to re-engage customers.',
+                    'Reallocate advertising budget to focus more heavily on desktop ad campaigns and platforms.',
+                    'Regularly monitor the new dashboards to track the impact of marketing programs on repeat-purchase rates and LTV.'
+                ]
+            },
+            'diabetes-prediction': {
+                image: 'images/diabetics.jpg',
+                title: 'Predictive Analytics for Diabetes Risk',
+                toolsUsed: ['R', 'RStudio', 'Predictive Modeling'],
+                summary: {
+                    goal: 'To build a reliable predictive model that can identify individuals at high risk for diabetes, aiding in early diagnosis and preventative care.',
+                    process: 'Preprocessed a large dataset of over 253,000 patient records in R, handling missing values and scaling features. Developed and evaluated multiple models, including Logistic Regression and Neural Networks.',
+                    highlights: 'Achieved an 86.5% accuracy in predicting diabetes risk. Identified Body Mass Index (BMI) and hypertension as key risk factors.',
+                },
+                keyFindings: [
+                    'The predictive model successfully achieved high accuracy, demonstrating its potential for real-world application in healthcare settings.',
+                    'Logistic Regression proved to be a strong baseline model, with a simplified neural network slightly outperforming it.',
+                    'Correlation analysis confirmed that BMI, age, and blood pressure are the most significant predictors of diabetes risk, aligning with clinical knowledge.',
+                ],
+                dataStructure: 'The dataset contained over 253,000 patient records with health metrics like BMI, blood pressure, cholesterol levels, and a diabetes outcome variable. Initial checks involved statistical summaries to understand data distributions and identify any data quality issues.',
+                recommendations: [
+                    'Integrate the predictive model into a clinical decision support system to provide risk scores to healthcare providers during patient check-ups.',
+                    'Conduct further feature engineering and explore more advanced models (e.g., Random Forest, XGBoost) to potentially improve accuracy.',
+                    'Validate the model on a new, independent dataset to ensure its generalizability and robustness.'
+                ]
+            },
+            'airbnb-pricing': {
+                image: 'images/airbnb.jpg',
+                title: 'Airbnb Pricing Prediction',
+                toolsUsed: ['R', 'Machine Learning', 'Predictive Modeling'],
+                summary: {
+                    goal: 'To develop a machine learning model to predict optimal Airbnb listing prices and propose a system for hosts to maximize their revenue.',
+                    process: 'Explored a large dataset of Airbnb listings using R. Engineered new features from existing data. Trained and evaluated multiple machine learning models, with XGBoost showing the highest predictive power.',
+                    highlights: 'Successfully built a model to predict pricing based on key features. Proposed a data-driven notification system for dynamic pricing recommendations.',
+                },
+                keyFindings: [
+                    'Location, number of bedrooms, and availability were found to be the most influential factors in determining listing prices.',
+                    'The XGBoost model consistently outperformed other models, such as Linear Regression and Random Forest, in terms of accuracy.',
+                    'A dynamic pricing recommendation system could help hosts adjust prices in real-time based on local events, demand surges, and competitor pricing.'
+                ],
+                dataStructure: 'The dataset included various features for each Airbnb listing, such as location, amenities, number of guests, and historical pricing. Initial checks involved feature analysis to understand relationships and identify highly correlated variables.',
+                recommendations: [
+                    'Implement the dynamic pricing system as a tool for hosts to receive automated, data-driven pricing suggestions.',
+                    'Expand the model to include time-series analysis to account for seasonal trends and holidays.',
+                    'Incorporate external data sources, such as local event calendars and hotel occupancy rates, to further enhance prediction accuracy.'
+                ]
+            }
+        };
+
+        function displayProjectDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id');
+            const project = projectsData[projectId];
+            const container = document.getElementById('project-container');
+            
+            if (project) {
+                document.getElementById('pageTitle').textContent = project.title;
+                container.innerHTML = `
+                    <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+                        <img src="${project.image}" alt="${project.title}" class="w-full h-80 object-cover rounded-lg mb-8">
+                        <h1 class="text-4xl md:text-5xl text-slate-800 mb-2">${project.title}</h1>
+                        <div class="mb-8">
+                            <span class="font-semibold text-lg">Tools:</span>
+                            ${project.toolsUsed.map(tool => `<span class="project-tag">${tool}</span>`).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+                        <h2 class="text-3xl text-[#2563EB] mb-6">Summary</h2>
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div class="grid-card">
+                                <h3 class="text-2xl font-semibold text-slate-700 mb-4">Goal</h3>
+                                <p class="text-lg text-slate-600">${project.summary.goal}</p>
+                            </div>
+                            <div class="grid-card">
+                                <h3 class="text-2xl font-semibold text-slate-700 mb-4">Process</h3>
+                                <p class="text-lg text-slate-600">${project.summary.process}</p>
+                            </div>
+                            <div class="grid-card">
+                                <h3 class="text-2xl font-semibold text-slate-700 mb-4">Highlights</h3>
+                                <p class="text-lg text-slate-600">${project.summary.highlights}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+                        <h2 class="text-3xl text-[#2563EB] mb-6">Key Findings</h2>
+                        <ul class="list-style-disc list-outside ml-5 text-slate-700 space-y-3 text-lg">
+                            ${project.keyFindings.map(finding => `<li>${finding}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+                        <h2 class="text-3xl text-[#2563EB] mb-6">Data Structure & Initial Checks</h2>
+                        <p class="text-lg text-slate-700">${project.dataStructure}</p>
+                    </div>
+
+                    <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+                        <h2 class="text-3xl text-[#2563EB] mb-6">Recommendations</h2>
+                        <ul class="list-style-disc list-outside ml-5 text-slate-700 space-y-3 text-lg">
+                            ${project.recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `<div class="text-center text-xl text-red-500">Project not found. Please go back to the <a href="index.html" class="text-blue-500 hover:underline">main page</a>.</div>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', displayProjectDetails);
+    </script>
+</body>
+</html>
