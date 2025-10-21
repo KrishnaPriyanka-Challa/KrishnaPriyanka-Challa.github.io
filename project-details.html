@@ -48,11 +48,16 @@
         nav a:hover {
             color: #2563EB;
         }
+        /* Custom list style for better appearance */
         .list-style-disc {
             list-style: disc;
         }
         .list-style-disc li:before {
-            content: "";
+            content: ""; /* Clears the custom bullet point from the initial CSS, now using browser default */
+        }
+        /* Utility for center-aligning image/text */
+        .text-align-center {
+            text-align: center;
         }
     </style>
 </head>
@@ -80,114 +85,619 @@
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
+        // Data for all projects
         const projectsData = {
             'fleet-safety': {
                 image: 'images/truck.jpg',
                 title: 'Fleet Safety & Efficiency Analysis',
                 toolsUsed: ['Hadoop', 'Hive', 'Impala', 'Power BI'],
-                summary: {
-                    goal: 'To enhance fleet safety and efficiency by identifying high-risk driver behaviors and the most fuel-efficient vehicle models through big data analytics.',
-                    process: 'Engineered a Big Data pipeline (Hadoop, Hive, Impala) to process telematics and operational data. Developed Power BI dashboards to visualize and analyze driver behavior and vehicle performance.',
-                    highlights: 'Reduced risk exposure by 30%. Identified specific vehicle models that were 15% safer and more fuel-efficient.',
-                },
-                keyFindings: [
-                    'Identified high-risk driving behaviors (e.g., harsh braking, excessive speeding) enabling proactive interventions.',
-                    'Pinpointed geographic risk hotspots, allowing for route optimization and focused safety campaigns.',
-                    'Revealed that Ford and Caterpillar truck models were 15% more efficient, guiding future fleet purchasing decisions.',
-                ],
-                dataStructure: 'The data came from various telematics sources and operational logs, including driver IDs, vehicle models, trip data, fuel consumption, and incident reports. Initial checks involved ensuring data consistency and handling missing values.',
-                recommendations: [
-                    'Implement targeted driver training programs for individuals exhibiting high-risk behaviors.',
-                    'Adjust fleet allocation to prioritize the use of more efficient vehicle models for long-haul routes.',
-                    'Continue to monitor real-time data to track the impact of new safety protocols and vehicle updates.'
+                projectTags: ['Big Data', 'Logistics', 'Safety', 'Efficiency'],
+                sections: [
+                    {
+                        title: 'Project Summary',
+                        type: 'grid',
+                        content: {
+                            goal: 'To identify critical insights that can reduce risk, improve fuel efficiency, and enhance fleet management decision-making.',
+                            process: 'Engineered a Big Data pipeline (Hadoop, Hive, Impala) to process telematics and operational data. Developed Power BI dashboards to visualize and analyze driver behavior and vehicle performance.',
+                            highlights: 'Reduced risk exposure by 30%. Identified specific vehicle models that were 15% safer and more fuel-efficient.'
+                        }
+                    },
+                    {
+                        title: 'Scenario & Stakeholders',
+                        type: 'text',
+                        content: `Az National Trucking (ANT), headquartered in California, is a national trucking corporation that provides long-haul trucking services for a variety of general, non-specialized cargo types. The company’s operations span across the western United States, with the exception of hazardous materials (HAZMAT).`,
+                        subSections: [
+                            {
+                                subTitle: 'Key Areas',
+                                subType: 'list',
+                                items: [
+                                    'Geographic Risk Analysis: Identifying regions and routes where most abnormal or high-risk driving events occur.',
+                                    'Mileage vs. Risk Correlation: Evaluating whether higher mileage reduces or increases driver risk.',
+                                    'Fleet Fuel Efficiency & Utilization: Analyzing which truck models are both fuel-efficient and better utilized.',
+                                    'Risk-Contributing Driving Behaviors: Determining which abnormal driving events most impact driver risk scores.',
+                                    'Truck Models & Risk Association: Assessing which truck models are more often linked with higher driver risk.'
+                                ]
+                            },
+                            {
+                                subTitle: 'Resources for more info',
+                                subType: 'link-list',
+                                items: [
+                                    { text: 'SQL queries used for data inspection and cleaning', url: '[link]' },
+                                    { text: 'Targeted SQL queries regarding various business questions', url: '[link]' },
+                                    { text: 'Interactive PowerBI dashboard', url: '[link]' }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Data Structure & Initial Checks',
+                        type: 'text',
+                        content: 'The company\'s main database structure, as seen below, consists of six tables:',
+                        image: 'images/datamd.png',
+                        imageAlt: 'Data Structure Diagram',
+                        subSections: [
+                            {
+                                subType: 'list',
+                                items: ['geolocation', 'risk_factor', 'trucks_mg', 'truck_mileage', 'avg_mileage', 'driver_mileage']
+                            }
+                        ],
+                        postContent: 'Initial checks involved ensuring data consistency and handling missing values.'
+                    },
+                    {
+                        title: 'Key Insights',
+                        type: 'insights-deep-dive',
+                        content: [
+                            {   title:  'Overview',
+                                points: [ 'The analysis shows that most high-risk drivers accumulate elevated scores due to lane departures, unsafe following distance, and over-speeding.',
+                                'It also highlights that a small subset of drivers is responsible for a disproportionate share of safety incidents.',
+                                'At the equipment level, Ford and Caterpillar models show lower associated risk scores and stronger safety performance, making them safer options for wider utilization across the fleet.',
+                                ], 
+                                image: 'images/exesum.png' 
+                            },
+                            {    title: 'Geographic Risk Analysis',
+                                points: [
+                                    'Most abnormal driving events cluster in Downtown Santa Rosa, Downtown Willits, and Highway 18 near Victorville, showing these corridors are hotspots for unsafe driving.',
+                                    'These incidents are not evenly spread, a few high-density areas account for a large share of risky behavior, suggesting route-specific monitoring could quickly reduce exposure.'
+                                ],
+                                image: 'images/geora.png'
+                            },
+                            {
+                                title: 'Mileage vs. Risk Correlation',
+                                points: [
+                                    'Mileage alone does not explain risk; drivers with both high and low mileage show widely different risk scores.',
+                                    'A handful of drivers (A73, A35, A50) have scores ≥ 9.0, showing that risk is driven more by behavior than distance, making targeted interventions more effective than mileage caps.'
+                                ],
+                                image: 'images/milesvsrisk.png'
+                            },
+                            {
+                                title: 'Fleet Fuel Efficiency & Utilization',
+                                points: [
+                                    'Ford stands out as the best-performing model; it is both fuel-efficient and widely used.',
+                                    'Caterpillar, Peterbilt, and Volvo are heavily used but less efficient, raising long-term cost concerns.',
+                                    'Navistar, Hino, Kenworth, and Crane are efficient but underutilized, suggesting the fleet isn’t fully capturing their potential.'
+                                ],
+                                image1: 'images/tmbyeffandusage.png',
+                                image2: 'images/matrix.png'
+                            },
+                            {
+                                title: 'Risk-Contributing Driving Behaviors',
+                                points: [
+                                    'The biggest contributors to driver risk are over-speeding, lane departure, and unsafe following distance.',
+                                    'High-risk drivers repeat these behaviors at much higher rates, with A73, A35, and A50 showing persistent issues that require focused retraining.'
+                                ],
+                                image: 'images/risk.png'
+                            },
+                            {
+                                title: 'Truck Models & Risk Association',
+                                points: [
+                                    'Oshkosh and Crane show the highest average risk but are used by fewer drivers, so more data is needed before drawing firm conclusions.',
+                                    'Ford and Caterpillar consistently show lower risk across many drivers, making them safer allocations.',
+                                    'Volvo, Kenworth, and Navistar combine low risk with solid utilization, making them strong candidates for future fleet expansion.'
+                                ],
+                                image: 'images/truckmodel.png'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Recommendations',
+                        type: 'list',
+                        items: [
+                            'Several drivers have risk scores ≥ 9.0, indicating significant safety concerns. Implement targeted coaching and corrective training programs for high-risk drivers (risk ≥ 7.0), with particular focus on speeding control and following distance discipline.',
+                            'The most common events are over-speeding, lane departure, and unsafe following distance. Create specialized training modules and in-cab alerts for these behaviors, reinforcing safe driving habits through real-time feedback and periodic refresher courses.',
+                            'Ford and Caterpillar have lower associated risk scores and better driver safety metrics. Prioritize these models for future fleet expansion and allocate higher-risk drivers to safer vehicle types where possible.',
+                            'Risk and efficiency trends vary by driver and truck model. Leverage dashboards and normalized driver risk scores to establish internal scoring policies for rewards, insurance negotiations, and timely interventions.'
+                        ]
+                    }
                 ]
             },
-            'customer-segmentation': {
-                image: 'images/superstore.jpg',
-                title: 'Customer Segmentation & Sales Attribution Analysis',
-                toolsUsed: ['SQL', 'Tableau', 'BigQuery'],
-                summary: {
-                    goal: 'To optimize marketing budget allocation and guide retention strategies by understanding customer behavior and identifying key revenue drivers.',
-                    process: 'Analyzed over 380 customer records in SQL (BigQuery) using RFM (Recency, Frequency, Monetary) analysis. Applied first-, last-, and multi-touch attribution models to sales data. Visualized findings with Tableau dashboards.',
-                    highlights: 'Found that Direct and YouTube were the dominant revenue drivers (37% and 36% respectively). Only ~8% of customers were in the high-value cohort (R4F4M4).',
-                },
-                keyFindings: [
-                    'Direct and YouTube marketing channels were the most effective, accounting for a combined 73% of revenue, suggesting a reallocation of budget away from less effective channels.',
-                    'A small fraction of customers (~8%) contributed significantly to the revenue, highlighting the importance of a targeted retention strategy for this group.',
-                    'RFM analysis uncovered product affinities within high-value cohorts, providing a roadmap for cross-selling and promotion strategies.',
-                ],
-                dataStructure: 'The dataset consisted of transaction and customer data, including purchase dates, total spend, and marketing touchpoints. Initial checks involved cleansing data for duplicate records and ensuring the integrity of transaction history.',
-                recommendations: [
-                    'Increase investment in Direct and YouTube marketing campaigns to capitalize on their high ROI.',
-                    'Develop a loyalty program or exclusive promotions specifically for the high-value customer cohort to boost retention.',
-                    'Leverage product affinity insights to create personalized product recommendations and email marketing campaigns for each customer segment.'
-                ]
-            },
-            'marketing-retention': {
-                image: 'images/coffee_project.jpg',
-                title: 'Marketing & Retention Analytics for Shopify Store',
-                toolsUsed: ['Power Query', 'Tableau', 'Excel'],
-                summary: {
-                    goal: 'To improve customer retention and optimize ad targeting by analyzing Shopify sales data.',
-                    process: 'Integrated Shopify sales data using Power Query to create a consolidated and clean dataset. Performed cohort LTV (Customer Lifetime Value) analysis. Built interactive dashboards in Tableau to visualize retention rates and campaign performance.',
-                    highlights: 'Identified a repeat-purchase rate of less than 6%. Revealed that 82% of revenue came from desktop users, a key insight for ad targeting.',
-                },
-                keyFindings: [
-                    'The low repeat-purchase rate (<6%) indicated a significant opportunity for improvement in customer retention strategies.',
-                    'Cohort LTV analysis revealed major drop-offs in customer retention after the 30/60/90-day marks, providing specific timeframes for targeted lifecycle marketing.',
-                    'Data showed a clear dominance of desktop sales (82%), which informed a shift in ad targeting strategy to prioritize desktop platforms.',
-                ],
-                dataStructure: 'The dataset was sourced from a Shopify store and included sales records, customer information, and campaign data. Initial checks focused on ensuring accurate joins between different data tables and cleaning timestamp data.',
-                recommendations: [
-                    'Design and implement targeted lifecycle marketing programs (e.g., email campaigns) at the 30, 60, and 90-day marks to re-engage customers.',
-                    'Reallocate advertising budget to focus more heavily on desktop ad campaigns and platforms.',
-                    'Regularly monitor the new dashboards to track the impact of marketing programs on repeat-purchase rates and LTV.'
-                ]
-            },
-            'diabetes-prediction': {
-                image: 'images/diabetics.jpg',
-                title: 'Predictive Analytics for Diabetes Risk',
-                toolsUsed: ['R', 'RStudio', 'Predictive Modeling'],
-                summary: {
-                    goal: 'To build a reliable predictive model that can identify individuals at high risk for diabetes, aiding in early diagnosis and preventative care.',
-                    process: 'Preprocessed a large dataset of over 253,000 patient records in R, handling missing values and scaling features. Developed and evaluated multiple models, including Logistic Regression and Neural Networks.',
-                    highlights: 'Achieved an 86.5% accuracy in predicting diabetes risk. Identified Body Mass Index (BMI) and hypertension as key risk factors.',
-                },
-                keyFindings: [
-                    'The predictive model successfully achieved high accuracy, demonstrating its potential for real-world application in healthcare settings.',
-                    'Logistic Regression proved to be a strong baseline model, with a simplified neural network slightly outperforming it.',
-                    'Correlation analysis confirmed that BMI, age, and blood pressure are the most significant predictors of diabetes risk, aligning with clinical knowledge.',
-                ],
-                dataStructure: 'The dataset contained over 253,000 patient records with health metrics like BMI, blood pressure, cholesterol levels, and a diabetes outcome variable. Initial checks involved statistical summaries to understand data distributions and identify any data quality issues.',
-                recommendations: [
-                    'Integrate the predictive model into a clinical decision support system to provide risk scores to healthcare providers during patient check-ups.',
-                    'Conduct further feature engineering and explore more advanced models (e.g., Random Forest, XGBoost) to potentially improve accuracy.',
-                    'Validate the model on a new, independent dataset to ensure its generalizability and robustness.'
+            'value-retention': { 
+                image: 'images/marketing.jpg',
+                title: 'Customer Value & Retention Analytics', 
+                toolsUsed: ['Power Query (Excel)', 'SQL', 'Tableau'], 
+                projectTags: ['E-commerce', 'CLV', 'Retention', 'Attribution'], 
+                sections: [
+                    {
+                        title: 'Project Summary',
+                        type: 'grid',
+                        content: {
+                            goal: 'This project aims to analyze Shopify order data to measure customer lifetime value (LTV), retention, churn, and revenue growth.',
+                            process: 'Consolidated three datasets - orders, customer information, and attribution using Power Query in Excel to clean, join, and shape the data.',
+                            highlights: 'Calculated LTV over 6-, 12-, and 24-month horizons, retention/churn rates at 30/60/90 days, and revenue growth (WoW, MoM).'
+                        }
+                    },
+                    {
+                        title: 'Scenario & Stakeholders',
+                        type: 'text',
+                        content: 'As a junior data analyst at a Shopify-based e-commerce retailer, the goal is to quantify customer lifetime value (LTV), churn and retention rates, and revenue growth across time and customer cohorts.',
+                        subSections: [
+                            {
+                                subTitle: 'Stakeholders',
+                                subType: 'list',
+                                items: [
+                                    'Marketing Director: Needs cohort-level LTV vs. Customer Acquisition Cost (CAC) insights and channel performance to guide budget allocation.',
+                                    'Product Manager: Wants to understand churn drivers and segment behaviors to prioritize retention features.',
+                                    'Finance Lead: Requires LTV/CAC comparisons and revenue forecasts to inform budgeting and growth targets.'
+                                ]
+                            },
+                            {
+                                subTitle: 'Key Questions',
+                                subType: 'list',
+                                items: [
+                                    'What is the average and cohort-based LTV over 6-, 12-, and 24-month horizons?',
+                                    'What are our 30-/60-/90-day retention rates and corresponding churn rates by cohort?',
+                                    'How has total revenue trended week-over-week (WoW) and month-over-month (MoM)?',
+                                    'Which customer segments or acquisition channels yield the highest LTV-to-CAC ratios?',
+                                    'What refund or order-frequency patterns correlate with elevated churn risk?'
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Data Structure & Initial Checks',
+                        type: 'text',
+                        content: 'The analysis was based on consolidating three core datasets (Orders, Customer Information, and Attribution) exported from Shopify into a unified data model using Power Query.',
+                        subSections: [
+                            {
+                                subType: 'list',
+                                items: ['Orders', 'Customers', 'Attribution Data']
+                            },
+                        ],
+                        postContent: 'Initial data preparation involved cleaning order status flags, standardizing acquisition channels, and ensuring accurate date fields for cohort analysis before calculating the time-series KPIs.'
+                    },
+                    {
+                        title: 'Key Insights',
+                        type: 'insights-deep-dive',
+                        content: [
+                            {
+                                title: 'Customer Repurchase & Retention',
+                                points: [
+                                    'Very low 30/60/90-day retention signals: Retention rates were approximately 1.4%, 0.9%, and 1.2% respectively (post-first-order), indicating a high churn risk immediately after the initial purchase.',
+                                    'Repeat-purchase rate is critically low: Only about 5% of customers (19 out of 382) made a repeat purchase, confirming that most of the business value is currently derived from first-time buyers.'
+                                ],
+                                image: null 
+                            },
+                            {
+                                title: 'Channel Performance & Revenue Drivers',
+                                points: [
+                                    'Direct and YouTube dominate revenue share: Direct accounted for approximately 37% and YouTube for about 36%. Google contributed ~11%, meaning the top-3 channels generate ~84% of total revenue.',
+                                    'Device Split: The platform is heavily desktop-weighted, with approximately 82% of revenue coming from Desktop users versus 18% from Mobile.'
+                                ],
+                                image: null 
+                            },
+                            {
+                                title: 'Revenue Trends',
+                                points: [
+                                    'The monthly revenue series shows a sharply rising trend, particularly in the early months. However, campaign-driven spikes are noticeable, and the base-effect from the small initial revenue heavily inflates the reported early Month-over-Month (MoM) growth figures.',
+                                ],
+                                image: null
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Recommendations',
+                        type: 'list',
+                        items: [
+                            'Prioritize Direct and YouTube in the near term: Capitalize on the proven effectiveness of these high-revenue channels by dedicating more budget, building tailored landing pages, and replicating the creative/offers that resulted in the highest-revenue weeks.',
+                            'Test budget increases for Google: Allocate small, targeted budget increases toward the best-selling products (e.g., ShipStream / OrderSync) and focus on high-intent keywords to improve LTV-to-CAC ratio.',
+                            {
+                                main: 'Launch a 30-60-90-day lifecycle program: Implement an automated post-purchase email series to address the low retention rates:',
+                                sub: [
+                                    'Day 3–7: Send quick-start tips and light cross-sell offers for the product family purchased.',
+                                    'Day 21–30: Deliver value-add content combined with a single-use incentive to drive the next purchase.',
+                                    'Day 60–90: Use a “win-back” offer, with the incentive tiered by the customer\'s historical CLV (offering larger discounts to non-buyers in the bottom-value quintiles).'
+                                ]
+                            }
+                        ]
+                    }
                 ]
             },
             'airbnb-pricing': {
                 image: 'images/airbnb.jpg',
                 title: 'Airbnb Pricing Prediction',
-                toolsUsed: ['R', 'Machine Learning', 'Predictive Modeling'],
-                summary: {
-                    goal: 'To develop a machine learning model to predict optimal Airbnb listing prices and propose a system for hosts to maximize their revenue.',
-                    process: 'Explored a large dataset of Airbnb listings using R. Engineered new features from existing data. Trained and evaluated multiple machine learning models, with XGBoost showing the highest predictive power.',
-                    highlights: 'Successfully built a model to predict pricing based on key features. Proposed a data-driven notification system for dynamic pricing recommendations.',
-                },
-                keyFindings: [
-                    'Location, number of bedrooms, and availability were found to be the most influential factors in determining listing prices.',
-                    'The XGBoost model consistently outperformed other models, such as Linear Regression and Random Forest, in terms of accuracy.',
-                    'A dynamic pricing recommendation system could help hosts adjust prices in real-time based on local events, demand surges, and competitor pricing.'
-                ],
-                dataStructure: 'The dataset included various features for each Airbnb listing, such as location, amenities, number of guests, and historical pricing. Initial checks involved feature analysis to understand relationships and identify highly correlated variables.',
-                recommendations: [
-                    'Implement the dynamic pricing system as a tool for hosts to receive automated, data-driven pricing suggestions.',
-                    'Expand the model to include time-series analysis to account for seasonal trends and holidays.',
-                    'Incorporate external data sources, such as local event calendars and hotel occupancy rates, to further enhance prediction accuracy.'
+                toolsUsed: ['R', 'XGBoost', 'Random Forest', 'Linear Regression'],
+                projectTags: ['Predictive Modeling', 'Machine Learning', 'Data Preprocessing', 'Feature Engineering', 'Pricing Analytics'],
+                sections: [
+                    {
+                        title: 'Project Summary',
+                        type: 'grid',
+                        content: {
+                            goal: 'To develop a machine learning model that predicts optimal Airbnb listing prices. The aim is to help hosts make data-driven pricing decisions, increase revenue, and enhance Airbnb’s Take Rate through smart pricing recommendations.',
+                            process: 'Collected 15,000+ Austin Airbnb listings, and performed exploratory analysis to uncover pricing drivers. Trained Linear Regression, Random Forest, and XGBoost models; evaluated using RMSE & MAE.',
+                            highlights: 'Random Forest outperformed all models with the lowest RMSE and MAE. Identified top predictors and recommended a notification system that suggests price adjustments based on similar listings.'
+                        }
+                    },
+                    {
+                        title: 'Scenario & Stakeholders',
+                        type: 'text',
+                        content: 'Many Airbnb hosts manually set prices using personal judgment, resulting in:',
+                        subSections: [
+                            {
+                                subType: 'list',
+                                items: [
+                                    'Overpricing → fewer bookings and lower overall revenue',
+                                    'Underpricing → lost revenue opportunities'
+                                ]
+                            },
+                            {
+                                subTitle: null,
+                                subType: 'text',
+                                content: 'Right pricing leads to more bookings at profitable rates. Pricing decisions directly impact host earnings and Airbnb’s service fee revenue.'
+                            },
+                            {
+                                subTitle: 'Stakeholders',
+                                subType: 'list',
+                                items: [
+                                    'Hosts: Want to Maximize bookings and earnings with minimal manual effort.',
+                                    'Airbnb Platform: Benefits from improved pricing through Higher Take Rate.',
+                                    'Guests: Gain from fair, competitive pricing and availability.',
+                                    'Data Science & Product Teams: Responsible for building and integrating the predictive model into Airbnb’s pricing tools.'
+                                ]
+                            },
+                            {
+                                subTitle: 'Key Areas',
+                                subType: 'list',
+                                items: [
+                                    'Pricing Prediction: Using machine learning to predict Rates based on listing attributes.',
+                                    'Demand & Feature Analysis: Identifying property and location factors that drive price.',
+                                    'Model Performance Evaluation: Comparing Linear Regression, Random Forest, and XGBoost.',
+                                    'Smart Pricing Recommendation: Providing dynamic, personalized pricing feedback to hosts.',
+                                    'Business Impact Measurement: Evaluating revenue optimization and platform gains.'
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Data Structure & Initial Checks',
+                        type: 'text',
+                        content: 'Source: Inside Airbnb – Austin Listings. Size: 15,000+ rows.',
+                        subSections: [
+                            {
+                                subTitle: 'Fields',
+                                subType: 'list',
+                                items: [
+                                    'Host information',
+                                    'Property features (accommodates, bedrooms, bathrooms, room type)',
+                                    'Location (neighborhood, latitude, longitude)',
+                                    'Reviews (number and ratings)',
+                                    'Pricing details (nightly price, availability, minimum nights)'
+                                ]
+                            },
+                            {
+                                subTitle: 'Initial Checks',
+                                subType: 'list',
+                                items: [
+                                    'Removed missing values and standardized price fields.',
+                                    'Handled outliers in pricing and accommodates.',
+                                    'Encoded categorical variables for modeling.'
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Key Insights',
+                        type: 'insights-deep-dive',
+                        content: [
+                            {
+                                title: 'Overview',
+                                points: [
+                                    'Higher accommodates and entire homes strongly correlate with higher listing prices.',
+                                    'Location is a major factor: central neighborhoods consistently yield higher nightly rates.',
+                                    'Price patterns are predictable based on a small set of key features, enabling effective modeling.'
+                                ],
+                                image: null
+                            },
+                            {
+                                title: 'Pricing Prediction & Drivers',
+                                points: [
+                                    'Top price predictors: accommodates, bedrooms, room type, availability, and neighborhood.',
+                                    'Random Forest captured non-linear interactions between property attributes better than linear models.',
+                                    'Properties with similar characteristics exhibited consistent pricing clusters.'
+                                ],
+                                image: null
+                            },
+                            {
+                                title: 'Model Comparison',
+                                points: [
+                                    'Linear Regression: RMSE 68.3, MAE 52.4 - Struggled with non-linearity.',
+                                    'XGBoost: RMSE 61.2, MAE 48.5 - Good performance, but more tuning is required.',
+                                    'Random Forest: RMSE 57.8, MAE 45.9 - Gives the best balance of accuracy and interpretability.'
+                                ],
+                                image: 'images/models.png'
+                            },
+                            {
+                                title: 'Smart Pricing Prototype',
+                                points: [
+                                    'Example Notification: “Your $250 listing is undervalued. Similar listings are priced between $283–$313. Consider raising to ~$298.”',
+                                    'This demonstrates how predictive models can translate into direct host recommendations.'
+                                ],
+                                image: 'images/pricesug.png'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Recommendations',
+                        type: 'list',
+                        items: [
+                            'Deploy Smart Pricing Notifications: Roll out automated price suggestions directly in the host dashboard to guide pricing decisions.',
+                            {
+                                main: 'Offer Dual Pricing Modes:',
+                                sub: [
+                                    'Smart Pricing ON: Hosts automatically follow model recommendations.',
+                                    'Manual Pricing: Hosts retain full control with optional insights.'
+                                ]
+                            },
+                            'Retrain Models Regularly: Incorporate seasonal and market fluctuations to keep pricing predictions current.',
+                            'Expand Scope Across Markets: Apply the model to other cities, enriching with more location-based and temporal features.',
+                            'Leverage Insights for Product Decisions: Integrate pricing predictions into Airbnb’s UI to enhance transparency and user trust.'
+                        ]
+                    }
+                ]
+            },
+            'diabetes-prediction': {
+                image: 'images/diabetics.jpg',
+                title: 'Predictive Analytics for Diabetes Risk Identification',
+                toolsUsed: ['R', 'Logistic Regression', 'Neural Networks', 'Classification Trees'],
+                projectTags: ['Predictive Modeling', 'Machine Learning', 'Healthcare Analytics', 'Public Health'],
+                sections: [
+                    {
+                        title: 'Project Summary',
+                        type: 'grid',
+                        content: {
+                            goal: 'To develop predictive models that identify individuals at high risk for diabetes using national health survey data, enabling earlier detection, targeted prevention programs, and optimized allocation of healthcare resources.',
+                            process: 'Used national health survey data (253K+ records) to uncover key drivers of diabetes risk. Built predictive models to segment populations, simplify early-detection strategies, and generate insights that can guide targeted health interventions and smarter resource allocation.',                            highlights: [
+                                'Identified high blood pressure, cholesterol, and BMI as the most powerful early risk indicators.',
+
+                                'Developed models that enable early identification of high-risk groups, supporting targeted prevention programs.',
+
+                                'Simplified complex analyses into actionable insights for public health teams, improving screening efficiency and policy decisions.',
+                            ]
+                        }
+                    },
+                    {
+                        title: 'Scenario & Stakeholders',
+                        type: 'text',
+                        content: 'Diabetes prevalence has doubled globally in 30 years, affecting 1 in 10 adults in the U.S. and driving over $400 billion in annual costs. Early detection is critical: many cases remain undiagnosed until complications arise. National health surveys like BRFSS offer valuable population-level data for predictive modeling to guide targeted interventions and screening.',
+                        subSections: [
+                            {
+                                subTitle: 'Stakeholders',
+                                subType: 'list',
+                                items: [
+                                    'Public Health Officials: Target prevention programs, allocate funding efficiently.',
+                                    'Healthcare Providers: Identify at-risk patients for early intervention.',
+                                    'Policy Makers: Shape screening policies and health campaigns.',
+                                    'Epidemiologists/Researchers: Track trends, refine predictive indicators.',
+                                    'Insurance Providers: Design preventative care programs and cost reduction strategies.'
+                                ]
+                            },
+                            {
+                                subTitle: 'Key Areas',
+                                subType: 'list',
+                                items: [
+                                    'Health Risk Factor Identification: Understanding which health indicators most strongly correlate with diabetes.',
+                                    'Model Comparison: Evaluating different predictive approaches to balance accuracy, interpretability, and scalability.',
+                                    'Population Segmentation: Identifying demographic and behavioral patterns among high-risk groups.',
+                                    'Operational Simplification: Reducing model complexity while maintaining performance to enable deployment in real-world health programs.',
+                                    'Policy Impact Translation: Converting data insights into actionable public health interventions.'
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Data Structure & Initial Checks',
+                        type: 'text',
+                        content: 'Source: BRFSS 2015 (CDC). Records: 253,680 responses. Variables: 21 health & lifestyle indicators (13 selected for modeling). Target: Diabetes_012 (0: Non-diabetic, 1: Diabetic).',
+                        subSections: [
+                            {
+                                subTitle: 'Class Distribution',
+                                subType: 'list',
+                                items: [
+                                    '0 (Non-diabetic): 218,334',
+                                    '1 (Diabetic): 35,346',
+                                    'Natural class imbalance, requiring careful model evaluation using recall and specificity.'
+                                ]
+                            },
+                            {
+                                subTitle: 'Initial Checks',
+                                subType: 'list',
+                                items: [
+                                    'Removed missing/incomplete records.',
+                                    'Converted categorical variables to factors.',
+                                    'Standardized numeric features (BMI, Age).',
+                                    'Identified outliers (BMI > 40) and reviewed their influence.',
+                                    'Explored correlations and demographic patterns to guide feature selection.'
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Key Insights',
+                        type: 'insights-deep-dive',
+                        content: [
+                            {
+                                title: 'Overview',
+                                points: [
+                                    'High blood pressure, high cholesterol, and BMI are critical predictors of diabetes.',
+                                    'Lifestyle factors (physical activity, smoking) are influential but secondary to clinical indicators.',
+                                    'A small subset of individuals accounts for a disproportionate share of diabetes risk, similar to “high-risk clusters” in population health.'
+                                ],
+                                image: null
+                            },
+                            {
+                                title: 'Risk Factor Analysis',
+                                points: [
+                                    'BMI Distribution: Overweight/obese individuals dominate diabetic cases. Boxplots reveal extreme BMI outliers associated with higher risk.',
+                                    'Health Behaviors: Lack of physical activity and poor self-reported general health strongly correlate with diabetes prevalence.',
+                                    'Socioeconomic Factors: Lower income groups show higher diabetes rates, reflecting structural health inequities.'
+                                ],
+                                image: null
+                            },
+                            {
+                                title: 'Model Comparison',
+                                points: [
+                                    'Logistic Regression: AUC 0.818, Accuracy 86.5%, Recall Moderate. Key Strength: Interpretability.',
+                                    'Classification Tree: AUC —, Accuracy 86.5%, Recall Moderate. Key Strength: Simplicity.',
+                                    'Neural Network: AUC —, Accuracy 86.5%, Recall 87.8%. Key Strength: High Recall.',
+                                    { main: 'Notes:', sub: ['Logistic Regression → Best for policy communication & clinical thresholds.', 'Classification Trees → Best for low-resource environments (easy to deploy).', 'Neural Networks → Best for population-scale screening with high sensitivity.'] }
+                                ],
+                                image: null
+                            },
+                            {
+                                title: 'Dimensionality Reduction',
+                                points: [
+                                    'Correspondence Analysis (CA) identified GenHlth as the dominant categorical variable. Removing lower-variance features simplified the classification tree with negligible loss in accuracy (<0.1%), improving operational deployability.'
+                                ],
+                                image: null
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Recommendations',
+                        type: 'text',
+                        content: '',
+                        subSections: [
+                            {
+                                subTitle: 'Public Health Strategy',
+                                subType: 'list',
+                                items: [
+                                    'Targeted Screening: Prioritize individuals with high BP, cholesterol, and BMI for early diabetes screening.',
+                                    'Segmented Campaigns: Develop tailored lifestyle intervention programs for high-risk demographic groups.',
+                                    'Prioritize Recall: Use neural networks in contexts where missing at-risk individuals has high cost (e.g., underserved communities).'
+                                ]
+                            },
+                            {
+                                subTitle: 'Policy & Resource Allocation',
+                                subType: 'list',
+                                items: [
+                                    'Data-Driven Prioritization: Use logistic regression outputs to justify targeted screening funding.',
+                                    'Simplify Deployment: Leverage classification trees for community clinics lacking advanced analytic resources.',
+                                    'Monitor Drift: Retrain models annually with updated BRFSS data to track changing health patterns.'
+                                ]
+                            },
+                            {
+                                subTitle: 'Program Implementation',
+                                subType: 'list',
+                                items: [
+                                    'Combine model outputs with existing health infrastructure for maximum impact.',
+                                    'Train public health staff to use simple dashboards and risk scores for screening.',
+                                    'Incorporate predictive insights into EHR systems to prompt clinicians at point-of-care.'
+                                ]
+                            }
+                        ]
+                    }
                 ]
             }
         };
 
+        const createGridSection = (section) => {
+            let highlightsContent = '';
+            if (Array.isArray(section.content.highlights)) {
+                highlightsContent = createListHtml(section.content.highlights);
+            } else {
+                highlightsContent = `<p class="text-lg text-slate-600">${section.content.highlights}</p>`;
+            }
+
+            return `
+                <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+                    <h2 class="text-3xl text-[#2563EB] mb-6">${section.title}</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="grid-card">
+                            <h3 class="text-2xl font-semibold text-slate-700 mb-4">Goal</h3>
+                            <p class="text-lg text-slate-600">${section.content.goal}</p>
+                        </div>
+                        <div class="grid-card">
+                            <h3 class="text-2xl font-semibold text-slate-700 mb-4">Process</h3>
+                            <p class="text-lg text-slate-600">${section.content.process}</p>
+                        </div>
+                        <div class="grid-card">
+                            <h3 class="text-2xl font-semibold text-slate-700 mb-4">Highlights</h3>
+                            ${highlightsContent}
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+
+        const createListHtml = (items) => {
+            let html = '<ul class="list-style-disc list-outside ml-5 text-slate-700 space-y-3 text-lg">';
+            items.forEach(item => {
+                if (typeof item === 'string') {
+                    html += `<li>${item}</li>`;
+                } else if (item.main && item.sub) {
+                    html += `<li>${item.main}`;
+                    html += `<ul class="list-style-disc list-outside ml-5 text-slate-700 space-y-2 mt-2 text-md">`;
+                    item.sub.forEach(subItem => {
+                        html += `<li>${subItem}</li>`;
+                    });
+                    html += '</ul>';
+                    html += '</li>';
+                }
+            });
+            html += '</ul>';
+            return html;
+        };
+
+        const createLinkListHtml = (items) => {
+            let html = '<ul class="list-style-disc list-outside ml-5 text-slate-700 space-y-3 text-lg">';
+            items.forEach(link => {
+                html += `<li><a href="${link.url}" target="_blank" class="text-blue-600 hover:underline">${link.text}</a></li>`;
+            });
+            html += '</ul>';
+            return html;
+        };
+
+        const createInsightsDeepDive = (insights) => {
+            let html = '';
+            insights.forEach(insight => {
+                let imageHtml = '';
+                if (insight.image) {
+                    imageHtml = `<div class="text-align-center my-8"><img src="${insight.image}" alt="${insight.title}" class="mx-auto rounded-lg shadow-md max-w-full h-auto" style="max-height: 500px;"></div>`;
+                } else if (insight.image1 && insight.image2) {
+                     imageHtml = `
+                        <div class="flex flex-wrap justify-center gap-4 my-8">
+                            <img src="${insight.image1}" alt="${insight.title} - Image 1" class="rounded-lg shadow-md max-w-full h-auto w-full md:w-auto" style="max-width: 45%; max-height: 500px;">
+                            <img src="${insight.image2}" alt="${insight.title} - Image 2" class="rounded-lg shadow-md max-w-full h-auto w-full md:w-auto" style="max-width: 45%; max-height: 500px;">
+                        </div>
+                    `;
+                } else if (insight.image === null) {
+                    imageHtml = `<div class="text-align-center my-8 text-gray-400 italic">... Image placeholder for chart/visual ...</div>`;
+                }
+                
+                html += `
+                    <h3 class="text-2xl text-slate-700 font-bold mb-4">${insight.title}:</h3>
+                    ${createListHtml(insight.points)}
+                    ${imageHtml}
+                    <div class="section-divider"></div>
+                `;
+            });
+            return `
+                <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+                    <h2 class="text-3xl text-[#2563EB] mb-6">Key Insights</h2>
+                    ${html}
+                </div>
+            `;
+        };
+        
+        // --- Main Rendering Function ---
         function displayProjectDetails() {
             const urlParams = new URLSearchParams(window.location.search);
             const projectId = urlParams.get('id');
@@ -196,53 +706,76 @@
             
             if (project) {
                 document.getElementById('pageTitle').textContent = project.title;
-                container.innerHTML = `
+
+                const tagHtml = project.projectTags.map(tag => `<span class="project-tag">${tag}</span>`).join('');
+                const toolsHtml = project.toolsUsed.map(tool => `<span class="project-tag">${tool}</span>`).join('');
+
+                let contentHtml = `
                     <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
-                        <img src="${project.image}" alt="${project.title}" class="w-full h-80 object-cover rounded-lg mb-8">
+                        <img src="${project.image}" alt="${project.title}" class="w-full h-80 object-cover rounded-lg mb-8 shadow-md">
                         <h1 class="text-4xl md:text-5xl text-slate-800 mb-2">${project.title}</h1>
-                        <div class="mb-8">
-                            <span class="font-semibold text-lg">Tools:</span>
-                            ${project.toolsUsed.map(tool => `<span class="project-tag">${tool}</span>`).join('')}
+                        <div class="mb-8 flex flex-wrap items-center">
+                            <span class="font-semibold text-lg mr-2 mb-2">Tools:</span>
+                            ${toolsHtml}
                         </div>
-                    </div>
-                    
-                    <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
-                        <h2 class="text-3xl text-[#2563EB] mb-6">Summary</h2>
-                        <div class="grid md:grid-cols-3 gap-8">
-                            <div class="grid-card">
-                                <h3 class="text-2xl font-semibold text-slate-700 mb-4">Goal</h3>
-                                <p class="text-lg text-slate-600">${project.summary.goal}</p>
-                            </div>
-                            <div class="grid-card">
-                                <h3 class="text-2xl font-semibold text-slate-700 mb-4">Process</h3>
-                                <p class="text-lg text-slate-600">${project.summary.process}</p>
-                            </div>
-                            <div class="grid-card">
-                                <h3 class="text-2xl font-semibold text-slate-700 mb-4">Highlights</h3>
-                                <p class="text-lg text-slate-600">${project.summary.highlights}</p>
-                            </div>
+                        <div class="mb-8 flex flex-wrap items-center">
+                            <span class="font-semibold text-lg mr-2 mb-2">Project Tags:</span>
+                            ${tagHtml}
                         </div>
-                    </div>
-
-                    <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
-                        <h2 class="text-3xl text-[#2563EB] mb-6">Key Findings</h2>
-                        <ul class="list-style-disc list-outside ml-5 text-slate-700 space-y-3 text-lg">
-                            ${project.keyFindings.map(finding => `<li>${finding}</li>`).join('')}
-                        </ul>
-                    </div>
-
-                    <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
-                        <h2 class="text-3xl text-[#2563EB] mb-6">Data Structure & Initial Checks</h2>
-                        <p class="text-lg text-slate-700">${project.dataStructure}</p>
-                    </div>
-
-                    <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
-                        <h2 class="text-3xl text-[#2563EB] mb-6">Recommendations</h2>
-                        <ul class="list-style-disc list-outside ml-5 text-slate-700 space-y-3 text-lg">
-                            ${project.recommendations.map(rec => `<li>${rec}</li>`).join('')}
-                        </ul>
                     </div>
                 `;
+
+                // Loop through all sections and render based on type
+                project.sections.forEach(section => {
+                    let sectionHtml = '';
+                    switch (section.type) {
+                        case 'grid':
+                            sectionHtml = createGridSection(section);
+                            break;
+                        case 'text':
+                            let subSectionsHtml = '';
+                            if (section.subSections) {
+                                section.subSections.forEach(sub => {
+                                    let subContentHtml = '';
+                                    if (sub.subType === 'list') {
+                                        subContentHtml = createListHtml(sub.items);
+                                    } else if (sub.subType === 'link-list') {
+                                        subContentHtml = createLinkListHtml(sub.items);
+                                    }
+                                    subSectionsHtml += `
+                                        ${sub.subTitle ? `<h3 class="text-2xl font-semibold text-slate-700 mt-8 mb-4">${sub.subTitle}</h3>` : ''}
+                                        ${subContentHtml}
+                                    `;
+                                });
+                            }
+                            let imageHtml = section.image ? `<div class="text-align-center my-8"><img src="${section.image}" alt="${section.imageAlt}" class="mx-auto rounded-lg shadow-md max-w-full h-auto" style="width: 100%; max-height: 800px; object-fit: contain;"></div>` : '';
+                            
+                            sectionHtml = `
+                                <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+                                    <h2 class="text-3xl text-[#2563EB] mb-6">${section.title}</h2>
+                                    ${section.content ? `<p class="text-lg text-slate-700 mb-4">${section.content}</p>` : ''}
+                                    ${imageHtml}
+                                    ${subSectionsHtml}
+                                    ${section.postContent ? `<p class="text-lg text-slate-700 mb-6">${section.postContent}</p>` : ''}
+                                </div>
+                            `;
+                            break;
+                        case 'list':
+                            sectionHtml = `
+                                <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+                                    <h2 class="text-3xl text-[#2563EB] mb-6">${section.title}</h2>
+                                    ${createListHtml(section.items)}
+                                </div>
+                            `;
+                            break;
+                        case 'insights-deep-dive':
+                            sectionHtml = createInsightsDeepDive(section.content);
+                            break;
+                    }
+                    contentHtml += sectionHtml;
+                });
+
+                container.innerHTML = contentHtml;
             } else {
                 container.innerHTML = `<div class="text-center text-xl text-red-500">Project not found. Please go back to the <a href="index.html" class="text-blue-500 hover:underline">main page</a>.</div>`;
             }
