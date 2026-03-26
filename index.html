@@ -11,8 +11,8 @@
     <style>
         body {
             font-family: 'Lora', serif;
-            color: #374151; /* Tailwind gray-700 */
-            background-color: #f9fafb; /* Tailwind gray-50, a very light gray for a clean base */
+            color: #374151;
+            background-color: #f9fafb;
             line-height: 1.7;
         }
         h1, h2, h3, h4, h5, h6 {
@@ -20,7 +20,7 @@
             font-weight: 700;
         }
         .section-divider {
-            border-bottom: 1px solid #e5e7eb; /* Tailwind gray-200 */
+            border-bottom: 1px solid #e5e7eb;
             margin-top: 3rem;
             margin-bottom: 3rem;
         }
@@ -41,7 +41,7 @@
             scroll-behavior: smooth;
         }
         nav a.active {
-            color: #2563EB; /* Blue-600 */
+            color: #2563EB;
             font-weight: 600; 
             position: relative;
         }
@@ -52,7 +52,7 @@
             height: 2px;
             bottom: -2px;
             left: 20%;
-            background-color: #2563EB; /* Blue-600 */
+            background-color: #2563EB;
         }
         ::-webkit-scrollbar {
             width: 10px;
@@ -61,11 +61,11 @@
             background: #f1f1f1;
         }
         ::-webkit-scrollbar-thumb {
-            background: #bfdbfe; /* Blue-200 */
+            background: #bfdbfe;
             border-radius: 5px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #93C5FD; /* Blue-300 */
+            background: #93C5FD;
         }
         .profile-picture-about { 
             width: 280px; 
@@ -103,8 +103,8 @@
         }
         .project-tag { 
             display: inline-block;
-            background-color: #EFF6FF; /* Blue-50 */
-            color: #3B82F6; /* Blue-500 */
+            background-color: #EFF6FF;
+            color: #3B82F6;
             font-size: 0.75rem; 
             font-weight: 500; 
             padding: 0.25rem 0.75rem; 
@@ -114,8 +114,8 @@
             white-space: nowrap;
         }
         .project-skill-tag { 
-            background-color: #E0F2FE; /* Sky-100 */
-            color: #0284C7; /* Sky-600 */
+            background-color: #E0F2FE;
+            color: #0284C7;
         }
         .list-style-none {
             list-style: none;
@@ -195,8 +195,7 @@
                     Impact through data happens at the intersection of analytics, storytelling, and business strategy.
                 </p>
                 <p class="text-lg text-slate-700 leading-relaxed mb-4">
-                    Through my Master’s in Business Analytics & AI, I’ve developed and sharpened the technical skills required to analyze complex datasets and extract meaningful insights. In addition to the technical skills, my focus is on how those insights are communicated, because effective data work goes beyond analysis or dashboards; it translates findings into clear, actionable direction for stakeholders.
-
+                    Through my Master's in Business Analytics & AI, I've developed and sharpened the technical skills required to analyze complex datasets and extract meaningful insights. In addition to the technical skills, my focus is on how those insights are communicated, because effective data work goes beyond analysis or dashboards; it translates findings into clear, actionable direction for stakeholders.
                 </p>
                 <p class="text-lg text-slate-700 leading-relaxed mb-4">
                     That balance between analysis and strategic communication is where my strength lies. By combining technical expertise with business acumen, I build data-driven solutions and scalable analytics capabilities that turn information into measurable results.
@@ -481,14 +480,6 @@
 
         const projectsData = [
             {
-                id: 'fleet-safety',
-                image: 'images/truck.jpg',
-                title: 'Fleet Safety & Efficiency Analysis',
-                description: 'Engineered a big data pipeline using Hadoop, Hive, and Impala to process and analyze driver behavior data across 14 states. Developed Power BI dashboards that identified high-risk geographies and revealed safer, more fuel-efficient vehicle models, driving a 30% reduction in insurance and safety risk exposure.',
-                toolsUsed: ['Hadoop', 'Hive', 'Impala', 'Power BI', 'SQL'],
-                projectType: ['Big Data Pipeline', 'Data Engineering', 'Data Transformation', 'Data Visualization', 'Business Intelligence', 'Risk Analytics']
-            },
-            {
                 id: 'customer-segmentation',
                 image: 'images/superstore.jpg',
                 title: 'Customer Segmentation & Sales Attribution Analysis',
@@ -497,12 +488,28 @@
                 projectType: ['Data Modeling', 'Customer Segmentation', 'Attribution Analysis', 'Data Visualization', 'Business Intelligence', 'Marketing Analytics']
             },
             {
+                id: 'ecommerce-ab-test',
+                image: 'images/ecommerce_ab.png',
+                title: 'E-Commerce A/B Test: Product Page Redesign',
+                description: 'Designed and analyzed a 21-day randomized experiment across 50,000 users for StyleCo, testing a redesigned product page with a new image layout and urgency badge. Delivered statistically significant lift across all primary metrics, with a segment-aware recommendation — ship to desktop, hold on mobile, and monitor returns.',
+                toolsUsed: ['Python', 'SQL', 'Tableau'],
+                projectType: ['A/B Testing', 'Experiment Design', 'Statistical Analysis', 'E-Commerce Analytics', 'Causal Inference']
+            },
+            {
                 id: 'value-retention',
                 image: 'images/marketing.jpg',
                 title: 'Customer Value & Retention Analytics for Shopify Store',
                 description: 'Performed cohort-based lifetime value analysis to evaluate repeat purchase behavior, revealing <6% retention across 30/60/90-day windows. Integrated Shopify sales data via Power Query into interactive Tableau dashboards, surfacing campaign-driven revenue spikes and device usage patterns (82% desktop dominance) to refine ad targeting.',
                 toolsUsed: ['Tableau', 'Power Query', 'Shopify API'],
                 projectType: ['Data Cleaning', 'Cohort Analysis', 'Customer Retention', 'LTV Analysis', 'Business Intelligence', 'Marketing Analytics']
+            },
+            {
+                id: 'fleet-safety',
+                image: 'images/truck.jpg',
+                title: 'Fleet Safety & Efficiency Analysis',
+                description: 'Engineered a big data pipeline using Hadoop, Hive, and Impala to process and analyze driver behavior data across 14 states. Developed Power BI dashboards that identified high-risk geographies and revealed safer, more fuel-efficient vehicle models, driving a 30% reduction in insurance and safety risk exposure.',
+                toolsUsed: ['Hadoop', 'Hive', 'Impala', 'Power BI', 'SQL'],
+                projectType: ['Big Data Pipeline', 'Data Engineering', 'Data Transformation', 'Data Visualization', 'Business Intelligence', 'Risk Analytics']
             },
             {
                 id: 'diabetes-prediction',

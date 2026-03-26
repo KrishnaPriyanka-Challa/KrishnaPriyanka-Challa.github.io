@@ -48,17 +48,42 @@
         nav a:hover {
             color: #2563EB;
         }
-        /* Custom list style for better appearance */
         .list-style-disc {
             list-style: disc;
         }
         .list-style-disc li:before {
-            content: ""; /* Clears the custom bullet point from the initial CSS, now using browser default */
+            content: "";
         }
-        /* Utility for center-aligning image/text */
         .text-align-center {
             text-align: center;
         }
+        /* Metrics table styling */
+        .metrics-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        .metrics-table th {
+            background-color: #EFF6FF;
+            color: #1D4ED8;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #BFDBFE;
+        }
+        .metrics-table td {
+            padding: 0.65rem 1rem;
+            border-bottom: 1px solid #E5E7EB;
+            color: #374151;
+        }
+        .metrics-table tr:last-child td {
+            border-bottom: none;
+        }
+        .metrics-table tr:hover td {
+            background-color: #F8FAFF;
+        }
+        .badge-pass { color: #16A34A; font-weight: 600; }
+        .badge-warn { color: #D97706; font-weight: 600; }
     </style>
 </head>
 <body class="antialiased">
@@ -85,7 +110,6 @@
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Data for all projects
         const projectsData = {
             'fleet-safety': {
                 image: 'images/truck.jpg',
@@ -105,7 +129,7 @@
                     {
                         title: 'Scenario & Stakeholders',
                         type: 'text',
-                        content: `Az National Trucking (ANT), headquartered in California, is a national trucking corporation that provides long-haul trucking services for a variety of general, non-specialized cargo types. The company’s operations span across the western United States, with the exception of hazardous materials (HAZMAT).`,
+                        content: `Az National Trucking (ANT), headquartered in California, is a national trucking corporation that provides long-haul trucking services for a variety of general, non-specialized cargo types. The company's operations span across the western United States, with the exception of hazardous materials (HAZMAT).`,
                         subSections: [
                             {
                                 subTitle: 'Key Areas',
@@ -174,7 +198,7 @@
                                 points: [
                                     'Ford stands out as the best-performing model; it is both fuel-efficient and widely used.',
                                     'Caterpillar, Peterbilt, and Volvo are heavily used but less efficient, raising long-term cost concerns.',
-                                    'Navistar, Hino, Kenworth, and Crane are efficient but underutilized, suggesting the fleet isn’t fully capturing their potential.'
+                                    'Navistar, Hino, Kenworth, and Crane are efficient but underutilized, suggesting the fleet isn\'t fully capturing their potential.'
                                 ],
                                 image1: 'images/tmbyeffandusage.png',
                                 image2: 'images/matrix.png'
@@ -304,7 +328,7 @@
                                 sub: [
                                     'Day 3–7: Send quick-start tips and light cross-sell offers for the product family purchased.',
                                     'Day 21–30: Deliver value-add content combined with a single-use incentive to drive the next purchase.',
-                                    'Day 60–90: Use a “win-back” offer, with the incentive tiered by the customer\'s historical CLV (offering larger discounts to non-buyers in the bottom-value quintiles).'
+                                    'Day 60–90: Use a "win-back" offer, with the incentive tiered by the customer\'s historical CLV (offering larger discounts to non-buyers in the bottom-value quintiles).'
                                 ]
                             }
                         ]
@@ -321,7 +345,7 @@
                         title: 'Project Summary',
                         type: 'grid',
                         content: {
-                            goal: 'To develop a machine learning model that predicts optimal Airbnb listing prices. The aim is to help hosts make data-driven pricing decisions, increase revenue, and enhance Airbnb’s Take Rate through smart pricing recommendations.',
+                            goal: 'To develop a machine learning model that predicts optimal Airbnb listing prices. The aim is to help hosts make data-driven pricing decisions, increase revenue, and enhance Airbnb\'s Take Rate through smart pricing recommendations.',
                             process: 'Collected 15,000+ Austin Airbnb listings, and performed exploratory analysis to uncover pricing drivers. Trained Linear Regression, Random Forest, and XGBoost models; evaluated using RMSE & MAE.',
                             highlights: 'Random Forest outperformed all models with the lowest RMSE and MAE. Identified top predictors and recommended a notification system that suggests price adjustments based on similar listings.'
                         }
@@ -341,7 +365,7 @@
                             {
                                 subTitle: null,
                                 subType: 'text',
-                                content: 'Right pricing leads to more bookings at profitable rates. Pricing decisions directly impact host earnings and Airbnb’s service fee revenue.'
+                                content: 'Right pricing leads to more bookings at profitable rates. Pricing decisions directly impact host earnings and Airbnb\'s service fee revenue.'
                             },
                             {
                                 subTitle: 'Stakeholders',
@@ -350,7 +374,7 @@
                                     'Hosts: Want to Maximize bookings and earnings with minimal manual effort.',
                                     'Airbnb Platform: Benefits from improved pricing through Higher Take Rate.',
                                     'Guests: Gain from fair, competitive pricing and availability.',
-                                    'Data Science & Product Teams: Responsible for building and integrating the predictive model into Airbnb’s pricing tools.'
+                                    'Data Science & Product Teams: Responsible for building and integrating the predictive model into Airbnb\'s pricing tools.'
                                 ]
                             },
                             {
@@ -427,7 +451,7 @@
                             {
                                 title: 'Smart Pricing Prototype',
                                 points: [
-                                    'Example Notification: “Your $250 listing is undervalued. Similar listings are priced between $283–$313. Consider raising to ~$298.”',
+                                    'Example Notification: "Your $250 listing is undervalued. Similar listings are priced between $283–$313. Consider raising to ~$298."',
                                     'This demonstrates how predictive models can translate into direct host recommendations.'
                                 ],
                                 image: 'images/pricesug.png'
@@ -448,7 +472,7 @@
                             },
                             'Retrain Models Regularly: Incorporate seasonal and market fluctuations to keep pricing predictions current.',
                             'Expand Scope Across Markets: Apply the model to other cities, enriching with more location-based and temporal features.',
-                            'Leverage Insights for Product Decisions: Integrate pricing predictions into Airbnb’s UI to enhance transparency and user trust.'
+                            'Leverage Insights for Product Decisions: Integrate pricing predictions into Airbnb\'s UI to enhance transparency and user trust.'
                         ]
                     }
                 ]
@@ -464,11 +488,10 @@
                         type: 'grid',
                         content: {
                             goal: 'To develop predictive models that identify individuals at high risk for diabetes using national health survey data, enabling earlier detection, targeted prevention programs, and optimized allocation of healthcare resources.',
-                            process: 'Used national health survey data (253K+ records) to uncover key drivers of diabetes risk. Built predictive models to segment populations, simplify early-detection strategies, and generate insights that can guide targeted health interventions and smarter resource allocation.',                            highlights: [
+                            process: 'Used national health survey data (253K+ records) to uncover key drivers of diabetes risk. Built predictive models to segment populations, simplify early-detection strategies, and generate insights that can guide targeted health interventions and smarter resource allocation.',
+                            highlights: [
                                 'Identified high blood pressure, cholesterol, and BMI as the most powerful early risk indicators.',
-
                                 'Developed models that enable early identification of high-risk groups, supporting targeted prevention programs.',
-
                                 'Simplified complex analyses into actionable insights for public health teams, improving screening efficiency and policy decisions.',
                             ]
                         }
@@ -538,7 +561,7 @@
                                 points: [
                                     'High blood pressure, high cholesterol, and BMI are critical predictors of diabetes.',
                                     'Lifestyle factors (physical activity, smoking) are influential but secondary to clinical indicators.',
-                                    'A small subset of individuals accounts for a disproportionate share of diabetes risk, similar to “high-risk clusters” in population health.'
+                                    'A small subset of individuals accounts for a disproportionate share of diabetes risk, similar to "high-risk clusters" in population health.'
                                 ],
                                 image: null
                             },
@@ -605,7 +628,140 @@
                         ]
                     }
                 ]
+            },
+
+            // ── NEW PROJECT ──────────────────────────────────────────────────────────
+            'ecommerce-ab-test': {
+                image: 'images/ecommerce_ab.png',
+                title: 'E-Commerce A/B Test: Product Page Redesign',
+                toolsUsed: ['Python', 'SQL', 'DuckDB', 'Tableau'],
+                projectTags: ['A/B Testing', 'Experiment Design', 'Statistical Analysis', 'E-Commerce Analytics', 'Causal Inference'],
+                sections: [
+                    {
+                        title: 'Project Summary',
+                        type: 'grid',
+                        content: {
+                            goal: 'Evaluate whether a redesigned product page — featuring a new image layout and urgency badge ("Only 3 left!") — increased add-to-cart rates for StyleCo, and translate the findings into a clear, segment-aware launch recommendation.',
+                            process: 'Pre-registered a 21-day randomized experiment with a power analysis before any data was examined. Randomized 50,000 users into control and treatment groups (25k each) and analyzed primary metrics, guardrail metrics, and device/loyalty segments.',
+                            highlights: 'Add-to-cart rate lifted +1.97pp (p < 0.05), exceeding the 1.5pp MDE. Purchase rate rose +1.0pp. A return rate guardrail (+1.7pp, p < 0.05) surfaced, pointing to impulse-buy risk from the urgency badge.'
+                        }
+                    },
+                    {
+                        title: 'Business Problem & Hypothesis',
+                        type: 'text',
+                        content: 'StyleCo\'s product team hypothesized that a redesigned product detail page — combining a refreshed image layout with an urgency badge — would drive more shoppers to add items to their cart. The core question: does the new design convert better, and does it do so without degrading downstream quality metrics like return rates?',
+                        subSections: [
+                            {
+                                subTitle: 'Stakeholders',
+                                subType: 'list',
+                                items: [
+                                    'Product Team: Wants to know whether to ship the redesign and to which audience.',
+                                    'E-Commerce / Merchandising: Cares about purchase rate and revenue per visitor impact.',
+                                    'Operations & Finance: Monitoring return rates, as elevated returns erode margin.',
+                                    'Mobile Team: Needs guidance on whether a separate mobile-optimized test is warranted.'
+                                ]
+                            },
+                            {
+                                subTitle: 'Key Questions',
+                                subType: 'list',
+                                items: [
+                                    'Does the redesign significantly lift add-to-cart rate above the 1.5pp MDE threshold?',
+                                    'Do purchase conversion rate and revenue per visitor also improve?',
+                                    'Are there any guardrail metric violations (returns, bounce, time-on-page)?',
+                                    'Do desktop and mobile users respond differently to the treatment?',
+                                    'Does the urgency badge affect new vs. returning users differently?'
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Experiment Design',
+                        type: 'text',
+                        content: 'The experiment was pre-registered with a power analysis before any data was examined, ensuring the sample size was sufficient to detect the minimum detectable effect at the chosen significance and power levels.',
+                        subSections: [
+                            {
+                                subTitle: 'Design Parameters',
+                                subType: 'list',
+                                items: [
+                                    'Experiment ID: pdp_redesign_v1',
+                                    'Duration: March 1 – March 21, 2024 (21 days)',
+                                    'Sample size: 50,000 users — 25,000 control / 25,000 treatment',
+                                    'Unit of randomization: User (cookie-level)',
+                                    'Primary metrics: Add-to-cart rate, Purchase conversion rate, Revenue per visitor',
+                                    'Guardrail metrics: Return rate, Bounce rate, Time on page',
+                                    'Significance level: α = 0.05 | Statistical power: 0.80 | MDE: 1.5pp lift in ATC rate'
+                                ]
+                            },
+                            {
+                                subTitle: 'Data Sources',
+                                subType: 'list',
+                                items: [
+                                    'users.csv — demographics and device type',
+                                    'experiment_assignments.csv — control/treatment flags',
+                                    'sessions.csv — visit-level behavior',
+                                    'product_page_events.csv — add-to-cart events',
+                                    'orders.csv — purchase and return records',
+                                    'products.csv — product metadata'
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Key Findings',
+                        type: 'insights-deep-dive',
+                        content: [
+                            {
+                                title: 'Primary Metrics — All Significant',
+                                points: [
+                                    'Add-to-cart rate: Control 12.3% → Treatment 14.2% (+1.97pp, p < 0.05) — exceeds the 1.5pp MDE.',
+                                    'Purchase conversion rate: Control 5.2% → Treatment 6.2% (+1.0pp, p < 0.05) — uplift flows through the funnel.',
+                                    'Revenue per visitor: Control $0.847 → Treatment $0.963 (+$0.116) — directionally positive across the board.'
+                                ],
+                                image: null
+                            },
+                            {
+                                title: 'Guardrail Metrics — One Flag',
+                                points: [
+                                    'Return rate: Control 7.9% → Treatment 9.6% (+1.7pp, p < 0.05) ⚠️ — statistically significant increase suggests the urgency badge may be triggering impulse purchases that don\'t stick.',
+                                    'Bounce rate: Flat, not significant ✅ — no evidence the redesign confused or repelled users.',
+                                    'Time on page: Slight upward trend in treatment, not significant ✅ — users are engaging at least as much.'
+                                ],
+                                image: null
+                            },
+                            {
+                                title: 'Segment Analysis',
+                                points: [
+                                    'Desktop: +2.4pp ATC lift — strongest effect; manageable return risk at this segment level.',
+                                    'Mobile: +1.1pp ATC lift — weaker and potentially below practical significance; the layout may not translate well to smaller screens.',
+                                    'New users responded more strongly to the urgency badge than returning users — consistent with the "scarcity cue" mechanism working best on unfamiliar shoppers.',
+                                    'Gold loyalty tier showed minimal lift — high-intent repeat customers convert regardless of page treatment, suggesting the redesign adds less marginal value for VIPs.'
+                                ],
+                                image: null
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Recommendation',
+                        type: 'list',
+                        items: [
+                            'Ship to desktop — strongest lift (+2.4pp ATC), manageable return risk, and clear statistical significance across all primary metrics.',
+                            'Hold on mobile — +1.1pp lift is weaker and warrants a dedicated mobile-optimized test before full rollout.',
+                            'Monitor returns post-launch — set a return rate threshold for rollback and track for at least 2 weeks after go-live; impulse-buy returns can be delayed beyond the experiment window.',
+                            'Isolate the urgency badge in a follow-up test — run a separate experiment to disentangle the badge effect from the image layout effect, enabling more targeted optimization.',
+                            {
+                                main: 'What I\'d do differently:',
+                                sub: [
+                                    'Run for a 4th week to further validate the novelty effect check.',
+                                    'Use a sequential testing approach (e.g., mSPRT) to enable early stopping if the effect is large enough.',
+                                    'Collect qualitative data (session recordings) to understand why mobile lifts less.',
+                                    'Track long-term return behavior beyond 30 days, as impulse-buy returns can be delayed.'
+                                ]
+                            }
+                        ]
+                    }
+                ]
             }
+            // ── END NEW PROJECT ──────────────────────────────────────────────────────
         };
 
         const createGridSection = (section) => {
@@ -679,7 +835,7 @@
                         </div>
                     `;
                 } else if (insight.image === null) {
-                    imageHtml = `<div class="text-align-center my-8 text-gray-400 italic">... Image placeholder for chart/visual ...</div>`;
+                    imageHtml = '';
                 }
                 
                 html += `
@@ -697,7 +853,6 @@
             `;
         };
         
-        // --- Main Rendering Function ---
         function displayProjectDetails() {
             const urlParams = new URLSearchParams(window.location.search);
             const projectId = urlParams.get('id');
@@ -725,7 +880,6 @@
                     </div>
                 `;
 
-                // Loop through all sections and render based on type
                 project.sections.forEach(section => {
                     let sectionHtml = '';
                     switch (section.type) {
@@ -741,6 +895,8 @@
                                         subContentHtml = createListHtml(sub.items);
                                     } else if (sub.subType === 'link-list') {
                                         subContentHtml = createLinkListHtml(sub.items);
+                                    } else if (sub.subType === 'text') {
+                                        subContentHtml = `<p class="text-lg text-slate-700 mb-4">${sub.content}</p>`;
                                     }
                                     subSectionsHtml += `
                                         ${sub.subTitle ? `<h3 class="text-2xl font-semibold text-slate-700 mt-8 mb-4">${sub.subTitle}</h3>` : ''}
