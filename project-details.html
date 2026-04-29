@@ -111,6 +111,109 @@
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
         const projectsData = {
+            'marketing-attribution': {
+                image: 'images/superstore.jpg', // Ensure you have this image in your folder
+                title: 'Customer Segmentation & Sales Attribution Analysis',
+                toolsUsed: ['BigQuery', 'SQL', 'Shopify Data', 'Python'],
+                projectTags: ['Marketing Analytics', 'RFM Analysis', 'CLV', 'Attribution Modeling'],
+                sections: [
+                    {
+                        title: 'Project Summary',
+                        type: 'grid',
+                        content: {
+                            goal: "Merge Shopify orders, attribution, and customer data to quantify channel performance across the funnel and build actionable customer segments using CLV, RFM scoring, and cohort retention analysis.",
+                            process: "Validated and cleaned Shopify data in BigQuery. Created KPI tables for multi-touch attribution and segmented 378 unique customers into quartiles for recency, frequency, and monetary value.",
+                            highlights: "Identified that Direct and YouTube drive 70% of revenue. Discovered that only 8% of customers are 'champions,' signaling a major opportunity for lifecycle marketing and retention improvements."
+                        }
+                    },
+                    {
+                        title: 'Planning & Problem Statement',
+                        type: 'text',
+                        content: "The primary objective is to leverage Shopify transaction data to quantify marketing contributions and define high-value segments to optimize spend and personalize merchandising.",
+                        subSections: [
+                            {
+                                subTitle: 'Stakeholders',
+                                subType: 'list',
+                                items: [
+                                    'E-commerce Manager: Needs channel metrics for budget allocation.',
+                                    'Marketing Lead: Seeks attribution insights to optimize campaigns.',
+                                    'Merchandising Team: Requires segment profiles for tailored promotions.'
+                                ]
+                            },
+                            {
+                                subTitle: 'Key Business Questions',
+                                subType: 'list',
+                                items: [
+                                    'Which channels contribute most to revenue by first and last-touch?',
+                                    'How does multi-touch attribution change our view of performance?',
+                                    'What are the characteristics of high-value segments?',
+                                    'Which products perform best within each customer segment?'
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Data Sourcing & Infrastructure',
+                        type: 'text',
+                        content: "The project utilized three core tables (Orders, dimAttribution, dimCustomer) within a BigQuery environment.",
+                        subSections: [
+                            {
+                                subTitle: 'Data Profiling Results',
+                                subType: 'list',
+                                items: [
+                                    '414 valid orders across 378 unique customers.',
+                                    'Total Revenue: $55,635.27 | AOV: $134.38',
+                                    'Device Split: 80% Desktop / 20% Mobile.',
+                                    'Filtered out fully refunded orders and standardized payment methods.'
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Key Insights',
+                        type: 'insights-deep-dive',
+                        content: [
+                            {
+                                title: 'Marketing Channel Performance',
+                                points: [
+                                    'Direct (40%) and YouTube (29%) dominate, accounting for nearly 70% of total revenue.',
+                                    'First-touch and last-touch results are nearly identical, suggesting the channels acquiring customers are also closing them.',
+                                    'Google contributes 14%, making the top three channels responsible for ~84% of revenue.'
+                                ],
+                                image: null
+                            },
+                            {
+                                title: 'Customer Behavior & RFM',
+                                points: [
+                                    'Low Repeat-Purchase Rate: Only ~7% of customers placed more than one order.',
+                                    'RFM Skew: Only 8% of the database qualify as high-value "champions" (R1 F1 M1).',
+                                    'Product Resonance: "ShipStream" leads in newest customer groups, while "PeopleSync" leads mid-value segments.'
+                                ],
+                                image: null
+                            },
+                            {
+                                title: 'Cohort Retention Patterns',
+                                points: [
+                                    '2025 cohorts (March/April) show an 8% month-2 retention rate.',
+                                    'This is a significant improvement over 2024 cohorts, suggesting recent onboarding changes are working.'
+                                ],
+                                image: null
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Recommendations',
+                        type: 'list',
+                        items: [
+                            'Budget Reallocation: Increase spend on Direct and YouTube; build tailored landing pages to replicate high-revenue week creative formats.',
+                            'Lifecycle Automation: Launch a 30–60–90 day email sequence (Tips at Day 7, Incentives at Day 30, Win-back at Day 90).',
+                            'Personalized Promotions: Reward "champions" with early access and target "at-risk" (R4 F1 M1) segments with higher discounts.',
+                            'Desktop Optimization: Prioritize A/B testing and CRO for desktop, as it drives 80% of total revenue.'
+                        ]
+                    }
+                ]
+            },
+
             'fleet-safety': {
                 image: 'images/truck.jpg',
                 title: 'Fleet Safety & Efficiency Analysis',
