@@ -1,170 +1,375 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title id="pageTitle">Project Details</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
     <style>
+
         body {
+
             font-family: 'Lora', serif;
+
             color: #374151;
+
             background-color: #f9fafb;
+
             line-height: 1.7;
+
         }
+
         h1, h2, h3, h4, h5, h6 {
+
             font-family: 'Playfair Display', serif;
+
             font-weight: 700;
+
         }
+
         .section-divider {
+
             border-bottom: 1px solid #e5e7eb;
+
             margin-top: 3rem;
+
             margin-bottom: 3rem;
+
         }
-        .project-tag { 
+
+        .project-tag {
+
             display: inline-block;
+
             background-color: #EFF6FF;
+
             color: #3B82F6;
+
             font-size: 0.875rem;
+
             font-weight: 500;
+
             padding: 0.5rem 1rem;
+
             border-radius: 9999px;
+
             margin-right: 0.5rem;
+
             margin-bottom: 0.5rem;
+
         }
+
         .grid-card {
+
             background-color: white;
+
             padding: 2rem;
+
             border-radius: 12px;
+
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
             height: 100%;
+
         }
+
         nav a {
+
             transition: all 0.3s ease;
+
         }
+
         nav a:hover {
+
             color: #2563EB;
+
         }
+
         .list-style-disc {
+
             list-style: disc;
+
         }
+
         .list-style-disc li:before {
+
             content: "";
+
         }
+
         .text-align-center {
+
             text-align: center;
+
         }
+
         /* Metrics table styling */
+
         .metrics-table {
+
             width: 100%;
+
             border-collapse: collapse;
+
             font-size: 0.95rem;
+
         }
+
         .metrics-table th {
+
             background-color: #EFF6FF;
+
             color: #1D4ED8;
+
             padding: 0.75rem 1rem;
+
             text-align: left;
+
             font-weight: 600;
+
             border-bottom: 2px solid #BFDBFE;
+
         }
+
         .metrics-table td {
+
             padding: 0.65rem 1rem;
+
             border-bottom: 1px solid #E5E7EB;
+
             color: #374151;
+
         }
+
         .metrics-table tr:last-child td {
+
             border-bottom: none;
+
         }
+
         .metrics-table tr:hover td {
+
             background-color: #F8FAFF;
+
         }
+
         .badge-pass { color: #16A34A; font-weight: 600; }
+
         .badge-warn { color: #D97706; font-weight: 600; }
+
     </style>
+
 </head>
+
 <body class="antialiased">
+
     <nav class="bg-white/95 backdrop-blur-lg shadow-md fixed top-0 left-0 right-0 z-50">
+
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
             <div class="flex items-center justify-between h-20">
+
                 <a href="index.html" class="text-3xl font-bold text-[#2563EB] hover:text-[#1D4ED8] transition-colors">KPC</a>
+
                 <a href="index.html#projects" class="text-lg text-gray-600 hover:text-[#2563EB] transition-colors">← Back to Projects</a>
+
             </div>
+
         </div>
+
     </nav>
 
+
+
     <main class="max-w-6xl mx-auto px-6 py-28 md:py-32">
+
         <div id="project-container" class="space-y-12">
+
             <div class="text-center text-xl text-gray-500" id="loading-message">Loading project details...</div>
+
         </div>
+
     </main>
-    
+
+   
+
     <footer class="text-center py-12 mt-20 border-t border-slate-200 bg-slate-100">
+
         <p class="text-slate-600 text-lg">&copy; <span id="currentYear"></span> Krishna Priyanka Challa. All rights reserved.</p>
+
         <p class="text-md text-slate-500 mt-2">Crafted with passion and precision.</p>
+
     </footer>
 
-    <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
+
+    <script>
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
         const projectsData = {
+
+            'customer-churn-intelligence': {
+                image: 'images/CHURN.png', 
+                title: 'Customer Churn Intelligence Dashboard',
+                toolsUsed: ['Python', 'Streamlit', 'Groq API'],
+                projectTags: ['Churn Prediction', 'Machine Learning', 'Customer Segmentation', 'Retention Analytics', 'AI Integration', 'E-Commerce Analytics'],
+                sections: [
+                    {
+                        title: 'Project Summary',
+                        type: 'grid',
+                        content: {
+                            goal: "Identify the strongest drivers of customer churn for an e-commerce business, build a predictive model to score customers by risk, and deliver an AI-assisted Streamlit dashboard that translates model outputs into segment-level retention recommendations.",
+                            process: "Trained a Random Forest classifier on a 50,000-row e-commerce dataset spanning behavioral, transactional, and service metrics. Applied RFM-style segmentation based on model-validated predictors, and integrated LLaMA 3.3 via Groq API to generate actionable retention playbooks per segment.",
+                            highlights: "Overall churn rate of 28.9%. Support call frequency emerged as the #1 churn predictor (importance ~0.145), outranking engagement and purchase activity. At-Risk Champions — high-LTV customers with elevated service contact — identified as the highest revenue-impact retention target."
+                        }
+                    },
+                    {
+                        title: 'Business Problem & Context',
+                        type: 'text',
+                        content: "The e-commerce business faces a 28.9% churn rate with no systematic framework for identifying which customers are at risk or why they leave. Retention spend is undifferentiated — the same re-engagement tactics applied regardless of customer value or churn signal type. The core question: which behavioral signals most reliably predict churn, and how should retention effort be prioritized across customer segments to maximize revenue impact?",
+                        subSections: [
+                            {
+                                subTitle: 'Stakeholders',
+                                subType: 'list',
+                                items: [
+                                    'CRM / Retention Team: Needs to know which customers to contact, when, and with what message',
+                                    'Marketing: Wants segment-level playbooks tied to customer behavior, not generic re-engagement blasts',
+                                    'Finance / Operations: Cares about revenue at risk and ROI of retention interventions',
+                                    'Product Team: Interested in whether service friction (support calls, cart abandonment) points to product or UX issues'
+                                ]
+                            },
+                            {
+                                subTitle: 'Key Questions',
+                                subType: 'list',
+                                items: [
+                                    'Which behavioral features are the strongest individual predictors of churn?',
+                                    'Do customers with high support contact frequency churn at significantly higher rates?',
+                                    'How does churn risk vary across customer segments defined by service friction and lifetime value?',
+                                    'What is the estimated revenue impact of targeted retention by segment?',
+                                    'Can AI generate meaningfully differentiated playbooks per segment based on actual metrics?'
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Model & Methodology',
+                        type: 'text',
+                        content: "Trained Logistic Regression (baseline) and Random Forest Classifier models using a dataset of 50,000 e-commerce customers. Handled class imbalance using class_weight='balanced' and evaluated performance via ROC-AUC, Precision, Recall, and F1 (significance level: α = 0.05).",
+                        subSections: [
+                            {
+                                subTitle: 'Features Used',
+                                subType: 'list',
+                                items: [
+                                    'Age, Membership Years, Login Frequency, Session Duration, Pages Per Session',
+                                    'Cart Abandonment Rate, Total Purchases, Average Order Value, Days Since Last Purchase',
+                                    'Discount Usage Rate, Returns Rate, Email Open Rate, Customer Service Calls, Mobile App Usage, Lifetime Value'
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Key Insights',
+                        type: 'insights-deep-dive',
+                        content: [
+                            {
+                                title: 'Model Results & Feature Importance',
+                                points: [
+                                    'Random Forest outperformed Logistic Regression on ROC-AUC.',
+                                    'Customer Service Calls: ~0.145 (highest) — more support contacts = significantly higher churn probability.',
+                                    'Lifetime Value: ~0.140 — high-value customers are not immune; LTV predicts churn risk.',
+                                    'Cart Abandonment Rate: ~0.110 — conversion drop-off is a leading churn signal.',
+                                    'Engagement metrics like Login Frequency rank near the bottom (~0.030), contradicting surface-level intuition.',
+                                    'Statistical Validation: Support calls vs churn (chi-square p < 0.05) and LTV difference (t-test p < 0.05).'
+                                ],
+                                image: null 
+                            },
+                            {
+                                title: 'Segment Analysis',
+                                points: [
+                                    'At-Risk Champions: Critical segment — high LTV combined with high service contact frequency represents the greatest revenue risk and highest ROI retention target.',
+                                    'Potential Loyalists: Show cart abandonment as their primary signal — a conversion and trust problem, addressable through retargeting and abandoned cart flows.',
+                                    'Champions: Churn at the lowest rate — high value, low friction, minimal intervention needed.'
+                                ],
+                                image: 'Segment_Analysis.png' 
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Recommendation',
+                        type: 'list',
+                        items: [
+                            'Prioritize At-Risk Champions: Highest revenue impact per customer retained; intervention should address service friction root cause, not generic re-engagement.',
+                            'Deploy cart recovery flows for Potential Loyalists: Abandonment is the primary signal; retargeting and checkout friction reduction are the highest-leverage actions.',
+                            'Monitor Champions passively: Low churn risk; over-communicating risks damaging a healthy relationship.',
+                            'Investigate support call drivers: The #1 predictor points to an upstream product or service quality issue; reducing contact volume would lower churn risk across all segments.',
+                        ]
+                    }
+                ]
+            },
+            
+            
             'customer-segmentation': {
-                image: 'images/superstore.jpg', // Ensure you have this image in your folder
+                image: 'images/superstore.jpg', 
                 title: 'Customer Segmentation & Sales Attribution Analysis',
-                toolsUsed: ['BigQuery', 'SQL', 'Shopify Data', 'Python'],
+                toolsUsed: ['BigQuery', 'SQL', 'Shopify', 'Python'],
                 projectTags: ['Marketing Analytics', 'RFM Analysis', 'CLV', 'Attribution Modeling'],
                 sections: [
                     {
                         title: 'Project Summary',
                         type: 'grid',
                         content: {
-                            goal: "Merge Shopify orders, attribution, and customer data to quantify channel performance across the funnel and build actionable customer segments using CLV, RFM scoring, and cohort retention analysis.",
-                            process: "Validated and cleaned Shopify data in BigQuery. Created KPI tables for multi-touch attribution and segmented 378 unique customers into quartiles for recency, frequency, and monetary value.",
-                            highlights: "Identified that Direct and YouTube drive 70% of revenue. Discovered that only 8% of customers are 'champions,' signaling a major opportunity for lifecycle marketing and retention improvements."
+                            goal: "Merge Shopify orders, attribution, and customer data to quantify channel performance and build actionable customer segments using CLV, RFM scoring, and cohort retention analysis.",
+                            process: "Cleaned and joined Shopify dimension tables in BigQuery. Standardized attribution strings, excluded refunds, and engineered KPI tables for revenue by channel and customer lifetime value.",
+                            highlights: "Identified that Direct and YouTube drive 70% of revenue. Discovered that only 8% of customers are 'champions,' signaling a massive opportunity for lifecycle marketing."
                         }
                     },
                     {
-                        title: 'Planning & Problem Statement',
+                        title: 'Scenario & Stakeholders',
                         type: 'text',
-                        content: "The primary objective is to leverage Shopify transaction data to quantify marketing contributions and define high-value segments to optimize spend and personalize merchandising.",
+                        content: "As a junior data analyst for a Shopify-based retailer, I was tasked with determining which marketing channels drive the most revenue and how customer behavior evolves post-purchase to optimize budget and merchandising.",
                         subSections: [
                             {
                                 subTitle: 'Stakeholders',
                                 subType: 'list',
                                 items: [
-                                    'E-commerce Manager: Needs channel metrics for budget allocation.',
-                                    'Marketing Lead: Seeks attribution insights to optimize campaigns.',
-                                    'Merchandising Team: Requires segment profiles for tailored promotions.'
+                                    'E-commerce Manager: Needs performance metrics by channel to guide budget allocation.',
+                                    'Marketing Lead: Wants insight into multi-touch attribution to optimize campaigns.',
+                                    'Merchandising Team: Seeks customer profiles to tailor site content and promotions.'
                                 ]
                             },
                             {
-                                subTitle: 'Key Business Questions',
-                                subType: 'list',
-                                items: [
-                                    'Which channels contribute most to revenue by first and last-touch?',
-                                    'How does multi-touch attribution change our view of performance?',
-                                    'What are the characteristics of high-value segments?',
-                                    'Which products perform best within each customer segment?'
-                                ]
+                                subTitle: 'Problem Statement',
+                                subType: 'text',
+                                content: "How can we leverage transaction data to quantify marketing contributions and define high-value segments to optimize spend and personalize site merchandising?"
                             }
                         ]
                     },
                     {
                         title: 'Data Sourcing & Infrastructure',
                         type: 'text',
-                        content: "The project utilized three core tables (Orders, dimAttribution, dimCustomer) within a BigQuery environment.",
+                        content: "The analysis utilized three primary tables within the 'marketing-channel-analysis' project in BigQuery: orders, dimAttribution, and dimCustomer.",
                         subSections: [
                             {
-                                subTitle: 'Data Profiling Results',
+                                subTitle: 'Technical Profiling',
                                 subType: 'list',
                                 items: [
-                                    '414 valid orders across 378 unique customers.',
-                                    'Total Revenue: $55,635.27 | AOV: $134.38',
-                                    'Device Split: 80% Desktop / 20% Mobile.',
-                                    'Filtered out fully refunded orders and standardized payment methods.'
+                                    'Validated 414 orders and 378 unique customers after excluding full refunds.',
+                                    'Total revenue: $55,635.27 | AOV: $134.38.',
+                                    'Normalized device strings: ~80% Desktop / ~20% Mobile.',
+                                    'Standardized payment methods and handled orphaned records.'
                                 ]
                             }
                         ]
@@ -176,26 +381,26 @@
                             {
                                 title: 'Marketing Channel Performance',
                                 points: [
-                                    'Direct (40%) and YouTube (29%) dominate, accounting for nearly 70% of total revenue.',
-                                    'First-touch and last-touch results are nearly identical, suggesting the channels acquiring customers are also closing them.',
+                                    'Direct (40%) and YouTube (29%) dominate, driving nearly 70% of total revenue.',
+                                    'First-touch and last-touch results are nearly identical, indicating consistent channel impact from awareness to conversion.',
                                     'Google contributes 14%, making the top three channels responsible for ~84% of revenue.'
                                 ],
-                                image: null
+                                image: null 
                             },
                             {
-                                title: 'Customer Behavior & RFM',
+                                title: 'Customer Segmentation (RFM)',
                                 points: [
-                                    'Low Repeat-Purchase Rate: Only ~7% of customers placed more than one order.',
-                                    'RFM Skew: Only 8% of the database qualify as high-value "champions" (R1 F1 M1).',
-                                    'Product Resonance: "ShipStream" leads in newest customer groups, while "PeopleSync" leads mid-value segments.'
+                                    'Low Repeat-Purchase Rate: Only ~7% of customers (27 of 375) placed more than one order.',
+                                    'RFM Skew: The majority of customers fall into lower recency/frequency quartiles; only 8% are "champions."',
+                                    'Product Resonance: "ShipStream" leads in recently active groups, while "PeopleSync" leads mid-value segments.'
                                 ],
-                                image: null
+                                image: null 
                             },
                             {
-                                title: 'Cohort Retention Patterns',
+                                title: 'Cohort Retention',
                                 points: [
-                                    '2025 cohorts (March/April) show an 8% month-2 retention rate.',
-                                    'This is a significant improvement over 2024 cohorts, suggesting recent onboarding changes are working.'
+                                    'March/April 2025 cohorts show month-2 retention of ~8%, up from near zero in 2024.',
+                                    'This suggests that recent marketing or onboarding changes are beginning to improve repeat behavior.'
                                 ],
                                 image: null
                             }
@@ -205,842 +410,1671 @@
                         title: 'Recommendations',
                         type: 'list',
                         items: [
-                            'Budget Reallocation: Increase spend on Direct and YouTube; build tailored landing pages to replicate high-revenue week creative formats.',
-                            'Lifecycle Automation: Launch a 30–60–90 day email sequence (Tips at Day 7, Incentives at Day 30, Win-back at Day 90).',
-                            'Personalized Promotions: Reward "champions" with early access and target "at-risk" (R4 F1 M1) segments with higher discounts.',
-                            'Desktop Optimization: Prioritize A/B testing and CRO for desktop, as it drives 80% of total revenue.'
+                            'Increase Budget on Top Channels: ROI is highest for Direct and YouTube; build tailored landing pages for these segments.',
+                            'Lifecycle Marketing: Launch a 30–60–90 day automated email sequence targeting cross-sells at Day 7 and win-back offers at Day 60.',
+                            'Personalized Promotions: Use RFM segments to reward "champions" with early access and re-engage "at-risk" customers.',
+                            'Desktop-First CRO: With 80% of revenue coming from desktop, prioritize conversion rate optimization for the desktop experience.'
                         ]
                     }
                 ]
             },
 
             'fleet-safety': {
+
                 image: 'images/truck.jpg',
+
                 title: 'Fleet Safety & Efficiency Analysis',
+
                 toolsUsed: ['Hadoop', 'Hive', 'Impala', 'Power BI'],
+
                 projectTags: ['Big Data', 'Logistics', 'Safety', 'Efficiency'],
+
                 sections: [
+
                     {
+
                         title: 'Project Summary',
+
                         type: 'grid',
+
                         content: {
+
                             goal: 'To identify critical insights that can reduce risk, improve fuel efficiency, and enhance fleet management decision-making.',
+
                             process: 'Engineered a Big Data pipeline (Hadoop, Hive, Impala) to process telematics and operational data. Developed Power BI dashboards to visualize and analyze driver behavior and vehicle performance.',
+
                             highlights: 'Reduced risk exposure by 30%. Identified specific vehicle models that were 15% safer and more fuel-efficient.'
+
                         }
+
                     },
+
                     {
+
                         title: 'Scenario & Stakeholders',
+
                         type: 'text',
+
                         content: `Az National Trucking (ANT), headquartered in California, is a national trucking corporation that provides long-haul trucking services for a variety of general, non-specialized cargo types. The company's operations span across the western United States, with the exception of hazardous materials (HAZMAT).`,
+
                         subSections: [
+
                             {
+
                                 subTitle: 'Key Areas',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Geographic Risk Analysis: Identifying regions and routes where most abnormal or high-risk driving events occur.',
+
                                     'Mileage vs. Risk Correlation: Evaluating whether higher mileage reduces or increases driver risk.',
+
                                     'Fleet Fuel Efficiency & Utilization: Analyzing which truck models are both fuel-efficient and better utilized.',
+
                                     'Risk-Contributing Driving Behaviors: Determining which abnormal driving events most impact driver risk scores.',
+
                                     'Truck Models & Risk Association: Assessing which truck models are more often linked with higher driver risk.'
+
                                 ]
+
                             },
+
                             {
+
                                 subTitle: 'Resources for more info',
+
                                 subType: 'link-list',
+
                                 items: [
+
                                     { text: 'SQL queries used for data inspection and cleaning', url: '[link]' },
+
                                     { text: 'Targeted SQL queries regarding various business questions', url: '[link]' },
+
                                     { text: 'Interactive PowerBI dashboard', url: '[link]' }
+
                                 ]
+
                             }
+
                         ]
+
                     },
+
                     {
+
                         title: 'Data Structure & Initial Checks',
+
                         type: 'text',
+
                         content: 'The company\'s main database structure, as seen below, consists of six tables:',
+
                         image: 'images/datamd.png',
+
                         imageAlt: 'Data Structure Diagram',
+
                         subSections: [
+
                             {
+
                                 subType: 'list',
+
                                 items: ['geolocation', 'risk_factor', 'trucks_mg', 'truck_mileage', 'avg_mileage', 'driver_mileage']
+
                             }
+
                         ],
+
                         postContent: 'Initial checks involved ensuring data consistency and handling missing values.'
+
                     },
+
                     {
+
                         title: 'Key Insights',
+
                         type: 'insights-deep-dive',
+
                         content: [
+
                             {   title:  'Overview',
+
                                 points: [ 'The analysis shows that most high-risk drivers accumulate elevated scores due to lane departures, unsafe following distance, and over-speeding.',
+
                                 'It also highlights that a small subset of drivers is responsible for a disproportionate share of safety incidents.',
+
                                 'At the equipment level, Ford and Caterpillar models show lower associated risk scores and stronger safety performance, making them safer options for wider utilization across the fleet.',
-                                ], 
-                                image: 'images/exesum.png' 
+
+                                ],
+
+                                image: 'images/exesum.png'
+
                             },
+
                             {    title: 'Geographic Risk Analysis',
+
                                 points: [
+
                                     'Most abnormal driving events cluster in Downtown Santa Rosa, Downtown Willits, and Highway 18 near Victorville, showing these corridors are hotspots for unsafe driving.',
+
                                     'These incidents are not evenly spread, a few high-density areas account for a large share of risky behavior, suggesting route-specific monitoring could quickly reduce exposure.'
+
                                 ],
+
                                 image: 'images/geora.png'
+
                             },
+
                             {
+
                                 title: 'Mileage vs. Risk Correlation',
+
                                 points: [
+
                                     'Mileage alone does not explain risk; drivers with both high and low mileage show widely different risk scores.',
+
                                     'A handful of drivers (A73, A35, A50) have scores ≥ 9.0, showing that risk is driven more by behavior than distance, making targeted interventions more effective than mileage caps.'
+
                                 ],
+
                                 image: 'images/milesvsrisk.png'
+
                             },
+
                             {
+
                                 title: 'Fleet Fuel Efficiency & Utilization',
+
                                 points: [
+
                                     'Ford stands out as the best-performing model; it is both fuel-efficient and widely used.',
+
                                     'Caterpillar, Peterbilt, and Volvo are heavily used but less efficient, raising long-term cost concerns.',
+
                                     'Navistar, Hino, Kenworth, and Crane are efficient but underutilized, suggesting the fleet isn\'t fully capturing their potential.'
+
                                 ],
+
                                 image1: 'images/tmbyeffandusage.png',
+
                                 image2: 'images/matrix.png'
+
                             },
+
                             {
+
                                 title: 'Risk-Contributing Driving Behaviors',
+
                                 points: [
+
                                     'The biggest contributors to driver risk are over-speeding, lane departure, and unsafe following distance.',
+
                                     'High-risk drivers repeat these behaviors at much higher rates, with A73, A35, and A50 showing persistent issues that require focused retraining.'
+
                                 ],
+
                                 image: 'images/risk.png'
+
                             },
+
                             {
+
                                 title: 'Truck Models & Risk Association',
+
                                 points: [
+
                                     'Oshkosh and Crane show the highest average risk but are used by fewer drivers, so more data is needed before drawing firm conclusions.',
+
                                     'Ford and Caterpillar consistently show lower risk across many drivers, making them safer allocations.',
+
                                     'Volvo, Kenworth, and Navistar combine low risk with solid utilization, making them strong candidates for future fleet expansion.'
+
                                 ],
+
                                 image: 'images/truckmodel.png'
+
                             }
+
                         ]
+
                     },
+
                     {
+
                         title: 'Recommendations',
+
                         type: 'list',
+
                         items: [
+
                             'Several drivers have risk scores ≥ 9.0, indicating significant safety concerns. Implement targeted coaching and corrective training programs for high-risk drivers (risk ≥ 7.0), with particular focus on speeding control and following distance discipline.',
+
                             'The most common events are over-speeding, lane departure, and unsafe following distance. Create specialized training modules and in-cab alerts for these behaviors, reinforcing safe driving habits through real-time feedback and periodic refresher courses.',
+
                             'Ford and Caterpillar have lower associated risk scores and better driver safety metrics. Prioritize these models for future fleet expansion and allocate higher-risk drivers to safer vehicle types where possible.',
+
                             'Risk and efficiency trends vary by driver and truck model. Leverage dashboards and normalized driver risk scores to establish internal scoring policies for rewards, insurance negotiations, and timely interventions.'
+
                         ]
+
                     }
+
                 ]
+
             },
-            'value-retention': { 
+
+            'value-retention': {
+
                 image: 'images/marketing.jpg',
-                title: 'Customer Value & Retention Analytics', 
-                toolsUsed: ['Power Query (Excel)', 'SQL', 'Tableau'], 
-                projectTags: ['E-commerce', 'CLV', 'Retention', 'Attribution'], 
+
+                title: 'Customer Value & Retention Analytics',
+
+                toolsUsed: ['Power Query (Excel)', 'SQL', 'Tableau'],
+
+                projectTags: ['E-commerce', 'CLV', 'Retention', 'Attribution'],
+
                 sections: [
+
                     {
+
                         title: 'Project Summary',
+
                         type: 'grid',
+
                         content: {
+
                             goal: 'This project aims to analyze Shopify order data to measure customer lifetime value (LTV), retention, churn, and revenue growth.',
+
                             process: 'Consolidated three datasets - orders, customer information, and attribution using Power Query in Excel to clean, join, and shape the data.',
+
                             highlights: 'Calculated LTV over 6-, 12-, and 24-month horizons, retention/churn rates at 30/60/90 days, and revenue growth (WoW, MoM).'
+
                         }
+
                     },
+
                     {
+
                         title: 'Scenario & Stakeholders',
+
                         type: 'text',
+
                         content: 'As a junior data analyst at a Shopify-based e-commerce retailer, the goal is to quantify customer lifetime value (LTV), churn and retention rates, and revenue growth across time and customer cohorts.',
+
                         subSections: [
+
                             {
+
                                 subTitle: 'Stakeholders',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Marketing Director: Needs cohort-level LTV vs. Customer Acquisition Cost (CAC) insights and channel performance to guide budget allocation.',
+
                                     'Product Manager: Wants to understand churn drivers and segment behaviors to prioritize retention features.',
+
                                     'Finance Lead: Requires LTV/CAC comparisons and revenue forecasts to inform budgeting and growth targets.'
+
                                 ]
+
                             },
+
                             {
+
                                 subTitle: 'Key Questions',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'What is the average and cohort-based LTV over 6-, 12-, and 24-month horizons?',
+
                                     'What are our 30-/60-/90-day retention rates and corresponding churn rates by cohort?',
+
                                     'How has total revenue trended week-over-week (WoW) and month-over-month (MoM)?',
+
                                     'Which customer segments or acquisition channels yield the highest LTV-to-CAC ratios?',
+
                                     'What refund or order-frequency patterns correlate with elevated churn risk?'
+
                                 ]
+
                             }
+
                         ]
+
                     },
+
                     {
+
                         title: 'Data Structure & Initial Checks',
+
                         type: 'text',
+
                         content: 'The analysis was based on consolidating three core datasets (Orders, Customer Information, and Attribution) exported from Shopify into a unified data model using Power Query.',
+
                         subSections: [
+
                             {
+
                                 subType: 'list',
+
                                 items: ['Orders', 'Customers', 'Attribution Data']
+
                             },
+
                         ],
+
                         postContent: 'Initial data preparation involved cleaning order status flags, standardizing acquisition channels, and ensuring accurate date fields for cohort analysis before calculating the time-series KPIs.'
+
                     },
+
                     {
+
                         title: 'Key Insights',
+
                         type: 'insights-deep-dive',
+
                         content: [
+
                             {
+
                                 title: 'Customer Repurchase & Retention',
+
                                 points: [
+
                                     'Very low 30/60/90-day retention signals: Retention rates were approximately 1.4%, 0.9%, and 1.2% respectively (post-first-order), indicating a high churn risk immediately after the initial purchase.',
+
                                     'Repeat-purchase rate is critically low: Only about 5% of customers (19 out of 382) made a repeat purchase, confirming that most of the business value is currently derived from first-time buyers.'
+
                                 ],
-                                image: null 
+
+                                image: null
+
                             },
+
                             {
+
                                 title: 'Channel Performance & Revenue Drivers',
+
                                 points: [
+
                                     'Direct and YouTube dominate revenue share: Direct accounted for approximately 37% and YouTube for about 36%. Google contributed ~11%, meaning the top-3 channels generate ~84% of total revenue.',
+
                                     'Device Split: The platform is heavily desktop-weighted, with approximately 82% of revenue coming from Desktop users versus 18% from Mobile.'
+
                                 ],
-                                image: null 
+
+                                image: null
+
                             },
+
                             {
+
                                 title: 'Revenue Trends',
+
                                 points: [
+
                                     'The monthly revenue series shows a sharply rising trend, particularly in the early months. However, campaign-driven spikes are noticeable, and the base-effect from the small initial revenue heavily inflates the reported early Month-over-Month (MoM) growth figures.',
+
                                 ],
+
                                 image: null
+
                             }
+
                         ]
+
                     },
+
                     {
+
                         title: 'Recommendations',
+
                         type: 'list',
+
                         items: [
+
                             'Prioritize Direct and YouTube in the near term: Capitalize on the proven effectiveness of these high-revenue channels by dedicating more budget, building tailored landing pages, and replicating the creative/offers that resulted in the highest-revenue weeks.',
+
                             'Test budget increases for Google: Allocate small, targeted budget increases toward the best-selling products (e.g., ShipStream / OrderSync) and focus on high-intent keywords to improve LTV-to-CAC ratio.',
+
                             {
+
                                 main: 'Launch a 30-60-90-day lifecycle program: Implement an automated post-purchase email series to address the low retention rates:',
+
                                 sub: [
+
                                     'Day 3–7: Send quick-start tips and light cross-sell offers for the product family purchased.',
+
                                     'Day 21–30: Deliver value-add content combined with a single-use incentive to drive the next purchase.',
+
                                     'Day 60–90: Use a "win-back" offer, with the incentive tiered by the customer\'s historical CLV (offering larger discounts to non-buyers in the bottom-value quintiles).'
+
                                 ]
+
                             }
+
                         ]
+
                     }
+
                 ]
+
             },
+
             'airbnb-pricing': {
+
                 image: 'images/airbnb.jpg',
+
                 title: 'Airbnb Pricing Prediction',
+
                 toolsUsed: ['R', 'XGBoost', 'Random Forest', 'Linear Regression'],
+
                 projectTags: ['Predictive Modeling', 'Machine Learning', 'Data Preprocessing', 'Feature Engineering', 'Pricing Analytics'],
+
                 sections: [
+
                     {
+
                         title: 'Project Summary',
+
                         type: 'grid',
+
                         content: {
+
                             goal: 'To develop a machine learning model that predicts optimal Airbnb listing prices. The aim is to help hosts make data-driven pricing decisions, increase revenue, and enhance Airbnb\'s Take Rate through smart pricing recommendations.',
+
                             process: 'Collected 15,000+ Austin Airbnb listings, and performed exploratory analysis to uncover pricing drivers. Trained Linear Regression, Random Forest, and XGBoost models; evaluated using RMSE & MAE.',
+
                             highlights: 'Random Forest outperformed all models with the lowest RMSE and MAE. Identified top predictors and recommended a notification system that suggests price adjustments based on similar listings.'
+
                         }
+
                     },
+
                     {
+
                         title: 'Scenario & Stakeholders',
+
                         type: 'text',
+
                         content: 'Many Airbnb hosts manually set prices using personal judgment, resulting in:',
+
                         subSections: [
+
                             {
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Overpricing → fewer bookings and lower overall revenue',
+
                                     'Underpricing → lost revenue opportunities'
+
                                 ]
+
                             },
+
                             {
+
                                 subTitle: null,
+
                                 subType: 'text',
+
                                 content: 'Right pricing leads to more bookings at profitable rates. Pricing decisions directly impact host earnings and Airbnb\'s service fee revenue.'
+
                             },
+
                             {
+
                                 subTitle: 'Stakeholders',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Hosts: Want to Maximize bookings and earnings with minimal manual effort.',
+
                                     'Airbnb Platform: Benefits from improved pricing through Higher Take Rate.',
+
                                     'Guests: Gain from fair, competitive pricing and availability.',
+
                                     'Data Science & Product Teams: Responsible for building and integrating the predictive model into Airbnb\'s pricing tools.'
+
                                 ]
+
                             },
+
                             {
+
                                 subTitle: 'Key Areas',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Pricing Prediction: Using machine learning to predict Rates based on listing attributes.',
+
                                     'Demand & Feature Analysis: Identifying property and location factors that drive price.',
+
                                     'Model Performance Evaluation: Comparing Linear Regression, Random Forest, and XGBoost.',
+
                                     'Smart Pricing Recommendation: Providing dynamic, personalized pricing feedback to hosts.',
+
                                     'Business Impact Measurement: Evaluating revenue optimization and platform gains.'
+
                                 ]
+
                             }
+
                         ]
+
                     },
+
                     {
+
                         title: 'Data Structure & Initial Checks',
+
                         type: 'text',
+
                         content: 'Source: Inside Airbnb – Austin Listings. Size: 15,000+ rows.',
+
                         subSections: [
+
                             {
+
                                 subTitle: 'Fields',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Host information',
+
                                     'Property features (accommodates, bedrooms, bathrooms, room type)',
+
                                     'Location (neighborhood, latitude, longitude)',
+
                                     'Reviews (number and ratings)',
+
                                     'Pricing details (nightly price, availability, minimum nights)'
+
                                 ]
+
                             },
+
                             {
+
                                 subTitle: 'Initial Checks',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Removed missing values and standardized price fields.',
+
                                     'Handled outliers in pricing and accommodates.',
+
                                     'Encoded categorical variables for modeling.'
+
                                 ]
+
                             }
+
                         ]
+
                     },
+
                     {
+
                         title: 'Key Insights',
+
                         type: 'insights-deep-dive',
+
                         content: [
+
                             {
+
                                 title: 'Overview',
+
                                 points: [
+
                                     'Higher accommodates and entire homes strongly correlate with higher listing prices.',
+
                                     'Location is a major factor: central neighborhoods consistently yield higher nightly rates.',
+
                                     'Price patterns are predictable based on a small set of key features, enabling effective modeling.'
+
                                 ],
+
                                 image: null
+
                             },
+
                             {
+
                                 title: 'Pricing Prediction & Drivers',
+
                                 points: [
+
                                     'Top price predictors: accommodates, bedrooms, room type, availability, and neighborhood.',
+
                                     'Random Forest captured non-linear interactions between property attributes better than linear models.',
+
                                     'Properties with similar characteristics exhibited consistent pricing clusters.'
+
                                 ],
+
                                 image: null
+
                             },
+
                             {
+
                                 title: 'Model Comparison',
+
                                 points: [
+
                                     'Linear Regression: RMSE 68.3, MAE 52.4 - Struggled with non-linearity.',
+
                                     'XGBoost: RMSE 61.2, MAE 48.5 - Good performance, but more tuning is required.',
+
                                     'Random Forest: RMSE 57.8, MAE 45.9 - Gives the best balance of accuracy and interpretability.'
+
                                 ],
+
                                 image: 'images/models.png'
+
                             },
+
                             {
+
                                 title: 'Smart Pricing Prototype',
+
                                 points: [
+
                                     'Example Notification: "Your $250 listing is undervalued. Similar listings are priced between $283–$313. Consider raising to ~$298."',
+
                                     'This demonstrates how predictive models can translate into direct host recommendations.'
+
                                 ],
+
                                 image: 'images/pricesug.png'
+
                             }
+
                         ]
+
                     },
+
                     {
+
                         title: 'Recommendations',
+
                         type: 'list',
+
                         items: [
+
                             'Deploy Smart Pricing Notifications: Roll out automated price suggestions directly in the host dashboard to guide pricing decisions.',
+
                             {
+
                                 main: 'Offer Dual Pricing Modes:',
+
                                 sub: [
+
                                     'Smart Pricing ON: Hosts automatically follow model recommendations.',
+
                                     'Manual Pricing: Hosts retain full control with optional insights.'
+
                                 ]
+
                             },
+
                             'Retrain Models Regularly: Incorporate seasonal and market fluctuations to keep pricing predictions current.',
+
                             'Expand Scope Across Markets: Apply the model to other cities, enriching with more location-based and temporal features.',
+
                             'Leverage Insights for Product Decisions: Integrate pricing predictions into Airbnb\'s UI to enhance transparency and user trust.'
+
                         ]
+
                     }
+
                 ]
+
             },
+
             'diabetes-prediction': {
+
                 image: 'images/diabetics.jpg',
+
                 title: 'Predictive Analytics for Diabetes Risk Identification',
+
                 toolsUsed: ['R', 'Logistic Regression', 'Neural Networks', 'Classification Trees'],
+
                 projectTags: ['Predictive Modeling', 'Machine Learning', 'Healthcare Analytics', 'Public Health'],
+
                 sections: [
+
                     {
+
                         title: 'Project Summary',
+
                         type: 'grid',
+
                         content: {
+
                             goal: 'To develop predictive models that identify individuals at high risk for diabetes using national health survey data, enabling earlier detection, targeted prevention programs, and optimized allocation of healthcare resources.',
+
                             process: 'Used national health survey data (253K+ records) to uncover key drivers of diabetes risk. Built predictive models to segment populations, simplify early-detection strategies, and generate insights that can guide targeted health interventions and smarter resource allocation.',
+
                             highlights: [
+
                                 'Identified high blood pressure, cholesterol, and BMI as the most powerful early risk indicators.',
+
                                 'Developed models that enable early identification of high-risk groups, supporting targeted prevention programs.',
+
                                 'Simplified complex analyses into actionable insights for public health teams, improving screening efficiency and policy decisions.',
+
                             ]
+
                         }
+
                     },
+
                     {
+
                         title: 'Scenario & Stakeholders',
+
                         type: 'text',
+
                         content: 'Diabetes prevalence has doubled globally in 30 years, affecting 1 in 10 adults in the U.S. and driving over $400 billion in annual costs. Early detection is critical: many cases remain undiagnosed until complications arise. National health surveys like BRFSS offer valuable population-level data for predictive modeling to guide targeted interventions and screening.',
+
                         subSections: [
+
                             {
+
                                 subTitle: 'Stakeholders',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Public Health Officials: Target prevention programs, allocate funding efficiently.',
+
                                     'Healthcare Providers: Identify at-risk patients for early intervention.',
+
                                     'Policy Makers: Shape screening policies and health campaigns.',
+
                                     'Epidemiologists/Researchers: Track trends, refine predictive indicators.',
+
                                     'Insurance Providers: Design preventative care programs and cost reduction strategies.'
+
                                 ]
+
                             },
+
                             {
+
                                 subTitle: 'Key Areas',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Health Risk Factor Identification: Understanding which health indicators most strongly correlate with diabetes.',
+
                                     'Model Comparison: Evaluating different predictive approaches to balance accuracy, interpretability, and scalability.',
+
                                     'Population Segmentation: Identifying demographic and behavioral patterns among high-risk groups.',
+
                                     'Operational Simplification: Reducing model complexity while maintaining performance to enable deployment in real-world health programs.',
+
                                     'Policy Impact Translation: Converting data insights into actionable public health interventions.'
+
                                 ]
+
                             }
+
                         ]
+
                     },
+
                     {
+
                         title: 'Data Structure & Initial Checks',
+
                         type: 'text',
+
                         content: 'Source: BRFSS 2015 (CDC). Records: 253,680 responses. Variables: 21 health & lifestyle indicators (13 selected for modeling). Target: Diabetes_012 (0: Non-diabetic, 1: Diabetic).',
+
                         subSections: [
+
                             {
+
                                 subTitle: 'Class Distribution',
+
                                 subType: 'list',
+
                                 items: [
+
                                     '0 (Non-diabetic): 218,334',
+
                                     '1 (Diabetic): 35,346',
+
                                     'Natural class imbalance, requiring careful model evaluation using recall and specificity.'
+
                                 ]
+
                             },
+
                             {
+
                                 subTitle: 'Initial Checks',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Removed missing/incomplete records.',
+
                                     'Converted categorical variables to factors.',
+
                                     'Standardized numeric features (BMI, Age).',
+
                                     'Identified outliers (BMI > 40) and reviewed their influence.',
+
                                     'Explored correlations and demographic patterns to guide feature selection.'
+
                                 ]
+
                             }
+
                         ]
+
                     },
+
                     {
+
                         title: 'Key Insights',
+
                         type: 'insights-deep-dive',
+
                         content: [
+
                             {
+
                                 title: 'Overview',
+
                                 points: [
+
                                     'High blood pressure, high cholesterol, and BMI are critical predictors of diabetes.',
+
                                     'Lifestyle factors (physical activity, smoking) are influential but secondary to clinical indicators.',
+
                                     'A small subset of individuals accounts for a disproportionate share of diabetes risk, similar to "high-risk clusters" in population health.'
+
                                 ],
+
                                 image: null
+
                             },
+
                             {
+
                                 title: 'Risk Factor Analysis',
+
                                 points: [
+
                                     'BMI Distribution: Overweight/obese individuals dominate diabetic cases. Boxplots reveal extreme BMI outliers associated with higher risk.',
+
                                     'Health Behaviors: Lack of physical activity and poor self-reported general health strongly correlate with diabetes prevalence.',
+
                                     'Socioeconomic Factors: Lower income groups show higher diabetes rates, reflecting structural health inequities.'
+
                                 ],
+
                                 image: null
+
                             },
+
                             {
+
                                 title: 'Model Comparison',
+
                                 points: [
+
                                     'Logistic Regression: AUC 0.818, Accuracy 86.5%, Recall Moderate. Key Strength: Interpretability.',
+
                                     'Classification Tree: AUC —, Accuracy 86.5%, Recall Moderate. Key Strength: Simplicity.',
+
                                     'Neural Network: AUC —, Accuracy 86.5%, Recall 87.8%. Key Strength: High Recall.',
+
                                     { main: 'Notes:', sub: ['Logistic Regression → Best for policy communication & clinical thresholds.', 'Classification Trees → Best for low-resource environments (easy to deploy).', 'Neural Networks → Best for population-scale screening with high sensitivity.'] }
+
                                 ],
+
                                 image: null
+
                             },
+
                             {
+
                                 title: 'Dimensionality Reduction',
+
                                 points: [
+
                                     'Correspondence Analysis (CA) identified GenHlth as the dominant categorical variable. Removing lower-variance features simplified the classification tree with negligible loss in accuracy (<0.1%), improving operational deployability.'
+
                                 ],
+
                                 image: null
+
                             }
+
                         ]
+
                     },
+
                     {
+
                         title: 'Recommendations',
+
                         type: 'text',
+
                         content: '',
+
                         subSections: [
+
                             {
+
                                 subTitle: 'Public Health Strategy',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Targeted Screening: Prioritize individuals with high BP, cholesterol, and BMI for early diabetes screening.',
+
                                     'Segmented Campaigns: Develop tailored lifestyle intervention programs for high-risk demographic groups.',
+
                                     'Prioritize Recall: Use neural networks in contexts where missing at-risk individuals has high cost (e.g., underserved communities).'
+
                                 ]
+
                             },
+
                             {
+
                                 subTitle: 'Policy & Resource Allocation',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Data-Driven Prioritization: Use logistic regression outputs to justify targeted screening funding.',
+
                                     'Simplify Deployment: Leverage classification trees for community clinics lacking advanced analytic resources.',
+
                                     'Monitor Drift: Retrain models annually with updated BRFSS data to track changing health patterns.'
+
                                 ]
+
                             },
+
                             {
+
                                 subTitle: 'Program Implementation',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Combine model outputs with existing health infrastructure for maximum impact.',
+
                                     'Train public health staff to use simple dashboards and risk scores for screening.',
+
                                     'Incorporate predictive insights into EHR systems to prompt clinicians at point-of-care.'
+
                                 ]
+
                             }
+
                         ]
+
                     }
+
                 ]
+
             },
+
+
 
             // ── NEW PROJECT ──────────────────────────────────────────────────────────
+
             'ecommerce-ab-test': {
+
                 image: 'images/ecommerce_ab.png',
+
                 title: 'E-Commerce A/B Test: Product Page Redesign',
+
                 toolsUsed: ['Python', 'SQL', 'DuckDB', 'Tableau'],
+
                 projectTags: ['A/B Testing', 'Experiment Design', 'Statistical Analysis', 'E-Commerce Analytics', 'Causal Inference'],
+
                 sections: [
+
                     {
+
                         title: 'Project Summary',
+
                         type: 'grid',
+
                         content: {
+
                             goal: 'Evaluate whether a redesigned product page — featuring a new image layout and urgency badge ("Only 3 left!") — increased add-to-cart rates for StyleCo, and translate the findings into a clear, segment-aware launch recommendation.',
+
                             process: 'Pre-registered a 21-day randomized experiment with a power analysis before any data was examined. Randomized 50,000 users into control and treatment groups (25k each) and analyzed primary metrics, guardrail metrics, and device/loyalty segments.',
+
                             highlights: 'Add-to-cart rate lifted +1.97pp (p < 0.05), exceeding the 1.5pp MDE. Purchase rate rose +1.0pp. A return rate guardrail (+1.7pp, p < 0.05) surfaced, pointing to impulse-buy risk from the urgency badge.'
+
                         }
+
                     },
+
                     {
+
                         title: 'Business Problem & Hypothesis',
+
                         type: 'text',
+
                         content: 'StyleCo\'s product team hypothesized that a redesigned product detail page — combining a refreshed image layout with an urgency badge — would drive more shoppers to add items to their cart. The core question: does the new design convert better, and does it do so without degrading downstream quality metrics like return rates?',
+
                         subSections: [
+
                             {
+
                                 subTitle: 'Stakeholders',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Product Team: Wants to know whether to ship the redesign and to which audience.',
+
                                     'E-Commerce / Merchandising: Cares about purchase rate and revenue per visitor impact.',
+
                                     'Operations & Finance: Monitoring return rates, as elevated returns erode margin.',
+
                                     'Mobile Team: Needs guidance on whether a separate mobile-optimized test is warranted.'
+
                                 ]
+
                             },
+
                             {
+
                                 subTitle: 'Key Questions',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Does the redesign significantly lift add-to-cart rate above the 1.5pp MDE threshold?',
+
                                     'Do purchase conversion rate and revenue per visitor also improve?',
+
                                     'Are there any guardrail metric violations (returns, bounce, time-on-page)?',
+
                                     'Do desktop and mobile users respond differently to the treatment?',
+
                                     'Does the urgency badge affect new vs. returning users differently?'
+
                                 ]
+
                             }
+
                         ]
+
                     },
+
                     {
+
                         title: 'Experiment Design',
+
                         type: 'text',
+
                         content: 'The experiment was pre-registered with a power analysis before any data was examined, ensuring the sample size was sufficient to detect the minimum detectable effect at the chosen significance and power levels.',
+
                         subSections: [
+
                             {
+
                                 subTitle: 'Design Parameters',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'Experiment ID: pdp_redesign_v1',
+
                                     'Duration: March 1 – March 21, 2024 (21 days)',
+
                                     'Sample size: 50,000 users — 25,000 control / 25,000 treatment',
+
                                     'Unit of randomization: User (cookie-level)',
+
                                     'Primary metrics: Add-to-cart rate, Purchase conversion rate, Revenue per visitor',
+
                                     'Guardrail metrics: Return rate, Bounce rate, Time on page',
+
                                     'Significance level: α = 0.05 | Statistical power: 0.80 | MDE: 1.5pp lift in ATC rate'
+
                                 ]
+
                             },
+
                             {
+
                                 subTitle: 'Data Sources',
+
                                 subType: 'list',
+
                                 items: [
+
                                     'users.csv — demographics and device type',
+
                                     'experiment_assignments.csv — control/treatment flags',
+
                                     'sessions.csv — visit-level behavior',
+
                                     'product_page_events.csv — add-to-cart events',
+
                                     'orders.csv — purchase and return records',
+
                                     'products.csv — product metadata'
+
                                 ]
+
                             }
+
                         ]
+
                     },
+
                     {
+
                         title: 'Key Findings',
+
                         type: 'insights-deep-dive',
+
                         content: [
+
                             {
+
                                 title: 'Primary Metrics — All Significant',
+
                                 points: [
+
                                     'Add-to-cart rate: Control 12.3% → Treatment 14.2% (+1.97pp, p < 0.05) — exceeds the 1.5pp MDE.',
+
                                     'Purchase conversion rate: Control 5.2% → Treatment 6.2% (+1.0pp, p < 0.05) — uplift flows through the funnel.',
+
                                     'Revenue per visitor: Control $0.847 → Treatment $0.963 (+$0.116) — directionally positive across the board.'
+
                                 ],
+
                                 image: null
+
                             },
+
                             {
+
                                 title: 'Guardrail Metrics — One Flag',
+
                                 points: [
+
                                     'Return rate: Control 7.9% → Treatment 9.6% (+1.7pp, p < 0.05) ⚠️ — statistically significant increase suggests the urgency badge may be triggering impulse purchases that don\'t stick.',
+
                                     'Bounce rate: Flat, not significant ✅ — no evidence the redesign confused or repelled users.',
+
                                     'Time on page: Slight upward trend in treatment, not significant ✅ — users are engaging at least as much.'
+
                                 ],
+
                                 image: null
+
                             },
+
                             {
+
                                 title: 'Segment Analysis',
+
                                 points: [
+
                                     'Desktop: +2.4pp ATC lift — strongest effect; manageable return risk at this segment level.',
+
                                     'Mobile: +1.1pp ATC lift — weaker and potentially below practical significance; the layout may not translate well to smaller screens.',
+
                                     'New users responded more strongly to the urgency badge than returning users — consistent with the "scarcity cue" mechanism working best on unfamiliar shoppers.',
+
                                     'Gold loyalty tier showed minimal lift — high-intent repeat customers convert regardless of page treatment, suggesting the redesign adds less marginal value for VIPs.'
+
                                 ],
+
                                 image: null
+
                             }
+
                         ]
+
                     },
+
                     {
+
                         title: 'Recommendation',
+
                         type: 'list',
+
                         items: [
+
                             'Ship to desktop — strongest lift (+2.4pp ATC), manageable return risk, and clear statistical significance across all primary metrics.',
+
                             'Hold on mobile — +1.1pp lift is weaker and warrants a dedicated mobile-optimized test before full rollout.',
+
                             'Monitor returns post-launch — set a return rate threshold for rollback and track for at least 2 weeks after go-live; impulse-buy returns can be delayed beyond the experiment window.',
+
                             'Isolate the urgency badge in a follow-up test — run a separate experiment to disentangle the badge effect from the image layout effect, enabling more targeted optimization.',
+
                             {
+
                                 main: 'What I\'d do differently:',
+
                                 sub: [
+
                                     'Run for a 4th week to further validate the novelty effect check.',
+
                                     'Use a sequential testing approach (e.g., mSPRT) to enable early stopping if the effect is large enough.',
+
                                     'Collect qualitative data (session recordings) to understand why mobile lifts less.',
+
                                     'Track long-term return behavior beyond 30 days, as impulse-buy returns can be delayed.'
+
                                 ]
+
                             }
+
                         ]
+
                     }
+
                 ]
+
             }
+
             // ── END NEW PROJECT ──────────────────────────────────────────────────────
+
         };
+
+
 
         const createGridSection = (section) => {
+
             let highlightsContent = '';
+
             if (Array.isArray(section.content.highlights)) {
+
                 highlightsContent = createListHtml(section.content.highlights);
+
             } else {
+
                 highlightsContent = `<p class="text-lg text-slate-600">${section.content.highlights}</p>`;
+
             }
 
+
+
             return `
+
                 <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+
                     <h2 class="text-3xl text-[#2563EB] mb-6">${section.title}</h2>
+
                     <div class="grid md:grid-cols-3 gap-8">
+
                         <div class="grid-card">
+
                             <h3 class="text-2xl font-semibold text-slate-700 mb-4">Goal</h3>
+
                             <p class="text-lg text-slate-600">${section.content.goal}</p>
+
                         </div>
+
                         <div class="grid-card">
+
                             <h3 class="text-2xl font-semibold text-slate-700 mb-4">Process</h3>
+
                             <p class="text-lg text-slate-600">${section.content.process}</p>
+
                         </div>
+
                         <div class="grid-card">
+
                             <h3 class="text-2xl font-semibold text-slate-700 mb-4">Highlights</h3>
+
                             ${highlightsContent}
+
                         </div>
+
                     </div>
+
                 </div>
+
             `;
+
         };
+
+
 
         const createListHtml = (items) => {
+
             let html = '<ul class="list-style-disc list-outside ml-5 text-slate-700 space-y-3 text-lg">';
+
             items.forEach(item => {
+
                 if (typeof item === 'string') {
+
                     html += `<li>${item}</li>`;
+
                 } else if (item.main && item.sub) {
+
                     html += `<li>${item.main}`;
+
                     html += `<ul class="list-style-disc list-outside ml-5 text-slate-700 space-y-2 mt-2 text-md">`;
+
                     item.sub.forEach(subItem => {
+
                         html += `<li>${subItem}</li>`;
+
                     });
+
                     html += '</ul>';
+
                     html += '</li>';
+
                 }
+
             });
+
             html += '</ul>';
+
             return html;
+
         };
+
+
 
         const createLinkListHtml = (items) => {
+
             let html = '<ul class="list-style-disc list-outside ml-5 text-slate-700 space-y-3 text-lg">';
+
             items.forEach(link => {
+
                 html += `<li><a href="${link.url}" target="_blank" class="text-blue-600 hover:underline">${link.text}</a></li>`;
+
             });
+
             html += '</ul>';
+
             return html;
+
         };
+
+
 
         const createInsightsDeepDive = (insights) => {
+
             let html = '';
+
             insights.forEach(insight => {
+
                 let imageHtml = '';
+
                 if (insight.image) {
+
                     imageHtml = `<div class="text-align-center my-8"><img src="${insight.image}" alt="${insight.title}" class="mx-auto rounded-lg shadow-md max-w-full h-auto" style="max-height: 500px;"></div>`;
+
                 } else if (insight.image1 && insight.image2) {
+
                      imageHtml = `
+
                         <div class="flex flex-wrap justify-center gap-4 my-8">
+
                             <img src="${insight.image1}" alt="${insight.title} - Image 1" class="rounded-lg shadow-md max-w-full h-auto w-full md:w-auto" style="max-width: 45%; max-height: 500px;">
+
                             <img src="${insight.image2}" alt="${insight.title} - Image 2" class="rounded-lg shadow-md max-w-full h-auto w-full md:w-auto" style="max-width: 45%; max-height: 500px;">
+
                         </div>
+
                     `;
+
                 } else if (insight.image === null) {
+
                     imageHtml = '';
+
                 }
-                
+
+               
+
                 html += `
+
                     <h3 class="text-2xl text-slate-700 font-bold mb-4">${insight.title}:</h3>
+
                     ${createListHtml(insight.points)}
+
                     ${imageHtml}
+
                     <div class="section-divider"></div>
+
                 `;
+
             });
+
             return `
+
                 <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+
                     <h2 class="text-3xl text-[#2563EB] mb-6">Key Insights</h2>
+
                     ${html}
+
                 </div>
+
             `;
+
         };
-        
+
+       
+
         function displayProjectDetails() {
+
             const urlParams = new URLSearchParams(window.location.search);
+
             const projectId = urlParams.get('id');
+
             const project = projectsData[projectId];
+
             const container = document.getElementById('project-container');
-            
+
+           
+
             if (project) {
+
                 document.getElementById('pageTitle').textContent = project.title;
 
+
+
                 const tagHtml = project.projectTags.map(tag => `<span class="project-tag">${tag}</span>`).join('');
+
                 const toolsHtml = project.toolsUsed.map(tool => `<span class="project-tag">${tool}</span>`).join('');
 
+
+
                 let contentHtml = `
+
                     <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+
                         <img src="${project.image}" alt="${project.title}" class="w-full h-80 object-cover rounded-lg mb-8 shadow-md">
+
                         <h1 class="text-4xl md:text-5xl text-slate-800 mb-2">${project.title}</h1>
+
                         <div class="mb-8 flex flex-wrap items-center">
+
                             <span class="font-semibold text-lg mr-2 mb-2">Tools:</span>
+
                             ${toolsHtml}
+
                         </div>
+
                         <div class="mb-8 flex flex-wrap items-center">
+
                             <span class="font-semibold text-lg mr-2 mb-2">Project Tags:</span>
+
                             ${tagHtml}
+
                         </div>
+
                     </div>
+
                 `;
 
+
+
                 project.sections.forEach(section => {
+
                     let sectionHtml = '';
+
                     switch (section.type) {
+
                         case 'grid':
+
                             sectionHtml = createGridSection(section);
+
                             break;
+
                         case 'text':
+
                             let subSectionsHtml = '';
+
                             if (section.subSections) {
+
                                 section.subSections.forEach(sub => {
+
                                     let subContentHtml = '';
+
                                     if (sub.subType === 'list') {
+
                                         subContentHtml = createListHtml(sub.items);
+
                                     } else if (sub.subType === 'link-list') {
+
                                         subContentHtml = createLinkListHtml(sub.items);
+
                                     } else if (sub.subType === 'text') {
+
                                         subContentHtml = `<p class="text-lg text-slate-700 mb-4">${sub.content}</p>`;
+
                                     }
+
                                     subSectionsHtml += `
+
                                         ${sub.subTitle ? `<h3 class="text-2xl font-semibold text-slate-700 mt-8 mb-4">${sub.subTitle}</h3>` : ''}
+
                                         ${subContentHtml}
+
                                     `;
+
                                 });
+
                             }
+
                             let imageHtml = section.image ? `<div class="text-align-center my-8"><img src="${section.image}" alt="${section.imageAlt}" class="mx-auto rounded-lg shadow-md max-w-full h-auto" style="width: 100%; max-height: 800px; object-fit: contain;"></div>` : '';
-                            
+
+                           
+
                             sectionHtml = `
+
                                 <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+
                                     <h2 class="text-3xl text-[#2563EB] mb-6">${section.title}</h2>
+
                                     ${section.content ? `<p class="text-lg text-slate-700 mb-4">${section.content}</p>` : ''}
+
                                     ${imageHtml}
+
                                     ${subSectionsHtml}
+
                                     ${section.postContent ? `<p class="text-lg text-slate-700 mb-6">${section.postContent}</p>` : ''}
+
                                 </div>
+
                             `;
+
                             break;
+
                         case 'list':
+
                             sectionHtml = `
+
                                 <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+
                                     <h2 class="text-3xl text-[#2563EB] mb-6">${section.title}</h2>
+
                                     ${createListHtml(section.items)}
+
                                 </div>
+
                             `;
+
                             break;
+
                         case 'insights-deep-dive':
+
                             sectionHtml = createInsightsDeepDive(section.content);
+
                             break;
+
                     }
+
                     contentHtml += sectionHtml;
+
                 });
 
+
+
                 container.innerHTML = contentHtml;
+
             } else {
+
                 container.innerHTML = `<div class="text-center text-xl text-red-500">Project not found. Please go back to the <a href="index.html" class="text-blue-500 hover:underline">main page</a>.</div>`;
+
             }
+
         }
 
+
+
         document.addEventListener('DOMContentLoaded', displayProjectDetails);
+
     </script>
+
 </body>
+
 </html>
