@@ -867,6 +867,124 @@
 
             },
 
+            'air-france-sem': {
+                image: 'images/sem.jpg', 
+                title: 'Air France Search Engine Marketing: Publisher & Campaign Optimization',
+                toolsUsed: ['Excel', 'Data Analysis', 'Scatter-Bubble Charts', 'Publisher Strategy Matrix'],
+                projectTags: ['Web Analytics', 'SEM Optimization', 'Digital Advertising', 'ROI Analysis', 'Paid Search', 'Campaign Strategy'],
+                sections: [
+                    {
+                        title: 'Project Summary',
+                        type: 'grid',
+                        content: {
+                            goal: "Evaluate which publishers and campaigns were driving actual flight bookings for Air France, optimize bidding and budget allocation across the SEM portfolio, and identify underperforming channels to remove or restructure.",
+                            process: "Analyzed Air France's multi-publisher SEM portfolio across Google, Yahoo, MSN, and Overture to identify where ad spend was generating real bookings — and where it wasn't. Delivered publisher-level recommendations that could reallocate budget from high-impression, low-conversion channels toward high-intent traffic sources, improving overall Return on Ad Spend (ROAS).",
+                            highlights: "Kayak's CPA was $17.15 vs. $191.75 for DoubleClick — 11× more cost-efficient per acquired customer. Additionally, a 10% CPC reduction improved ROAS by up to 19% for Overture US, representing the largest relative gain among all publishers."
+                        }
+                    },
+                    {
+                        title: 'Business Problem & Context',
+                        type: 'text',
+                        content: "Air France was running paid search campaigns across seven publishers in the highly competitive U.S. airline market. While certain publishers generated enormous ad impression volume, the company lacked clarity on whether that exposure was translating into actual flight bookings. Budget was likely being distributed across publishers based on scale rather than conversion quality, resulting in diluted ROAS and inefficient cost-per-acquisition. The core challenge was to make SEM spend work harder — not by spending more, but by spending smarter.",
+                        subSections: [
+                            {
+                                subTitle: 'Stakeholders',
+                                subType: 'list',
+                                items: [
+                                    'Digital marketing team responsible for SEM budget allocation and publisher relationships',
+                                    'Finance and revenue management stakeholders tracking ad cost efficiency and booking-driven ROI',
+                                    'Media buying partners managing DoubleClick campaigns across Google, Yahoo, MSN, and Overture'
+                                ]
+                            },
+                            {
+                                subTitle: 'Key Questions',
+                                subType: 'list',
+                                items: [
+                                    'Which publishers drive the most valuable traffic — not just the most traffic?',
+                                    'How does Take Rate (CTR × TCR) vary across publishers, and what does that tell us about traffic quality?',
+                                    'What is the ROAS impact of a targeted CPC reduction across the portfolio?',
+                                    'Which campaigns within each publisher deserve continued or increased investment?',
+                                    'How does Kayak\'s metasearch performance compare to DoubleClick\'s paid search model?',
+                                    'Which publishers and campaigns should be removed to free up budget?'
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Model & Methodology',
+                        type: 'text',
+                        content: "This was a descriptive and prescriptive analytics project using SEM performance data. Key methodological choices:",
+                        subSections: [
+                            {
+                                subTitle: 'Core Methodologies',
+                                subType: 'list',
+                                items: [
+                                    'Take Rate (CTR × TCR) was used as the primary combined efficiency metric, capturing both click attraction and conversion into a single signal',
+                                    'A publisher strategy matrix (CPC vs. Take Rate) created a 2×2 action framework for each publisher: optimize, reduce, eliminate, or scale',
+                                    'A campaign scatter-bubble chart (CTR × TCR, bubble size = Take Rate) identified which campaigns were truly performing vs. generating vanity impressions',
+                                    'A 10% CPC sensitivity simulation modeled both absolute and percentage ROAS gains across publishers, revealing that low-ROA channels benefit most in relative terms from cost reduction',
+                                    'A Kayak vs. DoubleClick comparison evaluated metasearch against traditional paid search on TCR, CPC, and CPA'
+                                ]
+                            },
+                            {
+                                subTitle: 'Core Metrics Defined',
+                                subType: 'list',
+                                items: [
+                                    'CPC (Cost Per Click) & CTR (Click-Through Rate)',
+                                    'Transaction Conversion Rate (TCR)',
+                                    'Take Rate (CTR × TCR)',
+                                    'Net Revenue & Return on Ad Spend (ROAS)'
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Key Findings',
+                        type: 'insights-deep-dive',
+                        content: [
+                            {
+                                title: 'Publisher Efficiency Highlights',
+                                points: [
+                                    'Yahoo-US Take Rate: 0.17% (Highest among all publishers)',
+                                    'Overture Take Rate: 0.01% (Despite 32K+ avg impressions)',
+                                    'High impression volume is not a proxy for value — Overture dominated impressions but contributed negligibly to revenue.',
+                                    'Yahoo-US and MSN-Global produced the strongest conversion efficiency despite far fewer impressions, suggesting higher purchase intent among those users.'
+                                ],
+                                image: null
+                            },
+                            {
+                                title: 'Kayak Metasearch vs. DoubleClick Paid Search',
+                                points: [
+                                    'Kayak CPA: $17.15 vs. $191.75 for DoubleClick',
+                                    'Kayak TCR: 7.33% vs. 0.57% for DoubleClick',
+                                    'Kayak\'s metasearch model dramatically outperforms DoubleClick on conversion quality — users arriving via Kayak are already in an active booking mindset.'
+                                ],
+                                image: null
+                            },
+                            {
+                                title: 'Campaign & Optimization Insights',
+                                points: [
+                                    'Google-US campaigns showed strong CTR but weak TCR, indicating a post-click experience gap — traffic arrives but doesn\'t convert.',
+                                    'CPC reduction benefits every publisher in absolute ROAS terms, but underperforming publishers see the largest percentage improvements, making cost optimization a useful lever even for low-performing channels before deciding to cut them.',
+                                    'Only two campaigns (both Yahoo-US Western Europe Destinations) sat in the high TCR quadrant of the campaign matrix — the majority of campaigns across all publishers showed low conversion performance.'
+                                ],
+                                image: null
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Recommendations',
+                        type: 'list',
+                        items: [
+                            'Scale Yahoo-US investment. Its Take Rate (0.17%) and TCR (1.83%) are the strongest in the portfolio. Increasing bids here with targeted keyword expansion — particularly European destination routes — should compound returns.',
+                            'Optimize MSN rather than cut it. MSN-Global and MSN-US show moderate conversion potential. Focus on reducing CPC through bid adjustments and improving ad-to-landing-page relevance before writing them off.',
+                            'Expand Kayak budget allocation. At $17.15 CPA vs. $191.75 for DoubleClick, Kayak is the most cost-efficient acquisition channel. Treating it as a primary conversion driver rather than a supplementary channel would significantly improve portfolio-level ROAS.',
+                            'Shift keyword strategy toward high-intent terms. Deprioritize broad generic terms like "cheap flights" in favor of branded keywords and geo-targeted route terms (e.g., "Paris to New York Air France"), which attract users closer to a booking decision.'
+                        ]
+                    }
+                ]
+            },
+
             'airbnb-pricing': {
 
                 image: 'images/airbnb.jpg',
