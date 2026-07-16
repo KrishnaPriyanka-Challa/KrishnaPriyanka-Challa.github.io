@@ -284,7 +284,7 @@
         <section id="projects">
             <h2 class="text-4xl md:text-5xl text-slate-800 mb-12 text-center">Featured Projects</h2>
             <div id="project-list" class="grid md:grid-cols-2 gap-8">
-            </div>
+                </div>
         </section>
 
         <div class="section-divider"></div>
@@ -520,13 +520,6 @@
                 projectType: ['Web Analytics', 'SEM Optimization', 'Digital Advertising', 'ROI Analysis', 'Paid Search', 'Campaign Strategy']
             },
             {
-                id: 'insight-for-living',
-                image: 'images/insight_living_portfolio.png',
-                title: 'Insight for Living — Application Portfolio',
-                description: 'Concept posts built for the Social Media Content & Growth Specialist role',
-                pdfUrl: 'assets/Insight_for_Living_Application_Portfolio.pdf'
-            },
-            {
                 id: 'fleet-safety',
                 image: 'images/truck.jpg',
                 title: 'Fleet Safety & Efficiency Analysis',
@@ -556,15 +549,7 @@
 
         projectsData.forEach(project => {
             const projectItem = document.createElement('a');
-            
-            // Route logic configuration
-            if (project.pdfUrl) {
-                projectItem.href = project.pdfUrl;
-                projectItem.target = '_blank';
-            } else {
-                projectItem.href = `project-details.html?id=${project.id}`;
-            }
-            
+            projectItem.href = `project-details.html?id=${project.id}`;
             projectItem.className = 'project-card flex flex-col p-4 md:p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1';
             
             let toolsTagsHtml = '';
